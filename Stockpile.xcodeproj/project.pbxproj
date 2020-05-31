@@ -14,6 +14,7 @@
 		EFF1BBEF248459D4003D5FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBEE248459D4003D5FF5 /* Assets.xcassets */; };
 		EFF1BBF2248459D4003D5FF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */; };
 		EFF1BBF5248459D4003D5FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */; };
+		EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFF1BBF4248459D4003D5FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFF1BBF6248459D4003D5FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */,
 				EFF1BBF6248459D4003D5FF5 /* Info.plist */,
 				EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */,
+				EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */,
 				EFF1BBF0248459D4003D5FF5 /* Preview Content */,
 			);
 			path = Stockpile;
@@ -153,6 +156,7 @@
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* ContentView.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
+				EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 				DEVELOPMENT_TEAM = 6JTMH9S5KE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stockpile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,6 +318,7 @@
 				DEVELOPMENT_TEAM = 6JTMH9S5KE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Stockpile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
