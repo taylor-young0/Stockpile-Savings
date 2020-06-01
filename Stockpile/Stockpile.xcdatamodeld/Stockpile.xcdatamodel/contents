@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StockpileSaving" representedClassName="StockpileSaving" syncable="YES">
-        <attribute name="consumption" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="consumptionUnit" optional="YES" attributeType="String"/>
-        <attribute name="dateComputed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="productDescription" optional="YES" attributeType="String"/>
-        <attribute name="productExpiryDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="regularPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="salePrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="consumption" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="consumptionUnit" attributeType="String"/>
+        <attribute name="dateComputed" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="productDescription" attributeType="String"/>
+        <attribute name="productExpiryDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="regularPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="salePrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="StockpileSaving" positionX="-63" positionY="-18" width="128" height="148"/>

@@ -30,6 +30,14 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     var savings: Double {
         return Double((regularPrice - salePrice) * Double(quantity))
     }
+    
+//    init(productDescription: String, productExpiryDate: Date, consumption: Double, consumptionUnit: String) {
+//        super.init(context: NSManagedObjectContext())
+//        self.productDescription = productDescription
+//        self.productExpiryDate = productExpiryDate
+//        self.consumption = consumption
+//        self.consumptionUnit = consumptionUnit
+//    }
 }
 
 enum ConsumptionUnit: String, CaseIterable {
