@@ -22,13 +22,21 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     /// The number of units the user should Stockpile in order to save the most money after
     /// taking into effect the other variables (productExpiryDate, consumption, etc...)
     var quantity: Int {
-        return 1
+        var consumptionInDays = consumption
+        // Check if we need to convert our consumption to days
+        if consumptionUnit != ConsumptionUnit.Day.rawValue {
+            consumptionInDays = (consumptionUnit == ConsumptionUnit.Week.rawValue) ?
+                (consumptionInDays / 7) : (consumptionInDays / 30)
+        }
+        let daysBetween = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
+        return Int(consumptionInDays * Double(daysBetween.day ?? 0))
     }
     
     /// The total monetary savings in dollars for the StockpileSaving assuming the user buys
     /// quantity amount.
     var savings: Double {
-        return Double((regularPrice - salePrice) * Double(quantity))
+        let savingsPerUnit = regularPrice - salePrice
+        return savingsPerUnit * Double(quantity)
     }
     
 //    init(productDescription: String, productExpiryDate: Date, consumption: Double, consumptionUnit: String) {

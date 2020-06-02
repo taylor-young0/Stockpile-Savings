@@ -19,8 +19,14 @@ struct AddNewStockpileSavingView: View {
     @State var salePrice: String = ""
     
     var quantity: Int {
+        var consumptionInDays = Double(consumption) ?? 0.0
+        // Check if we need to convert our consumption to days
+        if consumptionUnit != ConsumptionUnit.Day.rawValue {
+            consumptionInDays = (consumptionUnit == ConsumptionUnit.Week.rawValue) ?
+                (consumptionInDays / 7) : (consumptionInDays / 30)
+        }
         let daysBetween = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
-        return Int((Double(consumption) ?? 0.0) * Double(daysBetween.day ?? 0))
+        return Int(consumptionInDays * Double(daysBetween.day ?? 0))
     }
     
     var savings: Double {
