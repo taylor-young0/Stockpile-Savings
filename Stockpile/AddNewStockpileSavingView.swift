@@ -18,6 +18,16 @@ struct AddNewStockpileSavingView: View {
     @State var regularPrice: String = ""
     @State var salePrice: String = ""
     
+    var quantity: Int {
+        let daysBetween = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
+        return Int((Double(consumption) ?? 0.0) * Double(daysBetween.day ?? 0))
+    }
+    
+    var savings: Double {
+        let savingsPerUnit = (Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0)
+        return savingsPerUnit * Double(quantity)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -63,7 +73,7 @@ struct AddNewStockpileSavingView: View {
                         Divider()
                         Spacer()
                         Text("$")
-                        TextField("0.00", text: $regularPrice)
+                        TextField("0.00", text: $salePrice)
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
                     }
@@ -72,12 +82,12 @@ struct AddNewStockpileSavingView: View {
                     HStack {
                         Text("Stockpile quantity")
                         Spacer()
-                        Text("5 units")
+                        Text("\(quantity) units")
                     }
                     HStack {
                         Text("Savings")
                         Spacer()
-                        Text("$5")
+                        Text("$\(savings, specifier: "%.2f")")
                     }
                 }
             }.navigationBarTitle(Text("New Savings"), displayMode: .inline)
