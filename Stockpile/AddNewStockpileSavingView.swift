@@ -10,7 +10,14 @@ import SwiftUI
 
 struct AddNewStockpileSavingView: View {
     
-    //@State var stockpileSaving: StockpileSaving
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(
+        entity: StockpileSaving.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \StockpileSaving.dateComputed, ascending: true)
+        ]
+    ) var languages: FetchedResults<StockpileSaving>
+    
     @State var productDescription: String = ""
     @State var productExpiryDate: Date = Date()
     @State var consumption: String = ""
