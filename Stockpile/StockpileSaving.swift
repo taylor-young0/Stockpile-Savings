@@ -40,6 +40,15 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     }
 }
 
+extension StockpileSaving {
+    @nonobjc public class func getRecentSavings(fetchLimit num: Int) -> NSFetchRequest<StockpileSaving> {
+        let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
+        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: true)]
+        request.fetchLimit = num
+        return request
+    }
+}
+
 enum ConsumptionUnit: String, CaseIterable {
     case Day = "Day"
     case Week = "Week"

@@ -18,6 +18,7 @@ struct AddNewStockpileSavingView: View {
         ]
     ) var languages: FetchedResults<StockpileSaving>
     
+    @Binding var showingSheet: Bool
     @State var productDescription: String = ""
     @State var productExpiryDate: Date = Date()
     @State var consumption: String = ""
@@ -106,7 +107,7 @@ struct AddNewStockpileSavingView: View {
             }.navigationBarTitle(Text("New Savings"), displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
-                    print("test")
+                    self.showingSheet.toggle()
                 }, label: {Text("Cancel")}),
                 trailing: Button(action: {
                     print("")
@@ -115,8 +116,8 @@ struct AddNewStockpileSavingView: View {
     }
 }
 
-struct AddNewStockpileSavingView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddNewStockpileSavingView()
-    }
-}
+//struct AddNewStockpileSavingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddNewStockpileSavingView(showingSheet: false)
+//    }
+//}
