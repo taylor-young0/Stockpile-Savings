@@ -43,7 +43,7 @@ public class StockpileSaving: NSManagedObject, Identifiable {
 extension StockpileSaving {
     @nonobjc public class func getRecentSavings(fetchLimit num: Int) -> NSFetchRequest<StockpileSaving> {
         let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
-        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
         request.fetchLimit = num
         return request
     }

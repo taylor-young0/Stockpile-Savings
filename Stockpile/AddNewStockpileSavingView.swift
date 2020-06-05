@@ -105,12 +105,28 @@ struct AddNewStockpileSavingView: View {
                     }
                 }
             }.navigationBarTitle(Text("New Savings"), displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {
+            .navigationBarItems(leading:
+                Button(action: {
                     self.showingSheet.toggle()
                 }, label: {Text("Cancel")}),
                 trailing: Button(action: {
-                    print("")
+                    if self.quantity != 0 {
+                        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
+                        stockpileSaving.productDescription = self.productDescription
+                        stockpileSaving.dateComputed = Date()
+                        stockpileSaving.consumption = Double(self.consumption)!
+                        stockpileSaving.consumptionUnit = self.consumptionUnit
+                        stockpileSaving.productExpiryDate = self.productExpiryDate
+                        stockpileSaving.regularPrice = Double(self.regularPrice)!
+                        stockpileSaving.salePrice = Double(self.salePrice)!
+                        
+                        do {
+                            try self.managedObjectContext.save()
+                            self.showingSheet.toggle()
+                        } catch {
+                            print(error)
+                        }
+                    }
                 }, label: {Text("Add")}))
         }
     }

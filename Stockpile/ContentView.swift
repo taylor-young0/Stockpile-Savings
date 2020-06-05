@@ -10,25 +10,46 @@ import SwiftUI
 
 struct ContentView: View {
 
-    //@FetchRequest(fetchRequest: StockpileSaving.getRecentSavings(fetchLimit: 10)) var recentStockpiles: FetchedResults<StockpileSaving>
+    @FetchRequest(fetchRequest: StockpileSaving.getRecentSavings(fetchLimit: 10)) var recentStockpiles: FetchedResults<StockpileSaving>
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.presentationMode) var presentationMode
     @State var showingSheet = false
+    var lifetimeSavings: Double {
+        var sum = 0.0
+        for stockpile in recentStockpiles {
+            sum += stockpile.savings
+        }
+
+        return sum
+    }
     
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    LifetimeSavingsRow()
+                    HStack {
+                        Text("🤑 Lifetime savings")
+                        Spacer()
+                        Text("$\(self.lifetimeSavings, specifier: "%.2f")")
+                    }
                 }
                 Section(header: Text("Recent Savings")) {
-//                    if recentStockpiles.count != 0 {
-//                        ForEach(recentStockpiles) { stockpile in
-//                            StockpileSavingRow(stockpile: stockpile)
-//                        }
-//                    } else {
-//                        EmptySavingsRow()
-//                    }
-                    Text("")
+                    if recentStockpiles.count != 0 {
+                        ForEach(recentStockpiles) { stockpile in
+                            StockpileSavingRow(stockpile: stockpile)
+                        }.onDelete(perform: { indexSet in
+                            let deleteItem = self.recentStockpiles[indexSet.first!]
+                            self.managedObjectContext.delete(deleteItem)
+                            
+                            do {
+                                try self.managedObjectContext.save()
+                            } catch {
+                                print(error)
+                            }
+                        })
+                    } else {
+                        EmptySavingsRow()
+                    }
                 }
             }.navigationBarTitle(Text("Stockpile"))
             .listStyle(GroupedListStyle())
@@ -36,6 +57,7 @@ struct ContentView: View {
                 self.showingSheet.toggle()
             }, label: {
                 Image(systemName: "plus")
+                    .imageScale(.large)
                 })).sheet(isPresented: $showingSheet, content: {
                     AddNewStockpileSavingView(showingSheet: self.$showingSheet).environment(\.managedObjectContext, self.managedObjectContext)
                 })
@@ -59,19 +81,9 @@ struct EmptySavingsRow: View {
             HStack {
                 Text("Add savings by completing a new calculation by pressing the + icon in the top right")
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
                 Spacer()
             }
-        }
-    }
-}
-
-struct LifetimeSavingsRow: View {
-    var body: some View {
-        HStack {
-            Text("🤑 Lifetime savings")
-            Spacer()
-            Text("$0.00")
         }
     }
 }
@@ -82,14 +94,13 @@ struct StockpileSavingRow: View {
         VStack {
             HStack {
                 Text("\(stockpile.productDescription!)")
-                    .font(.title)
-                    .foregroundColor(.gray)
                 Spacer()
                 Text("\(stockpile.savings, specifier: "%.2f")")
             }
             HStack {
                 Text("\(stockpile.quantity) units")
                     .font(.subheadline)
+                    .foregroundColor(.secondary)
                 Spacer()
                 Text("25% savings")
                     .font(.subheadline)
