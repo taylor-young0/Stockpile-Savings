@@ -52,21 +52,20 @@ struct AddNewStockpileSavingView: View {
                         TextField("Add some spice with emoji 🍇😀", text: $productDescription)
                             .multilineTextAlignment(.trailing)
                     }
-                    HStack {
-                        DatePicker(selection: $productExpiryDate, in: (Date()...), displayedComponents: .date) {
-                            Text("Expiry Date")
+                    VStack(alignment: .leading) {
+                        DatePicker("Expiry Date", selection: $productExpiryDate, in: (Date()...), displayedComponents: .date)
+                        .multilineTextAlignment(.trailing)
+                    }
+                    VStack {
+                        HStack {
+                            Text("Consumption")
+                            Divider()
+                            TextField("units", text: $consumption).multilineTextAlignment(.trailing)
+                            Text("/\(consumptionUnit)")
                         }
-                    }
-                    HStack {
-                        Text("Consumption")
-                        Divider()
-                        TextField("units", text: $consumption).multilineTextAlignment(.trailing)
-                        Text("/\(consumptionUnit)")
-                    }
-                    HStack {
                         Picker("Consumption Units", selection: $consumptionUnit) {
                             ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
-                                Text(unit.rawValue).tag(unit)
+                                Text(unit.rawValue).tag(unit.rawValue)
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
