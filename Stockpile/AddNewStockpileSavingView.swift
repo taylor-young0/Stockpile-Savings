@@ -11,12 +11,6 @@ import SwiftUI
 struct AddNewStockpileSavingView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: StockpileSaving.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \StockpileSaving.dateComputed, ascending: true)
-        ]
-    ) var languages: FetchedResults<StockpileSaving>
     
     @Binding var showingSheet: Bool
     @State var productDescription: String = ""
@@ -54,7 +48,7 @@ struct AddNewStockpileSavingView: View {
                     }
                     VStack(alignment: .leading) {
                         DatePicker("Expiry Date", selection: $productExpiryDate, in: (Date()...), displayedComponents: .date)
-                        .multilineTextAlignment(.trailing)
+                            .multilineTextAlignment(.trailing)
                     }
                     VStack {
                         HStack {
@@ -126,13 +120,14 @@ struct AddNewStockpileSavingView: View {
                             print(error)
                         }
                     }
-                }, label: {Text("Add")}))
+                }, label: {Text("Add")})
+            ).animation(.spring())
         }
     }
 }
 
-//struct AddNewStockpileSavingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddNewStockpileSavingView(showingSheet: false)
-//    }
-//}
+struct AddNewStockpileSavingView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddNewStockpileSavingView(showingSheet: .constant(true))
+    }
+}
