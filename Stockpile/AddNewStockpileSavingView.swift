@@ -36,6 +36,24 @@ struct AddNewStockpileSavingView: View {
         return savingsPerUnit * Double(quantity)
     }
     
+    fileprivate func addNewSavings() {
+        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
+        stockpileSaving.productDescription = self.productDescription
+        stockpileSaving.dateComputed = Date()
+        stockpileSaving.consumption = Double(self.consumption)!
+        stockpileSaving.consumptionUnit = self.consumptionUnit
+        stockpileSaving.productExpiryDate = self.productExpiryDate
+        stockpileSaving.regularPrice = Double(self.regularPrice)!
+        stockpileSaving.salePrice = Double(self.salePrice)!
+        
+        do {
+            try self.managedObjectContext.save()
+            self.showingSheet.toggle()
+        } catch {
+            print(error)
+        }
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -47,7 +65,7 @@ struct AddNewStockpileSavingView: View {
                             .multilineTextAlignment(.trailing)
                     }
                     VStack(alignment: .leading) {
-                        DatePicker("Expiry Date", selection: $productExpiryDate, in: (Date()...), displayedComponents: .date)
+                        DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
                             .multilineTextAlignment(.trailing)
                     }
                     VStack {
@@ -98,30 +116,15 @@ struct AddNewStockpileSavingView: View {
                     }
                 }
             }.navigationBarTitle(Text("New Savings"), displayMode: .inline)
-            .navigationBarItems(leading:
-                Button(action: {
-                    self.showingSheet.toggle()
-                }, label: {Text("Cancel")}),
-                trailing: Button(action: {
-                    if self.quantity != 0 {
-                        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
-                        stockpileSaving.productDescription = self.productDescription
-                        stockpileSaving.dateComputed = Date()
-                        stockpileSaving.consumption = Double(self.consumption)!
-                        stockpileSaving.consumptionUnit = self.consumptionUnit
-                        stockpileSaving.productExpiryDate = self.productExpiryDate
-                        stockpileSaving.regularPrice = Double(self.regularPrice)!
-                        stockpileSaving.salePrice = Double(self.salePrice)!
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                            self.showingSheet.toggle()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                }, label: {Text("Add")})
-            ).animation(.spring())
+            .navigationBarItems(
+                leading: Button(
+                    action: {self.showingSheet.toggle()},
+                    label: {Text("Cancel")}),
+                trailing: Button(
+                    action: {self.addNewSavings()},
+                    label: {Text("Add")}
+                ).disabled(savings == 0.0)
+            )
         }
     }
 }
