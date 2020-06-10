@@ -11,12 +11,13 @@ import SwiftUI
 struct ContentView: View {
 
     @FetchRequest(fetchRequest: StockpileSaving.getRecentSavings(fetchLimit: 10)) var recentStockpiles: FetchedResults<StockpileSaving>
+    @FetchRequest(fetchRequest: StockpileSaving.getAllSavings()) var allStockpileSavings: FetchedResults<StockpileSaving>
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @State var showingSheet = false
     var lifetimeSavings: Double {
         var sum = 0.0
-        for stockpile in recentStockpiles {
+        for stockpile in allStockpileSavings {
             sum += stockpile.savings
         }
 
@@ -95,14 +96,14 @@ struct StockpileSavingRow: View {
             HStack {
                 Text("\(stockpile.productDescription!)")
                 Spacer()
-                Text("\(stockpile.savings, specifier: "%.2f")")
+                Text("$\(stockpile.savings, specifier: "%.2f")")
             }
             HStack {
                 Text("\(stockpile.quantity) units")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("25% savings")
+                Text("\(stockpile.percentageSavings, specifier: "%.0f")% savings")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }

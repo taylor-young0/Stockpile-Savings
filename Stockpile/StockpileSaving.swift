@@ -38,13 +38,25 @@ public class StockpileSaving: NSManagedObject, Identifiable {
         let savingsPerUnit = regularPrice - salePrice
         return savingsPerUnit * Double(quantity)
     }
+    
+    /// The percentage savings per unit purchased given the salePrice and regularPrice
+    var percentageSavings: Double {
+        return (((regularPrice - salePrice) / regularPrice) * 100)
+    }
 }
 
 extension StockpileSaving {
     @nonobjc public class func getRecentSavings(fetchLimit num: Int) -> NSFetchRequest<StockpileSaving> {
         let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
         request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
+        request.fetchBatchSize = num
         request.fetchLimit = num
+        return request
+    }
+    
+    @nonobjc public class func getAllSavings() -> NSFetchRequest<StockpileSaving> {
+        let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
+        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
         return request
     }
 }
