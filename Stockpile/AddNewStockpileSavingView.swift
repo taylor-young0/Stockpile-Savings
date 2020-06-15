@@ -19,8 +19,9 @@ struct AddNewStockpileSavingView: View {
     @State var consumptionUnit: String = ConsumptionUnit.Day.rawValue
     @State var regularPrice: String = ""
     @State var salePrice: String = ""
+    @State var unitsPurchased: String = ""
     
-    var quantity: Int {
+    var maximumStockpileQuantity: Int {
         var consumptionInDays = Double(consumption) ?? 0.0
         // Check if we need to convert our consumption to days
         if consumptionUnit != ConsumptionUnit.Day.rawValue {
@@ -31,9 +32,15 @@ struct AddNewStockpileSavingView: View {
         return Int(consumptionInDays * Double(daysBetween.day ?? 0))
     }
     
-    var savings: Double {
+    var maximumSavings: Double {
         let savingsPerUnit = (Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0)
-        return savingsPerUnit * Double(quantity)
+        return savingsPerUnit * Double(maximumStockpileQuantity)
+    }
+    
+    var savings: Double {
+        let savingsPerUnit = ((Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0))
+        let purchasedUnits = Double(Int(unitsPurchased) ?? 0)
+        return savingsPerUnit * purchasedUnits
     }
     
     fileprivate func addNewSavings() {
@@ -61,7 +68,7 @@ struct AddNewStockpileSavingView: View {
                     HStack {
                         Text("Description")
                         Divider()
-                        TextField("Add some spice with emoji 🍇😀", text: $productDescription)
+                        TextField("Product name", text: $productDescription)
                             .multilineTextAlignment(.trailing)
                     }
                     VStack(alignment: .leading) {
@@ -72,7 +79,9 @@ struct AddNewStockpileSavingView: View {
                         HStack {
                             Text("Consumption")
                             Divider()
-                            TextField("units", text: $consumption).multilineTextAlignment(.trailing)
+                            TextField("units", text: $consumption)
+                                .multilineTextAlignment(.trailing)
+                                .keyboardType(.decimalPad)
                             Text("/\(consumptionUnit)")
                         }
                         Picker("Consumption Units", selection: $consumptionUnit) {
@@ -92,6 +101,7 @@ struct AddNewStockpileSavingView: View {
                         TextField("0.00", text: $regularPrice)
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
+                            .keyboardType(.decimalPad)
                     }
                     HStack {
                         Text("Sale price")
@@ -101,13 +111,27 @@ struct AddNewStockpileSavingView: View {
                         TextField("0.00", text: $salePrice)
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
+                            .keyboardType(.decimalPad)
                     }
                 }
-                Section(header: Text("Results")) {
+                Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
                     HStack {
-                        Text("Stockpile quantity")
+                        Text("Maximum stockpile quantity")
                         Spacer()
-                        Text("\(quantity) units")
+                        Text("\(maximumStockpileQuantity) units")
+                    }
+                    HStack {
+                        Text("Maximum savings")
+                        Spacer()
+                        Text("$\(maximumSavings, specifier: "%.2f")")
+                    }
+                    HStack {
+                        Text("Units purchased")
+                        Divider()
+                        Spacer()
+                        TextField("0", text: $unitsPurchased)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
                     }
                     HStack {
                         Text("Savings")
