@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUIFormHelper
 
 struct AddNewStockpileSavingView: View {
     
@@ -64,11 +65,13 @@ struct AddNewStockpileSavingView: View {
     var body: some View {
         NavigationView {
             Form {
+                // MARK: Product Information
                 Section(header: Text("Product Information")) {
                     HStack {
                         Text("Description")
                         Divider()
                         TextField("Product name", text: $productDescription)
+                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                     }
                     VStack(alignment: .leading) {
@@ -80,6 +83,7 @@ struct AddNewStockpileSavingView: View {
                             Text("Consumption")
                             Divider()
                             TextField("units", text: $consumption)
+                                .hideKeyboardOnTap()
                                 .multilineTextAlignment(.trailing)
                                 .keyboardType(.decimalPad)
                             Text("/\(consumptionUnit)")
@@ -92,6 +96,7 @@ struct AddNewStockpileSavingView: View {
                         .pickerStyle(SegmentedPickerStyle())
                     }
                 }
+                // MARK: Price Information
                 Section(header: Text("Price Information")) {
                     HStack {
                         Text("Regular price")
@@ -99,6 +104,7 @@ struct AddNewStockpileSavingView: View {
                         Spacer()
                         Text("$")
                         TextField("0.00", text: $regularPrice)
+                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
                             .keyboardType(.decimalPad)
@@ -109,11 +115,13 @@ struct AddNewStockpileSavingView: View {
                         Spacer()
                         Text("$")
                         TextField("0.00", text: $salePrice)
+                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
                             .keyboardType(.decimalPad)
                     }
                 }
+                // MARK: Stockpile Info
                 Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
                     HStack {
                         Text("Maximum stockpile quantity")
@@ -130,6 +138,7 @@ struct AddNewStockpileSavingView: View {
                         Divider()
                         Spacer()
                         TextField("0", text: $unitsPurchased)
+                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.decimalPad)
                     }
@@ -139,7 +148,8 @@ struct AddNewStockpileSavingView: View {
                         Text("$\(savings, specifier: "%.2f")")
                     }
                 }
-            }.navigationBarTitle(Text("New Savings"), displayMode: .inline)
+            }
+            .navigationBarTitle(Text("New Savings"), displayMode: .inline)
             .navigationBarItems(
                 leading: Button(
                     action: {self.showingSheet.toggle()},
@@ -148,7 +158,7 @@ struct AddNewStockpileSavingView: View {
                     action: {self.addNewSavings()},
                     label: {Text("Add")}
                 ).disabled(savings == 0.0)
-            )
+            ).enableKeyboardOffset()
         }
     }
 }

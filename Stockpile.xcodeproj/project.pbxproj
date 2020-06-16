@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +102,9 @@
 			dependencies = (
 			);
 			name = Stockpile;
+			packageProductDependencies = (
+				EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */,
+			);
 			productName = Stockpile;
 			productReference = EFF1BBE2248459D1003D5FF5 /* Stockpile.app */;
 			productType = "com.apple.product-type.application";
@@ -128,6 +133,9 @@
 				Base,
 			);
 			mainGroup = EFF1BBD9248459D1003D5FF5;
+			packageReferences = (
+				EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */,
+			);
 			productRefGroup = EFF1BBE3248459D1003D5FF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jeroenzonneveld/SwiftUIFormHelper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */;
+			productName = SwiftUIFormHelper;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */ = {

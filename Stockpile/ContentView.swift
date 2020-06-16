@@ -54,14 +54,15 @@ struct ContentView: View {
                 }
             }.navigationBarTitle(Text("Stockpile"))
             .listStyle(GroupedListStyle())
-            .navigationBarItems(trailing: Button(action: {
-                self.showingSheet.toggle()
-            }, label: {
-                Image(systemName: "plus")
-                    .imageScale(.large)
-                })).sheet(isPresented: $showingSheet, content: {
+            .navigationBarItems(
+                trailing: Button(
+                    action: {self.showingSheet.toggle()},
+                    label: {Image(systemName: "plus").imageScale(.large)}
+                )
+            ).sheet(isPresented: $showingSheet, content: {
                     AddNewStockpileSavingView(showingSheet: self.$showingSheet).environment(\.managedObjectContext, self.managedObjectContext)
-                })
+                }
+            )
         }
     }
 }
