@@ -62,7 +62,7 @@ struct ContentView: View {
             ).sheet(isPresented: $showingSheet, content: {
                     AddNewStockpileSavingView(showingSheet: self.$showingSheet).environment(\.managedObjectContext, self.managedObjectContext)
                 }
-            )
+            ).environment(\.horizontalSizeClass, .regular)
         }
     }
 }
@@ -100,7 +100,7 @@ struct StockpileSavingRow: View {
                 Text("$\(stockpile.savings, specifier: "%.2f")")
             }
             HStack {
-                Text("\(stockpile.quantity) units")
+                Text("\(stockpile.unitsPurchased) unit\(stockpile.unitsPurchased  == 1 ? "" : "s")")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()

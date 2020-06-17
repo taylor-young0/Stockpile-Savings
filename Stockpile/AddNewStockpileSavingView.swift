@@ -53,6 +53,7 @@ struct AddNewStockpileSavingView: View {
         stockpileSaving.productExpiryDate = self.productExpiryDate
         stockpileSaving.regularPrice = Double(self.regularPrice)!
         stockpileSaving.salePrice = Double(self.salePrice)!
+        stockpileSaving.unitsPurchased = Int(unitsPurchased)!
         
         do {
             try self.managedObjectContext.save()
@@ -149,6 +150,7 @@ struct AddNewStockpileSavingView: View {
                     }
                 }
             }
+            .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text("New Savings"), displayMode: .inline)
             .navigationBarItems(
                 leading: Button(

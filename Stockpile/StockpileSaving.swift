@@ -18,25 +18,13 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     @NSManaged public var productExpiryDate: Date?
     @NSManaged public var regularPrice: Double
     @NSManaged public var salePrice: Double
-
-    /// The number of units the user should Stockpile in order to save the most money after
-    /// taking into effect the other variables (productExpiryDate, consumption, etc...)
-    var quantity: Int {
-        var consumptionInDays = consumption
-        // Check if we need to convert our consumption to days
-        if consumptionUnit != ConsumptionUnit.Day.rawValue {
-            consumptionInDays = (consumptionUnit == ConsumptionUnit.Week.rawValue) ?
-                (consumptionInDays / 7) : (consumptionInDays / 30)
-        }
-        let daysBetween = Calendar.current.dateComponents([.day], from: dateComputed ?? Date(), to: productExpiryDate ?? Date())
-        return Int(consumptionInDays * Double(daysBetween.day ?? 0))
-    }
+    @NSManaged public var unitsPurchased: Int
 
     /// The total monetary savings in dollars for the StockpileSaving assuming the user buys
-    /// quantity amount.
+    /// unitsPurchased amount.
     var savings: Double {
         let savingsPerUnit = regularPrice - salePrice
-        return savingsPerUnit * Double(quantity)
+        return savingsPerUnit * Double(unitsPurchased)
     }
     
     /// The percentage savings per unit purchased given the salePrice and regularPrice

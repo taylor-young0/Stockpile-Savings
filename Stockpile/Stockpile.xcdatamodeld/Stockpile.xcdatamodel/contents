@@ -8,8 +8,9 @@
         <attribute name="productExpiryDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="regularPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="salePrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="unitsPurchased" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="StockpileSaving" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="StockpileSaving" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>
