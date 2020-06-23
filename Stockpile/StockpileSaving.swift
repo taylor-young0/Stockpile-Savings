@@ -31,6 +31,20 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     var percentageSavings: Double {
         return (((regularPrice - salePrice) / regularPrice) * 100)
     }
+    
+    static var sample: StockpileSaving {
+        let stockpile = StockpileSaving()
+        stockpile.consumption = 0.5
+        stockpile.consumptionUnit = "Week"
+        stockpile.dateComputed = Date()
+        stockpile.productDescription = "🧀 Organic Meadow cheese"
+        stockpile.productExpiryDate = Date.distantFuture
+        stockpile.regularPrice = 9.99
+        stockpile.salePrice = 7.49
+        stockpile.unitsPurchased = 4
+        
+        return stockpile
+    }
 }
 
 extension StockpileSaving {
@@ -53,4 +67,15 @@ enum ConsumptionUnit: String, CaseIterable {
     case Day = "Day"
     case Week = "Week"
     case Month = "Month"
+    
+    var numberOfDaysInUnit: Int {
+        switch self {
+        case .Day:
+            return 1
+        case .Week:
+            return 7
+        case .Month:
+            return 30
+        }
+    }
 }

@@ -15,6 +15,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
     @State var showingSheet = false
+    
+    static let paddingAmount: CGFloat = 10
+    
     var lifetimeSavings: Double {
         var sum = 0.0
         for stockpile in allStockpileSavings {
@@ -57,10 +60,17 @@ struct ContentView: View {
             .navigationBarItems(
                 trailing: Button(
                     action: {self.showingSheet.toggle()},
-                    label: {Image(systemName: "plus").imageScale(.large)}
+                    label: {
+                        Image(systemName:"plus")
+                            .imageScale(.large)
+                            .padding(ContentView.paddingAmount)
+                    }
                 )
-            ).sheet(isPresented: $showingSheet, content: {
-                    AddNewStockpileSavingView(showingSheet: self.$showingSheet).environment(\.managedObjectContext, self.managedObjectContext)
+            ).sheet(
+                isPresented: $showingSheet,
+                content: {
+                    AddNewStockpileSavingView(showingSheet: self.$showingSheet)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
                 }
             ).environment(\.horizontalSizeClass, .regular)
         }
@@ -69,7 +79,17 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+        Group {
+            ContentView().environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+                .previewDevice(.init(rawValue: "iPhone 11"))
+            
+            ContentView().environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+                .environment(\.colorScheme, .dark)
+                .previewDevice(.init(rawValue: "iPhone 11"))
+            
+            EmptySavingsRow().previewLayout(.fixed(width: 375, height: 70))
+                .padding(.horizontal)
+        }
     }
 }
 
@@ -97,10 +117,10 @@ struct StockpileSavingRow: View {
             HStack {
                 Text("\(stockpile.productDescription!)")
                 Spacer()
-                Text("$\(stockpile.savings, specifier: "%.2f")")
+                Text("$\(stockpile.savings, specifier: "%.2f") off")
             }
             HStack {
-                Text("\(stockpile.unitsPurchased) unit\(stockpile.unitsPurchased  == 1 ? "" : "s")")
+                Text("\(stockpile.unitsPurchased) unit\(stockpile.unitsPurchased == 1 ? "" : "s")")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()

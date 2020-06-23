@@ -23,14 +23,11 @@ struct AddNewStockpileSavingView: View {
     @State var unitsPurchased: String = ""
     
     var maximumStockpileQuantity: Int {
-        var consumptionInDays = Double(consumption) ?? 0.0
-        // Check if we need to convert our consumption to days
-        if consumptionUnit != ConsumptionUnit.Day.rawValue {
-            consumptionInDays = (consumptionUnit == ConsumptionUnit.Week.rawValue) ?
-                (consumptionInDays / 7) : (consumptionInDays / 30)
-        }
-        let daysBetween = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
-        return Int(consumptionInDays * Double(daysBetween.day ?? 0))
+        let daysInConsumptionUnit = ConsumptionUnit.init(rawValue: consumptionUnit)?.numberOfDaysInUnit ?? 1
+        let consumptionInDays = Double(consumption) ?? 0.0 / Double(daysInConsumptionUnit)
+
+        let daysToExpiration = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
+        return Int(consumptionInDays * Double(daysToExpiration.day ?? 0))
     }
     
     var maximumSavings: Double {
@@ -63,6 +60,38 @@ struct AddNewStockpileSavingView: View {
         }
     }
     
+    var validInput: Bool {
+        guard !productDescription.isEmpty else {
+            return false
+        }
+        
+        guard Double(consumption) != nil else {
+            return false
+        }
+        
+        guard Double(regularPrice) != nil else {
+            return false
+        }
+        
+        guard Double(salePrice) != nil else {
+            return false
+        }
+        
+        guard Int(unitsPurchased) != nil else {
+            return false
+        }
+        
+        guard Double(regularPrice)! > Double(salePrice)! else {
+            return false
+        }
+        
+        return true
+    }
+    
+    func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -72,23 +101,22 @@ struct AddNewStockpileSavingView: View {
                         Text("Description")
                         Divider()
                         TextField("Product name", text: $productDescription)
-                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                     VStack(alignment: .leading) {
                         DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
                             .multilineTextAlignment(.trailing)
+                            .animation(.interactiveSpring())
                     }
                     VStack {
                         HStack {
                             Text("Consumption")
                             Divider()
                             TextField("units", text: $consumption)
-                                .hideKeyboardOnTap()
                                 .multilineTextAlignment(.trailing)
                                 .keyboardType(.decimalPad)
                             Text("/\(consumptionUnit)")
-                        }
+                        }.onTapGesture(perform: dismissKeyboard)
                         Picker("Consumption Units", selection: $consumptionUnit) {
                             ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
                                 Text(unit.rawValue).tag(unit.rawValue)
@@ -105,22 +133,20 @@ struct AddNewStockpileSavingView: View {
                         Spacer()
                         Text("$")
                         TextField("0.00", text: $regularPrice)
-                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
                             .keyboardType(.decimalPad)
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                     HStack {
                         Text("Sale price")
                         Divider()
                         Spacer()
                         Text("$")
                         TextField("0.00", text: $salePrice)
-                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
                             .scaledToFit()
                             .keyboardType(.decimalPad)
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                 }
                 // MARK: Stockpile Info
                 Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
@@ -128,26 +154,25 @@ struct AddNewStockpileSavingView: View {
                         Text("Maximum stockpile quantity")
                         Spacer()
                         Text("\(maximumStockpileQuantity) units")
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                     HStack {
                         Text("Maximum savings")
                         Spacer()
                         Text("$\(maximumSavings, specifier: "%.2f")")
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                     HStack {
                         Text("Units purchased")
                         Divider()
                         Spacer()
                         TextField("0", text: $unitsPurchased)
-                            .hideKeyboardOnTap()
                             .multilineTextAlignment(.trailing)
-                            .keyboardType(.decimalPad)
-                    }
+                            .keyboardType(.numberPad)
+                    }.onTapGesture(perform: dismissKeyboard)
                     HStack {
                         Text("Savings")
                         Spacer()
                         Text("$\(savings, specifier: "%.2f")")
-                    }
+                    }.onTapGesture(perform: dismissKeyboard)
                 }
             }
             .environment(\.horizontalSizeClass, .regular)
@@ -155,11 +180,11 @@ struct AddNewStockpileSavingView: View {
             .navigationBarItems(
                 leading: Button(
                     action: {self.showingSheet.toggle()},
-                    label: {Text("Cancel")}),
+                    label: {Text("Cancel").padding(ContentView.paddingAmount)}),
                 trailing: Button(
                     action: {self.addNewSavings()},
-                    label: {Text("Add")}
-                ).disabled(savings == 0.0)
+                    label: {Text("Add").padding(ContentView.paddingAmount)}
+                ).disabled(!validInput)
             ).enableKeyboardOffset()
         }
     }
@@ -167,6 +192,13 @@ struct AddNewStockpileSavingView: View {
 
 struct AddNewStockpileSavingView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewStockpileSavingView(showingSheet: .constant(true))
+        Group {
+            AddNewStockpileSavingView(showingSheet: .constant(true))
+                .previewDevice(.init(rawValue: "iPhone 11"))
+            
+            AddNewStockpileSavingView(showingSheet: .constant(true))
+                .previewDevice(.init(rawValue: "iPhone 11"))
+                .environment(\.colorScheme, .dark)
+        }
     }
 }
