@@ -14,6 +14,7 @@ struct AddNewStockpileSavingView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @Binding var showingSheet: Bool
+    @State var showingError: Bool = false
     @State var productDescription: String = ""
     @State var productExpiryDate: Date = Date()
     @State var consumption: String = ""
@@ -24,7 +25,7 @@ struct AddNewStockpileSavingView: View {
     
     var maximumStockpileQuantity: Int {
         let daysInConsumptionUnit = ConsumptionUnit.init(rawValue: consumptionUnit)?.numberOfDaysInUnit ?? 1
-        let consumptionInDays = Double(consumption) ?? 0.0 / Double(daysInConsumptionUnit)
+        let consumptionInDays = (Double(consumption) ?? 0.0) / Double(daysInConsumptionUnit)
 
         let daysToExpiration = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
         return Int(consumptionInDays * Double(daysToExpiration.day ?? 0))
@@ -56,7 +57,7 @@ struct AddNewStockpileSavingView: View {
             try self.managedObjectContext.save()
             self.showingSheet.toggle()
         } catch {
-            print(error)
+            self.showingError.toggle()
         }
     }
     
@@ -153,7 +154,7 @@ struct AddNewStockpileSavingView: View {
                     HStack {
                         Text("Maximum stockpile quantity")
                         Spacer()
-                        Text("\(maximumStockpileQuantity) units")
+                        Text("\(maximumStockpileQuantity) unit\(maximumStockpileQuantity == 1 ? "" : "s")")
                     }.onTapGesture(perform: dismissKeyboard)
                     HStack {
                         Text("Maximum savings")
@@ -185,6 +186,15 @@ struct AddNewStockpileSavingView: View {
                     action: {self.addNewSavings()},
                     label: {Text("Add").padding(ContentView.paddingAmount)}
                 ).disabled(!validInput)
+            ).alert(
+                isPresented: $showingError,
+                content: {
+                    Alert(
+                        title: Text("Error"),
+                        message: Text("There was an error adding the savings"),
+                        dismissButton: .default(Text("Dismiss"))
+                    )
+                }
             ).enableKeyboardOffset()
         }
     }
