@@ -107,8 +107,7 @@ struct AddNewStockpileSavingView: View {
                     VStack(alignment: .leading) {
                         DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
                             .multilineTextAlignment(.trailing)
-                            .animation(.interactiveSpring())
-                    }
+                    }.animation(nil)
                     VStack {
                         HStack {
                             Text("Consumption")

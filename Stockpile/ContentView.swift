@@ -27,52 +27,63 @@ struct ContentView: View {
         return sum
     }
     
+    var coreBody: some View {
+        List {
+            Section {
+                HStack {
+                    Text("🤑 Lifetime savings")
+                    Spacer()
+                    Text("$\(self.lifetimeSavings, specifier: "%.2f")")
+                }
+            }
+            Section(header: Text("Recent Savings")) {
+                if recentStockpiles.count != 0 {
+                    ForEach(recentStockpiles) { stockpile in
+                        StockpileSavingRow(stockpile: stockpile)
+                    }.onDelete(perform: { indexSet in
+                        let deleteItem = self.recentStockpiles[indexSet.first!]
+                        self.managedObjectContext.delete(deleteItem)
+                        
+                        do {
+                            try self.managedObjectContext.save()
+                        } catch {
+                            print(error)
+                        }
+                    })
+                } else {
+                    EmptySavingsRow()
+                }
+            }
+        }.navigationBarTitle(Text("Stockpile"))
+        .navigationBarItems(
+            trailing: Button(
+                action: {self.showingSheet.toggle()},
+                label: {
+                    Image(systemName:"plus")
+                        .imageScale(.large)
+                        .padding(ContentView.paddingAmount)
+                }
+            )
+        ).sheet(
+            isPresented: $showingSheet,
+            content: {
+                AddNewStockpileSavingView(showingSheet: self.$showingSheet)
+                    .environment(\.managedObjectContext, self.managedObjectContext)
+            }
+        )
+    }
+    
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    HStack {
-                        Text("🤑 Lifetime savings")
-                        Spacer()
-                        Text("$\(self.lifetimeSavings, specifier: "%.2f")")
-                    }
-                }
-                Section(header: Text("Recent Savings")) {
-                    if recentStockpiles.count != 0 {
-                        ForEach(recentStockpiles) { stockpile in
-                            StockpileSavingRow(stockpile: stockpile)
-                        }.onDelete(perform: { indexSet in
-                            let deleteItem = self.recentStockpiles[indexSet.first!]
-                            self.managedObjectContext.delete(deleteItem)
-                            
-                            do {
-                                try self.managedObjectContext.save()
-                            } catch {
-                                print(error)
-                            }
-                        })
-                    } else {
-                        EmptySavingsRow()
-                    }
-                }
-            }.navigationBarTitle(Text("Stockpile"))
-            .listStyle(GroupedListStyle())
-            .navigationBarItems(
-                trailing: Button(
-                    action: {self.showingSheet.toggle()},
-                    label: {
-                        Image(systemName:"plus")
-                            .imageScale(.large)
-                            .padding(ContentView.paddingAmount)
-                    }
-                )
-            ).sheet(
-                isPresented: $showingSheet,
-                content: {
-                    AddNewStockpileSavingView(showingSheet: self.$showingSheet)
-                        .environment(\.managedObjectContext, self.managedObjectContext)
-                }
-            ).environment(\.horizontalSizeClass, .regular)
+            // Adjust the list style to be the equivalent of InsetGroupedListStyle regardless of iOS version
+            if #available(iOS 14.0, *) {
+                coreBody
+                    .listStyle(InsetGroupedListStyle())
+            } else {
+                coreBody
+                    .listStyle(GroupedListStyle())
+                    .environment(\.horizontalSizeClass, .regular)
+            }
         }
     }
 }
