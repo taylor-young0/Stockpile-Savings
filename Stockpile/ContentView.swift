@@ -12,8 +12,10 @@ struct ContentView: View {
 
     @FetchRequest(fetchRequest: StockpileSaving.getRecentSavings(fetchLimit: 10)) var recentStockpiles: FetchedResults<StockpileSaving>
     @FetchRequest(fetchRequest: StockpileSaving.getAllSavings()) var allStockpileSavings: FetchedResults<StockpileSaving>
+    
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.presentationMode) var presentationMode
+    
     @State var showingSheet = false
     
     static let paddingAmount: CGFloat = 10
@@ -36,11 +38,13 @@ struct ContentView: View {
                     Text("$\(self.lifetimeSavings, specifier: "%.2f")")
                 }
             }
+            
             Section(header: Text("Recent Savings")) {
                 if recentStockpiles.count != 0 {
                     ForEach(recentStockpiles) { stockpile in
                         StockpileSavingRow(stockpile: stockpile)
-                    }.onDelete(perform: { indexSet in
+                    }
+                    .onDelete(perform: { indexSet in
                         let deleteItem = self.recentStockpiles[indexSet.first!]
                         self.managedObjectContext.delete(deleteItem)
                         
@@ -54,7 +58,8 @@ struct ContentView: View {
                     EmptySavingsRow()
                 }
             }
-        }.navigationBarTitle(Text("Stockpile"))
+        }
+        .navigationBarTitle(Text("Stockpile"))
         .navigationBarItems(
             trailing: Button(
                 action: {self.showingSheet.toggle()},
@@ -64,7 +69,8 @@ struct ContentView: View {
                         .padding(ContentView.paddingAmount)
                 }
             )
-        ).sheet(
+        )
+        .sheet(
             isPresented: $showingSheet,
             content: {
                 AddNewStockpileSavingView(showingSheet: self.$showingSheet)
@@ -111,6 +117,7 @@ struct EmptySavingsRow: View {
                 Text("😢 No savings added yet!")
                 Spacer()
             }
+            
             HStack {
                 Text("Add savings by completing a new calculation by pressing the + icon in the top right")
                     .font(.subheadline)
@@ -130,6 +137,7 @@ struct StockpileSavingRow: View {
                 Spacer()
                 Text("$\(stockpile.savings, specifier: "%.2f") off")
             }
+            
             HStack {
                 Text("\(stockpile.unitsPurchased) unit\(stockpile.unitsPurchased == 1 ? "" : "s")")
                     .font(.subheadline)

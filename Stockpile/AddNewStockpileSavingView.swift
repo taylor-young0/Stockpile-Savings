@@ -14,6 +14,7 @@ struct AddNewStockpileSavingView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     
     @Binding var showingSheet: Bool
+    
     @State var showingError: Bool = false
     @State var productDescription: String = ""
     @State var productExpiryDate: Date = Date()
@@ -53,36 +54,13 @@ struct AddNewStockpileSavingView: View {
         stockpileSaving.salePrice = Double(self.salePrice)!
         stockpileSaving.unitsPurchased = Int(unitsPurchased)!
         
-        do {
-            try self.managedObjectContext.save()
-            self.showingSheet.toggle()
-        } catch {
-            self.showingError.toggle()
-        }
+        try? self.managedObjectContext.save()
+        self.showingSheet.toggle()
     }
     
     var validInput: Bool {
-        guard !productDescription.isEmpty else {
-            return false
-        }
-        
-        guard Double(consumption) != nil else {
-            return false
-        }
-        
-        guard Double(regularPrice) != nil else {
-            return false
-        }
-        
-        guard Double(salePrice) != nil else {
-            return false
-        }
-        
-        guard Int(unitsPurchased) != nil else {
-            return false
-        }
-        
-        guard Double(regularPrice)! > Double(salePrice)! else {
+        if productDescription.isEmpty || Double(consumption) == nil || Double(regularPrice) == nil
+            || Double(salePrice) == nil || Double(unitsPurchased) == nil || Double(regularPrice)! < Double(salePrice)! {
             return false
         }
         
@@ -116,11 +94,15 @@ struct AddNewStockpileSavingView: View {
                     Divider()
                     TextField("Product name", text: $productDescription)
                         .multilineTextAlignment(.trailing)
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
                 VStack(alignment: .leading) {
                     DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
                         .multilineTextAlignment(.trailing)
-                }.animation(nil)
+                }
+                .animation(nil)
+                
                 VStack {
                     HStack {
                         Text("Consumption")
@@ -129,7 +111,9 @@ struct AddNewStockpileSavingView: View {
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.decimalPad)
                         Text("/\(consumptionUnit)")
-                    }.onTapGesture(perform: dismissKeyboard)
+                    }
+                    .onTapGesture(perform: dismissKeyboard)
+                    
                     Picker("Consumption Units", selection: $consumptionUnit) {
                         ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
                             Text(unit.rawValue).tag(unit.rawValue)
@@ -149,7 +133,9 @@ struct AddNewStockpileSavingView: View {
                         .multilineTextAlignment(.trailing)
                         .scaledToFit()
                         .keyboardType(.decimalPad)
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
                 HStack {
                     Text("Sale price")
                     Divider()
@@ -159,20 +145,26 @@ struct AddNewStockpileSavingView: View {
                         .multilineTextAlignment(.trailing)
                         .scaledToFit()
                         .keyboardType(.decimalPad)
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
             }
+            
             // MARK: Stockpile Info
             Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
                 HStack {
                     Text("Maximum stockpile quantity")
                     Spacer()
                     Text("\(maximumStockpileQuantity) unit\(maximumStockpileQuantity == 1 ? "" : "s")")
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
                 HStack {
                     Text("Maximum savings")
                     Spacer()
                     Text("$\(maximumSavings, specifier: "%.2f")")
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
                 HStack {
                     Text("Units purchased")
                     Divider()
@@ -180,25 +172,30 @@ struct AddNewStockpileSavingView: View {
                     TextField("0", text: $unitsPurchased)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.numberPad)
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
                 HStack {
                     Text("Savings")
                     Spacer()
                     Text("$\(savings, specifier: "%.2f")")
-                }.onTapGesture(perform: dismissKeyboard)
+                }
+                .onTapGesture(perform: dismissKeyboard)
             }
         }
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarItems(
             leading: Button(
-                action: {self.showingSheet.toggle()},
-                label: {Text("Cancel").padding(ContentView.paddingAmount)}),
+                action: { self.showingSheet.toggle() },
+                label: { Text("Cancel").padding(ContentView.paddingAmount) }),
             trailing: Button(
-                action: {self.addNewSavings()},
-                label: {Text("Add").padding(ContentView.paddingAmount)}
-            ).disabled(!validInput)
-        ).alert(
+                action: { self.addNewSavings() },
+                label: { Text("Add").padding(ContentView.paddingAmount) }
+            )
+            .disabled(!validInput)
+        )
+        .alert(
             isPresented: $showingError,
             content: {
                 Alert(
