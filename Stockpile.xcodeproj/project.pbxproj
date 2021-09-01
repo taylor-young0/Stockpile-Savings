@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
 		EFD74E3226DFEF7C00F28EC5 /* stockpile-savings.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */; };
+		EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */; };
+		EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */; };
+		EFD74E3826DFF87D00F28EC5 /* Stockpile Screenshots.003.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -23,6 +26,9 @@
 /* Begin PBXFileReference section */
 		EFD74E2F26DFEF4400F28EC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stockpile-savings.png"; sourceTree = "<group>"; };
+		EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.001.png"; sourceTree = "<group>"; };
+		EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.002.png"; sourceTree = "<group>"; };
+		EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.003.png"; sourceTree = "<group>"; };
 		EFF1BBE2248459D1003D5FF5 /* Stockpile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockpile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,9 @@
 		EFD74E3026DFEF6000F28EC5 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */,
+				EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */,
+				EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */,
 				EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */,
 			);
 			path = Screenshots;
@@ -165,7 +174,10 @@
 			files = (
 				EFF1BBF5248459D4003D5FF5 /* LaunchScreen.storyboard in Resources */,
 				EFF1BBF2248459D4003D5FF5 /* Preview Assets.xcassets in Resources */,
+				EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */,
 				EFD74E3226DFEF7C00F28EC5 /* stockpile-savings.png in Resources */,
+				EFD74E3826DFF87D00F28EC5 /* Stockpile Screenshots.003.png in Resources */,
+				EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */,
 				EFF1BBEF248459D4003D5FF5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

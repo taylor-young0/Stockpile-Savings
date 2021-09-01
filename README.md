@@ -5,8 +5,7 @@ Stockpile Savings helps you save money by encouraging you to buy more of your re
 | - | - | - |
 
 ### Here are some screenshots
-<img src="Screenshots/Canada Cheese screenshots.001.jpeg" alt="Homescreen" width="500"/>
+<img src="Screenshots/Stockpile Screenshots.001.jpeg" alt="Recent savings" width="500"/>
 
-| <img src="Screenshots/Canada Cheese screenshots.003.jpeg" alt="View cheese" width="450"/> | <img src="Screenshots/Canada Cheese screenshots.002.jpeg" alt="Favourites" width="450"/> |
+| <img src="Screenshots/Stockpile Screenshots.002.jpeg" alt="Add new savings" width="450"/> | <img src="Screenshots/Stockpile Screenshots.003.jpeg" alt="Dark Mode" width="450"/> |
 | ------------- |---------------|
-| <img src="Screenshots/Canada Cheese screenshots.004.jpeg" alt="Filtering" width="450"/> | <img src="Screenshots/Canada Cheese screenshots.005.jpeg" alt="Searching" width="450"/> |
