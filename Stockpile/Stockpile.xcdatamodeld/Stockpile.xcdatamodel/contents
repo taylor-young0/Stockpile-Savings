@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="StockpileSaving" representedClassName="StockpileSaving" syncable="YES">
         <attribute name="consumption" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="consumptionUnit" attributeType="String"/>
@@ -8,7 +8,7 @@
         <attribute name="productExpiryDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="regularPrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="salePrice" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="unitsPurchased" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="unitsPurchased" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="StockpileSaving" positionX="-63" positionY="-18" width="128" height="163"/>
