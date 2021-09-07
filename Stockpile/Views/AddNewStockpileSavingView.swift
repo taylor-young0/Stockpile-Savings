@@ -34,12 +34,14 @@ struct AddNewStockpileSavingView: View {
     
     var maximumSavings: Double {
         let savingsPerUnit = (Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0)
+        
         return savingsPerUnit * Double(maximumStockpileQuantity)
     }
     
     var savings: Double {
         let savingsPerUnit = ((Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0))
         let purchasedUnits = Double(Int(unitsPurchased) ?? 0)
+        
         return savingsPerUnit * purchasedUnits
     }
     
@@ -122,6 +124,7 @@ struct AddNewStockpileSavingView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
             }
+            
             // MARK: Price Information
             Section(header: Text("Price Information")) {
                 HStack {
@@ -188,10 +191,10 @@ struct AddNewStockpileSavingView: View {
         .navigationBarItems(
             leading: Button(
                 action: { self.showingSheet.toggle() },
-                label: { Text("Cancel").padding(ContentView.paddingAmount) }),
+                label: { Text("Cancel").padding(RecentSavingsView.paddingAmount) }),
             trailing: Button(
                 action: { self.addNewSavings() },
-                label: { Text("Add").padding(ContentView.paddingAmount) }
+                label: { Text("Add").padding(RecentSavingsView.paddingAmount) }
             )
             .disabled(!validInput)
         )

@@ -12,10 +12,13 @@
 		EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */; };
 		EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */; };
 		EFD74E3826DFF87D00F28EC5 /* Stockpile Screenshots.003.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */; };
+		EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
+		EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */; };
+		EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
-		EFF1BBED248459D1003D5FF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBEC248459D1003D5FF5 /* ContentView.swift */; };
+		EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBEC248459D1003D5FF5 /* RecentSavingsView.swift */; };
 		EFF1BBEF248459D4003D5FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBEE248459D4003D5FF5 /* Assets.xcassets */; };
 		EFF1BBF2248459D4003D5FF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */; };
 		EFF1BBF5248459D4003D5FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */; };
@@ -29,11 +32,14 @@
 		EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.001.png"; sourceTree = "<group>"; };
 		EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.002.png"; sourceTree = "<group>"; };
 		EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.003.png"; sourceTree = "<group>"; };
+		EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionUnit.swift; sourceTree = "<group>"; };
+		EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySavingsRow.swift; sourceTree = "<group>"; };
+		EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSavingRow.swift; sourceTree = "<group>"; };
 		EFF1BBE2248459D1003D5FF5 /* Stockpile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockpile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EFF1BBEA248459D1003D5FF5 /* Stockpile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stockpile.xcdatamodel; sourceTree = "<group>"; };
-		EFF1BBEC248459D1003D5FF5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EFF1BBEC248459D1003D5FF5 /* RecentSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsView.swift; sourceTree = "<group>"; };
 		EFF1BBEE248459D4003D5FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFF1BBF4248459D4003D5FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,6 +71,26 @@
 			path = Screenshots;
 			sourceTree = "<group>";
 		};
+		EFD838B526E2661200163F9A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFF1BC002484718B003D5FF5 /* AddNewStockpileSavingView.swift */,
+				EFF1BBEC248459D1003D5FF5 /* RecentSavingsView.swift */,
+				EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */,
+				EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFD838B626E2662400163F9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */,
+				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EFF1BBD9248459D1003D5FF5 = {
 			isa = PBXGroup;
 			children = (
@@ -86,15 +112,14 @@
 		EFF1BBE4248459D1003D5FF5 /* Stockpile */ = {
 			isa = PBXGroup;
 			children = (
-				EFF1BC002484718B003D5FF5 /* AddNewStockpileSavingView.swift */,
+				EFD838B626E2662400163F9A /* Model */,
+				EFD838B526E2661200163F9A /* Views */,
 				EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */,
 				EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */,
-				EFF1BBEC248459D1003D5FF5 /* ContentView.swift */,
 				EFF1BBEE248459D4003D5FF5 /* Assets.xcassets */,
 				EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */,
 				EFF1BBF6248459D4003D5FF5 /* Info.plist */,
 				EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */,
-				EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */,
 				EFF1BBF0248459D4003D5FF5 /* Preview Content */,
 			);
 			path = Stockpile;
@@ -191,8 +216,11 @@
 			files = (
 				EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */,
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
+				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
+				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
+				EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
-				EFF1BBED248459D1003D5FF5 /* ContentView.swift in Sources */,
+				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
 				EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */,
 			);
