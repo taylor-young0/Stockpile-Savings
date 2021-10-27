@@ -10,10 +10,6 @@
 		EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */; };
 		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
 		EFD4ED0E271486FB003617BE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4ED0D271486FB003617BE /* String.swift */; };
-		EFD74E3226DFEF7C00F28EC5 /* stockpile-savings.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */; };
-		EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */; };
-		EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */; };
-		EFD74E3826DFF87D00F28EC5 /* Stockpile Screenshots.003.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3526DFF87D00F28EC5 /* Stockpile Screenshots.003.png */; };
 		EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
 		EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */; };
 		EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */; };
@@ -205,10 +201,6 @@
 			files = (
 				EFF1BBF5248459D4003D5FF5 /* LaunchScreen.storyboard in Resources */,
 				EFF1BBF2248459D4003D5FF5 /* Preview Assets.xcassets in Resources */,
-				EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */,
-				EFD74E3226DFEF7C00F28EC5 /* stockpile-savings.png in Resources */,
-				EFD74E3826DFF87D00F28EC5 /* Stockpile Screenshots.003.png in Resources */,
-				EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */,
 				EFF1BBEF248459D4003D5FF5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.taylor-young0.Stockpile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -400,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.taylor-young0.Stockpile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
