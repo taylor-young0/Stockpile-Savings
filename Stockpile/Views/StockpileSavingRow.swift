@@ -16,12 +16,19 @@ struct StockpileSavingRow: View {
     var unitsPurchased: Int
     var percentageSavings: Double
     
+    var savingsLocalized: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: NSNumber(value: savings))!
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 Text(description)
                 Spacer()
-                Text("$\(savings, specifier: "%.2f") off")
+                Text("\(savingsLocalized) off")
             }
             
             HStack {

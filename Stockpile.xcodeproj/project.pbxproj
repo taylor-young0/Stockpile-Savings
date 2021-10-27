@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */; };
 		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
+		EFD4ED0E271486FB003617BE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4ED0D271486FB003617BE /* String.swift */; };
 		EFD74E3226DFEF7C00F28EC5 /* stockpile-savings.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */; };
 		EFD74E3626DFF87D00F28EC5 /* Stockpile Screenshots.001.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */; };
 		EFD74E3726DFF87D00F28EC5 /* Stockpile Screenshots.002.png in Resources */ = {isa = PBXBuildFile; fileRef = EFD74E3426DFF87D00F28EC5 /* Stockpile Screenshots.002.png */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileView.swift; sourceTree = "<group>"; };
+		EFD4ED0D271486FB003617BE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		EFD74E2F26DFEF4400F28EC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stockpile-savings.png"; sourceTree = "<group>"; };
 		EFD74E3326DFF87D00F28EC5 /* Stockpile Screenshots.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stockpile Screenshots.001.png"; sourceTree = "<group>"; };
@@ -78,6 +82,7 @@
 				EFF1BBEC248459D1003D5FF5 /* RecentSavingsView.swift */,
 				EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */,
 				EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */,
+				EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			children = (
 				EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */,
 				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
+				EFD4ED0D271486FB003617BE /* String.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,8 +225,10 @@
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
 				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
 				EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */,
+				EFD4ED0E271486FB003617BE /* String.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
+				EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
 				EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */,
 			);

@@ -26,34 +26,34 @@ struct AddNewStockpileSavingView: View {
     
     var maximumStockpileQuantity: Int {
         let daysInConsumptionUnit = ConsumptionUnit.init(rawValue: consumptionUnit)?.numberOfDaysInUnit ?? 1
-        let consumptionInDays = (Double(consumption) ?? 0.0) / Double(daysInConsumptionUnit)
-
+        let consumptionInDays = (consumption.doubleValue ?? 0.0) / Double(daysInConsumptionUnit)
+        
         let daysToExpiration = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
         return Int(consumptionInDays * Double(daysToExpiration.day ?? 0))
     }
     
     var maximumSavings: Double {
-        let savingsPerUnit = (Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0)
+        let savingsPerUnit = (regularPrice.doubleValue ?? 0.0) - (salePrice.doubleValue ?? 0.0)
         
         return savingsPerUnit * Double(maximumStockpileQuantity)
     }
     
     var savings: Double {
-        let savingsPerUnit = ((Double(regularPrice) ?? 0.0) - (Double(salePrice) ?? 0.0))
-        let purchasedUnits = Double(Int(unitsPurchased) ?? 0)
+        let savingsPerUnit = (regularPrice.doubleValue ?? 0.0) - (salePrice.doubleValue ?? 0.0)
+        let purchasedUnits = Int(unitsPurchased) ?? 0
         
-        return savingsPerUnit * purchasedUnits
+        return savingsPerUnit * Double(purchasedUnits)
     }
     
     fileprivate func addNewSavings() {
         let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
         stockpileSaving.productDescription = self.productDescription
         stockpileSaving.dateComputed = Date()
-        stockpileSaving.consumption = Double(self.consumption)!
+        stockpileSaving.consumption = self.consumption.doubleValue!
         stockpileSaving.consumptionUnit = self.consumptionUnit
         stockpileSaving.productExpiryDate = self.productExpiryDate
-        stockpileSaving.regularPrice = Double(self.regularPrice)!
-        stockpileSaving.salePrice = Double(self.salePrice)!
+        stockpileSaving.regularPrice = self.regularPrice.doubleValue!
+        stockpileSaving.salePrice = self.salePrice.doubleValue!
         stockpileSaving.unitsPurchased = Int(unitsPurchased)!
         
         try? self.managedObjectContext.save()
@@ -61,31 +61,76 @@ struct AddNewStockpileSavingView: View {
     }
     
     var validInput: Bool {
-        if productDescription.isEmpty || Double(consumption) == nil || Double(regularPrice) == nil
-            || Double(salePrice) == nil || Double(unitsPurchased) == nil || Double(regularPrice)! < Double(salePrice)! {
+        if productDescription.isEmpty || consumption.doubleValue == nil || regularPrice.doubleValue == nil
+            || salePrice.doubleValue == nil || Int(unitsPurchased) == nil || regularPrice.doubleValue! < salePrice.doubleValue! {
             return false
         }
         
         return true
     }
     
+    // colour depends on whether input is valid i.e., button is enabled
+    var addButtonColour: Color {
+        return validInput ? Color("Stockpile") : Color.secondary
+    }
+    
+    var savingsLocalized: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: NSNumber(value: savings))!
+    }
+    
+    var maxSavingsLocalized: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: NSNumber(value: maximumSavings))!
+    }
+    
+    var zeroDollarsLocalized: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: 0.00)!
+    }
+    
     func dismissKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
+    init(showingSheet: Binding<Bool>) {
+        _showingSheet = showingSheet
+    }
+    
+    init(fromTemplate stockpile: StockpileSaving, showingSheet: Binding<Bool>) {
+        // Format for the user's locale, as some locales use commas as the decimal separator
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        
+        let consumption = formatter.string(for: stockpile.consumption)
+        let regularPrice = formatter.string(for: stockpile.regularPrice)
+        
+        _showingSheet = showingSheet
+        _productDescription = .init(initialValue: stockpile.productDescription!)
+        _consumption = .init(initialValue: consumption!)
+        _consumptionUnit = .init(initialValue: stockpile.consumptionUnit!)
+        _regularPrice = .init(initialValue: regularPrice!)
+    }
+    
+    // MARK: - Body
+    
     var body: some View {
         if #available(iOS 14.0, *) {
-            NavigationView {
-                coreBody
-            }
+            coreBody
         } else {
             // default to old iOS 13 offset
-            NavigationView {
-                coreBody
-                    .enableKeyboardOffset()
-            }
+            coreBody
+                .enableKeyboardOffset()
         }
     }
+    
+    // MARK: - coreBody
     
     var coreBody: some View {
         Form {
@@ -131,11 +176,11 @@ struct AddNewStockpileSavingView: View {
                     Text("Regular price")
                     Divider()
                     Spacer()
-                    Text("$")
-                    TextField("0.00", text: $regularPrice)
+                    TextField(zeroDollarsLocalized, text: $regularPrice)
                         .multilineTextAlignment(.trailing)
                         .scaledToFit()
                         .keyboardType(.decimalPad)
+                    Text(Locale.current.currencyCode ?? "")
                 }
                 .onTapGesture(perform: dismissKeyboard)
                 
@@ -143,11 +188,11 @@ struct AddNewStockpileSavingView: View {
                     Text("Sale price")
                     Divider()
                     Spacer()
-                    Text("$")
-                    TextField("0.00", text: $salePrice)
+                    TextField(zeroDollarsLocalized, text: $salePrice)
                         .multilineTextAlignment(.trailing)
                         .scaledToFit()
                         .keyboardType(.decimalPad)
+                    Text(Locale.current.currencyCode ?? "")
                 }
                 .onTapGesture(perform: dismissKeyboard)
             }
@@ -164,7 +209,7 @@ struct AddNewStockpileSavingView: View {
                 HStack {
                     Text("Maximum savings")
                     Spacer()
-                    Text("$\(maximumSavings, specifier: "%.2f")")
+                    Text(maxSavingsLocalized)
                 }
                 .onTapGesture(perform: dismissKeyboard)
                 
@@ -181,21 +226,27 @@ struct AddNewStockpileSavingView: View {
                 HStack {
                     Text("Savings")
                     Spacer()
-                    Text("$\(savings, specifier: "%.2f")")
+                    Text(savingsLocalized)
                 }
                 .onTapGesture(perform: dismissKeyboard)
             }
         }
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             leading: Button(
                 action: { self.showingSheet.toggle() },
-                label: { Text("Cancel").padding(RecentSavingsView.paddingAmount) }),
+                label: { Text("Cancel") }
+            )
+            .padding(RecentSavingsView.paddingAmount)
+            .foregroundColor(Color("Stockpile")),
             trailing: Button(
                 action: { self.addNewSavings() },
-                label: { Text("Add").padding(RecentSavingsView.paddingAmount) }
+                label: { Text("Add") }
             )
+            .padding(RecentSavingsView.paddingAmount)
+            .foregroundColor(addButtonColour)
             .disabled(!validInput)
         )
         .alert(

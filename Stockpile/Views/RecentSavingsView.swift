@@ -20,13 +20,22 @@ struct RecentSavingsView: View {
     
     static let paddingAmount: CGFloat = 10
     
-    var lifetimeSavings: Double {
+    var lifetimeSavings: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
         var savings = 0.0
         for stockpile in allStockpileSavings {
             savings += stockpile.savings
         }
 
-        return savings
+        return formatter.string(from: NSNumber(value: savings))!
+    }
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(named: "Stockpile")!]
+        
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "Stockpile")!]
     }
     
     // MARK: - Body
@@ -53,7 +62,7 @@ struct RecentSavingsView: View {
                 HStack {
                     Text("🤑 Lifetime savings")
                     Spacer()
-                    Text("$\(self.lifetimeSavings, specifier: "%.2f")")
+                    Text(lifetimeSavings)
                 }
             }
             
@@ -84,6 +93,7 @@ struct RecentSavingsView: View {
                 label: {
                     Image(systemName:"plus")
                         .imageScale(.large)
+                        .foregroundColor(Color("Stockpile"))
                         .padding(RecentSavingsView.paddingAmount)
                 }
             )
@@ -91,7 +101,7 @@ struct RecentSavingsView: View {
         .sheet(
             isPresented: $showingSheet,
             content: {
-                AddNewStockpileSavingView(showingSheet: self.$showingSheet)
+                AddNewStockpileView(showingSheet: $showingSheet)
                     .environment(\.managedObjectContext, self.managedObjectContext)
             }
         )
