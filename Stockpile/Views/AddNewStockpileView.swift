@@ -23,19 +23,6 @@ struct AddNewStockpileView: View {
     // MARK: - Body
     
     var body: some View {
-        if #available(iOS 14.0, *) {
-            coreBody
-                .listStyle(InsetGroupedListStyle())
-        } else {
-            coreBody
-                .listStyle(GroupedListStyle())
-                .environment(\.horizontalSizeClass, .regular)
-        }
-    }
-    
-    // MARK: - coreBody
-    
-    var coreBody: some View {
         NavigationView {
             let uniqueSavings = Set(distinctSavings)
             let sortedUnique = uniqueSavings.sorted()
@@ -65,6 +52,7 @@ struct AddNewStockpileView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             .navigationBarTitle(Text("Add Savings"), displayMode: .inline)
             .navigationBarItems(
                 leading: Button("Cancel", action: { showingSheet.toggle() }).foregroundColor(Color("Stockpile"))

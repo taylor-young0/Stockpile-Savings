@@ -51,7 +51,6 @@ struct StockpileSavingRow_Previews: PreviewProvider {
     static var unitsPurchased = 5
     static var percentageSavings = 20.0
     
-    
     static var previews: some View {
         StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
             .previewLayout(.fixed(width: 375, height: 70))
@@ -61,38 +60,17 @@ struct StockpileSavingRow_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 375, height: 70))
             .padding(.horizontal)
-        
-        if #available(iOS 14.0, *) {
             
-            // MARK: - iOS 14 Previews
-            
-            List {
-                StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
-            }
-            .listStyle(InsetGroupedListStyle())
-            
-            List {
-                StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
-            }
-            .preferredColorScheme(.dark)
-            .listStyle(InsetGroupedListStyle())
-        } else {
-            
-            // MARK: - iOS 13 Previews
-            
-            List {
-                StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
-            }
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
-            
-            List {
-                StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
-            }
-            .preferredColorScheme(.dark)
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
+        List {
+            StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
         }
+        .listStyle(InsetGroupedListStyle())
+            
+        List {
+            StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
+        }
+        .preferredColorScheme(.dark)
+        .listStyle(InsetGroupedListStyle())
     }
     
 }

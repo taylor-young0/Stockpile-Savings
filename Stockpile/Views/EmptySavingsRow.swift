@@ -36,37 +36,16 @@ struct EmptySavingsRow_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 375, height: 70))
             .padding(.horizontal)
-        
-        if #available(iOS 14.0, *) {
             
-            // MARK: - iOS 14 Previews
-            
-            List {
-                EmptySavingsRow()
-            }
-            .listStyle(InsetGroupedListStyle())
-            
-            List {
-                EmptySavingsRow()
-            }
-            .preferredColorScheme(.dark)
-            .listStyle(InsetGroupedListStyle())
-        } else {
-            
-            // MARK: - iOS 13 Previews
-            
-            List {
-                EmptySavingsRow()
-            }
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
-            
-            List {
-                EmptySavingsRow()
-            }
-            .preferredColorScheme(.dark)
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
+        List {
+            EmptySavingsRow()
         }
+        .listStyle(InsetGroupedListStyle())
+            
+        List {
+            EmptySavingsRow()
+        }
+        .preferredColorScheme(.dark)
+        .listStyle(InsetGroupedListStyle())
     }
 }

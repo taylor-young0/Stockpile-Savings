@@ -121,117 +121,11 @@ struct AddNewStockpileSavingView: View {
     // MARK: - Body
     
     var body: some View {
-        if #available(iOS 14.0, *) {
-            coreBody
-        } else {
-            // default to old iOS 13 offset
-            coreBody
-                .enableKeyboardOffset()
-        }
-    }
-    
-    // MARK: - coreBody
-    
-    var coreBody: some View {
         Form {
-            // MARK: Product Information
-            Section(header: Text("Product Information")) {
-                HStack {
-                    Text("Description")
-                    Divider()
-                    TextField("Product name", text: $productDescription)
-                        .multilineTextAlignment(.trailing)
-                }
-                .onTapGesture(perform: dismissKeyboard)
-                
-                VStack(alignment: .leading) {
-                    DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
-                        .multilineTextAlignment(.trailing)
-                }
-                .animation(nil)
-                
-                VStack {
-                    HStack {
-                        Text("Consumption")
-                        Divider()
-                        TextField("units", text: $consumption)
-                            .multilineTextAlignment(.trailing)
-                            .keyboardType(.decimalPad)
-                        Text("/\(consumptionUnit)")
-                    }
-                    .onTapGesture(perform: dismissKeyboard)
-                    
-                    Picker("Consumption Units", selection: $consumptionUnit) {
-                        ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
-                            Text(unit.rawValue).tag(unit.rawValue)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-            }
-            
-            // MARK: Price Information
-            Section(header: Text("Price Information")) {
-                HStack {
-                    Text("Regular price")
-                    Divider()
-                    Spacer()
-                    TextField(zeroDollarsLocalized, text: $regularPrice)
-                        .multilineTextAlignment(.trailing)
-                        .scaledToFit()
-                        .keyboardType(.decimalPad)
-                    Text(Locale.current.currencyCode ?? "")
-                }
-                .onTapGesture(perform: dismissKeyboard)
-                
-                HStack {
-                    Text("Sale price")
-                    Divider()
-                    Spacer()
-                    TextField(zeroDollarsLocalized, text: $salePrice)
-                        .multilineTextAlignment(.trailing)
-                        .scaledToFit()
-                        .keyboardType(.decimalPad)
-                    Text(Locale.current.currencyCode ?? "")
-                }
-                .onTapGesture(perform: dismissKeyboard)
-            }
-            
-            // MARK: Stockpile Info
-            Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
-                HStack {
-                    Text("Maximum stockpile quantity")
-                    Spacer()
-                    Text("\(maximumStockpileQuantity) unit\(maximumStockpileQuantity == 1 ? "" : "s")")
-                }
-                .onTapGesture(perform: dismissKeyboard)
-                
-                HStack {
-                    Text("Maximum savings")
-                    Spacer()
-                    Text(maxSavingsLocalized)
-                }
-                .onTapGesture(perform: dismissKeyboard)
-                
-                HStack {
-                    Text("Units purchased")
-                    Divider()
-                    Spacer()
-                    TextField("0", text: $unitsPurchased)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.numberPad)
-                }
-                .onTapGesture(perform: dismissKeyboard)
-                
-                HStack {
-                    Text("Savings")
-                    Spacer()
-                    Text(savingsLocalized)
-                }
-                .onTapGesture(perform: dismissKeyboard)
-            }
+            productInformation
+            pricingInformation
+            stockpileInformation
         }
-        .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
@@ -259,6 +153,108 @@ struct AddNewStockpileSavingView: View {
                 )
             }
         )
+    }
+    
+    // MARK: Product Information
+    var productInformation: some View {
+        Section(header: Text("Product Information")) {
+            HStack {
+                Text("Description")
+                Divider()
+                TextField("Product name", text: $productDescription)
+                    .multilineTextAlignment(.trailing)
+            }
+            .onTapGesture(perform: dismissKeyboard)
+            
+            VStack(alignment: .leading) {
+                DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
+                    .multilineTextAlignment(.trailing)
+            }
+            
+            VStack {
+                HStack {
+                    Text("Consumption")
+                    Divider()
+                    TextField("units", text: $consumption)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
+                    Text("/\(consumptionUnit)")
+                }
+                .onTapGesture(perform: dismissKeyboard)
+                
+                Picker("Consumption Units", selection: $consumptionUnit) {
+                    ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
+                        Text(unit.rawValue).tag(unit.rawValue)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+        }
+    }
+    
+    // MARK: Pricing Information
+    var pricingInformation: some View {
+        Section(header: Text("Price Information")) {
+            HStack {
+                Text("Regular price")
+                Divider()
+                Spacer()
+                TextField(zeroDollarsLocalized, text: $regularPrice)
+                    .multilineTextAlignment(.trailing)
+                    .scaledToFit()
+                    .keyboardType(.decimalPad)
+                Text(Locale.current.currencyCode ?? "")
+            }
+            .onTapGesture(perform: dismissKeyboard)
+            
+            HStack {
+                Text("Sale price")
+                Divider()
+                Spacer()
+                TextField(zeroDollarsLocalized, text: $salePrice)
+                    .multilineTextAlignment(.trailing)
+                    .scaledToFit()
+                    .keyboardType(.decimalPad)
+                Text(Locale.current.currencyCode ?? "")
+            }
+            .onTapGesture(perform: dismissKeyboard)
+        }
+    }
+    
+    // MARK: Stockpile Information
+    var stockpileInformation: some View {
+        Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
+            HStack {
+                Text("Maximum stockpile quantity")
+                Spacer()
+                Text("\(maximumStockpileQuantity) unit\(maximumStockpileQuantity == 1 ? "" : "s")")
+            }
+            .onTapGesture(perform: dismissKeyboard)
+            
+            HStack {
+                Text("Maximum savings")
+                Spacer()
+                Text(maxSavingsLocalized)
+            }
+            .onTapGesture(perform: dismissKeyboard)
+            
+            HStack {
+                Text("Units purchased")
+                Divider()
+                Spacer()
+                TextField("0", text: $unitsPurchased)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
+            }
+            .onTapGesture(perform: dismissKeyboard)
+            
+            HStack {
+                Text("Savings")
+                Spacer()
+                Text(savingsLocalized)
+            }
+            .onTapGesture(perform: dismissKeyboard)
+        }
     }
 }
 

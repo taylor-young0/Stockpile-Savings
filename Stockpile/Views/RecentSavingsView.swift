@@ -37,74 +37,61 @@ struct RecentSavingsView: View {
         
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "Stockpile")!]
     }
-    
+        
     // MARK: - Body
     
     var body: some View {
         NavigationView {
-            // Adjust the list style to be the equivalent of InsetGroupedListStyle regardless of iOS version
-            if #available(iOS 14.0, *) {
-                coreBody
-                    .listStyle(InsetGroupedListStyle())
-            } else {
-                coreBody
-                    .listStyle(GroupedListStyle())
-                    .environment(\.horizontalSizeClass, .regular)
-            }
-        }
-    }
-    
-    // MARK: - coreBody
-    
-    var coreBody: some View {
-        List {
-            Section {
-                HStack {
-                    Text("🤑 Lifetime savings")
-                    Spacer()
-                    Text(lifetimeSavings)
-                }
-            }
-            
-            Section(header: Text("Recent Savings")) {
-                if recentStockpiles.count != 0 {
-                    ForEach(recentStockpiles) { stockpile in
-                        StockpileSavingRow(description: stockpile.productDescription!, savings: stockpile.savings, unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
+            List {
+                Section {
+                    HStack {
+                        Text("🤑 Lifetime savings")
+                        Spacer()
+                        Text(lifetimeSavings)
                     }
-                    .onDelete(perform: { indexSet in
-                        let deleteItem = self.recentStockpiles[indexSet.first!]
-                        self.managedObjectContext.delete(deleteItem)
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                        } catch {
-                            print(error)
+                }
+                
+                Section(header: Text("Recent Savings")) {
+                    if recentStockpiles.count != 0 {
+                        ForEach(recentStockpiles) { stockpile in
+                            StockpileSavingRow(description: stockpile.productDescription!, savings: stockpile.savings, unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
                         }
-                    })
-                } else {
-                    EmptySavingsRow()
+                        .onDelete(perform: { indexSet in
+                            let deleteItem = self.recentStockpiles[indexSet.first!]
+                            self.managedObjectContext.delete(deleteItem)
+                            
+                            do {
+                                try self.managedObjectContext.save()
+                            } catch {
+                                print(error)
+                            }
+                        })
+                    } else {
+                        EmptySavingsRow()
+                    }
                 }
             }
-        }
-        .navigationBarTitle(Text("Stockpile"))
-        .navigationBarItems(
-            trailing: Button(
-                action: { self.showingSheet.toggle() },
-                label: {
-                    Image(systemName:"plus")
-                        .imageScale(.large)
-                        .foregroundColor(Color("Stockpile"))
-                        .padding(RecentSavingsView.paddingAmount)
-                }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarTitle(Text("Stockpile"))
+            .navigationBarItems(
+                trailing: Button(
+                    action: { self.showingSheet.toggle() },
+                    label: {
+                        Image(systemName:"plus")
+                            .imageScale(.large)
+                            .foregroundColor(Color("Stockpile"))
+                            .padding(RecentSavingsView.paddingAmount)
+                    }
+                )
             )
+            .sheet(
+                isPresented: $showingSheet,
+                content: {
+                    AddNewStockpileView(showingSheet: $showingSheet)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
+                }
         )
-        .sheet(
-            isPresented: $showingSheet,
-            content: {
-                AddNewStockpileView(showingSheet: $showingSheet)
-                    .environment(\.managedObjectContext, self.managedObjectContext)
-            }
-        )
+        }
     }
 }
 
