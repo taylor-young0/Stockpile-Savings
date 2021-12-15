@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct RecentSavingsView: View {
 
@@ -65,6 +66,8 @@ struct RecentSavingsView: View {
                             } catch {
                                 print(error)
                             }
+                            
+                            WidgetCenter.shared.reloadAllTimelines()
                         })
                     } else {
                         EmptySavingsRow()
@@ -98,10 +101,10 @@ struct RecentSavingsView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecentSavingsView().environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+            RecentSavingsView().environment(\.managedObjectContext, CoreDataStack.shared.persistentContainer.viewContext)
                 .previewDevice(.init(rawValue: "iPhone 11"))
             
-            RecentSavingsView().environment(\.managedObjectContext, (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext)
+            RecentSavingsView().environment(\.managedObjectContext, CoreDataStack.shared.persistentContainer.viewContext)
                 .environment(\.colorScheme, .dark)
                 .previewDevice(.init(rawValue: "iPhone 11"))
             

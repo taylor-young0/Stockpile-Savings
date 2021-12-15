@@ -7,9 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF5FC3C427618544006F1BF0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C327618544006F1BF0 /* WidgetKit.framework */; };
+		EF5FC3C627618544006F1BF0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C527618544006F1BF0 /* SwiftUI.framework */; };
+		EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FC3C827618544006F1BF0 /* Widgets.swift */; };
+		EF5FC3CB27618549006F1BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5FC3CA27618549006F1BF0 /* Assets.xcassets */; };
+		EF5FC3CF27618549006F1BF0 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */; };
+		EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
+		EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
+		EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
 		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
-		EFD4ED0E271486FB003617BE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4ED0D271486FB003617BE /* String.swift */; };
+		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
+		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
+		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
+		EFD4ED0E271486FB003617BE /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD4ED0D271486FB003617BE /* String+Ext.swift */; };
 		EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
 		EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */; };
 		EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */; };
@@ -20,16 +31,50 @@
 		EFF1BBEF248459D4003D5FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBEE248459D4003D5FF5 /* Assets.xcassets */; };
 		EFF1BBF2248459D4003D5FF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */; };
 		EFF1BBF5248459D4003D5FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */; };
-		EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */; };
 		EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BC002484718B003D5FF5 /* AddNewStockpileSavingView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EF5FC3CD27618549006F1BF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFF1BBDA248459D1003D5FF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF5FC3C027618543006F1BF0;
+			remoteInfo = WidgetsExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EF5FC3D027618549006F1BF0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EF5FC3CF27618549006F1BF0 /* WidgetsExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.001.jpeg"; sourceTree = "<group>"; };
 		EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.002.jpeg"; sourceTree = "<group>"; };
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
+		EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5FC3C327618544006F1BF0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		EF5FC3C527618544006F1BF0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		EF5FC3C827618544006F1BF0 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		EF5FC3CA27618549006F1BF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF5FC3CC27618549006F1BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileView.swift; sourceTree = "<group>"; };
-		EFD4ED0D271486FB003617BE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		EF9996CF27692C9E00254545 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		EF9996D2276931E300254545 /* Stockpile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stockpile.entitlements; sourceTree = "<group>"; };
+		EF9996D32769322400254545 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedStockpileSaving.swift; sourceTree = "<group>"; };
+		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
+		EFD4ED0D271486FB003617BE /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EFD74E2F26DFEF4400F28EC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stockpile-savings.png"; sourceTree = "<group>"; };
 		EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionUnit.swift; sourceTree = "<group>"; };
@@ -44,11 +89,19 @@
 		EFF1BBF1248459D4003D5FF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFF1BBF4248459D4003D5FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFF1BBF6248459D4003D5FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFF1BC002484718B003D5FF5 /* AddNewStockpileSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileSavingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EF5FC3BE27618543006F1BF0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF5FC3C627618544006F1BF0 /* SwiftUI.framework in Frameworks */,
+				EF5FC3C427618544006F1BF0 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF1BBDF248459D1003D5FF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +113,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF5FC3C227618543006F1BF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF5FC3C327618544006F1BF0 /* WidgetKit.framework */,
+				EF5FC3C527618544006F1BF0 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF5FC3C727618544006F1BF0 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				EF5FC3C827618544006F1BF0 /* Widgets.swift */,
+				EFAD7A1D276A3C07004502CD /* Model */,
+				EF5FC3CA27618549006F1BF0 /* Assets.xcassets */,
+				EF5FC3CC27618549006F1BF0 /* Info.plist */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		EFAD7A18276A3A76004502CD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EF9996CF27692C9E00254545 /* CoreDataStack.swift */,
+				EFAD7A19276A3AE3004502CD /* Model */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EFAD7A19276A3AE3004502CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFAD7A24276A4310004502CD /* StockpileSaving.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EFAD7A1D276A3C07004502CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EFD74E3026DFEF6000F28EC5 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +184,8 @@
 		EFD838B626E2662400163F9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EFF1BBFC24845BFF003D5FF5 /* StockpileSaving.swift */,
 				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
-				EFD4ED0D271486FB003617BE /* String.swift */,
+				EFD4ED0D271486FB003617BE /* String+Ext.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -96,9 +193,13 @@
 		EFF1BBD9248459D1003D5FF5 = {
 			isa = PBXGroup;
 			children = (
+				EF9996D32769322400254545 /* WidgetsExtension.entitlements */,
 				EFD74E2F26DFEF4400F28EC5 /* README.md */,
 				EFD74E3026DFEF6000F28EC5 /* Screenshots */,
 				EFF1BBE4248459D1003D5FF5 /* Stockpile */,
+				EFAD7A18276A3A76004502CD /* Shared */,
+				EF5FC3C727618544006F1BF0 /* Widgets */,
+				EF5FC3C227618543006F1BF0 /* Frameworks */,
 				EFF1BBE3248459D1003D5FF5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF1BBE2248459D1003D5FF5 /* Stockpile.app */,
+				EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +216,7 @@
 		EFF1BBE4248459D1003D5FF5 /* Stockpile */ = {
 			isa = PBXGroup;
 			children = (
+				EF9996D2276931E300254545 /* Stockpile.entitlements */,
 				EFD838B626E2662400163F9A /* Model */,
 				EFD838B526E2661200163F9A /* Views */,
 				EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */,
@@ -138,6 +241,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EF5FC3C027618543006F1BF0 /* WidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF5FC3D327618549006F1BF0 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */;
+			buildPhases = (
+				EF5FC3BD27618543006F1BF0 /* Sources */,
+				EF5FC3BE27618543006F1BF0 /* Frameworks */,
+				EF5FC3BF27618543006F1BF0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetsExtension;
+			productName = WidgetsExtension;
+			productReference = EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		EFF1BBE1248459D1003D5FF5 /* Stockpile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFF1BBF9248459D4003D5FF5 /* Build configuration list for PBXNativeTarget "Stockpile" */;
@@ -145,10 +265,12 @@
 				EFF1BBDE248459D1003D5FF5 /* Sources */,
 				EFF1BBDF248459D1003D5FF5 /* Frameworks */,
 				EFF1BBE0248459D1003D5FF5 /* Resources */,
+				EF5FC3D027618549006F1BF0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EF5FC3CE27618549006F1BF0 /* PBXTargetDependency */,
 			);
 			name = Stockpile;
 			packageProductDependencies = (
@@ -164,10 +286,13 @@
 		EFF1BBDA248459D1003D5FF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Taylor Young";
 				TargetAttributes = {
+					EF5FC3C027618543006F1BF0 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					EFF1BBE1248459D1003D5FF5 = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -190,11 +315,20 @@
 			projectRoot = "";
 			targets = (
 				EFF1BBE1248459D1003D5FF5 /* Stockpile */,
+				EF5FC3C027618543006F1BF0 /* WidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EF5FC3BF27618543006F1BF0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF5FC3CB27618549006F1BF0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF1BBE0248459D1003D5FF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -208,25 +342,46 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EF5FC3BD27618543006F1BF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */,
+				EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */,
+				EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */,
+				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
+				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF1BBDE248459D1003D5FF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */,
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
+				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
+				EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */,
 				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
 				EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */,
-				EFD4ED0E271486FB003617BE /* String.swift in Sources */,
+				EFD4ED0E271486FB003617BE /* String+Ext.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
 				EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
-				EFF1BBFD24845BFF003D5FF5 /* StockpileSaving.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EF5FC3CE27618549006F1BF0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF5FC3C027618543006F1BF0 /* WidgetsExtension */;
+			targetProxy = EF5FC3CD27618549006F1BF0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EFF1BBF3248459D4003D5FF5 /* LaunchScreen.storyboard */ = {
@@ -240,6 +395,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		EF5FC3D127618549006F1BF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JTMH9S5KE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Taylor Young. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.taylor-young0.Stockpile.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF5FC3D227618549006F1BF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = WidgetsExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JTMH9S5KE;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Taylor Young. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.taylor-young0.Stockpile.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		EFF1BBF7248459D4003D5FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -359,7 +574,9 @@
 		EFF1BBFA248459D4003D5FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stockpile/Stockpile.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stockpile/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JTMH9S5KE;
@@ -381,7 +598,9 @@
 		EFF1BBFB248459D4003D5FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stockpile/Stockpile.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Stockpile/Preview Content\"";
 				DEVELOPMENT_TEAM = 6JTMH9S5KE;
@@ -403,6 +622,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EF5FC3D327618549006F1BF0 /* Build configuration list for PBXNativeTarget "WidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF5FC3D127618549006F1BF0 /* Debug */,
+				EF5FC3D227618549006F1BF0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EFF1BBDD248459D1003D5FF5 /* Build configuration list for PBXProject "Stockpile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

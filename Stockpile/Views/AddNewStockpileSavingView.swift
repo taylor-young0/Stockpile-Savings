@@ -8,6 +8,7 @@
 
 import SwiftUI
 import SwiftUIFormHelper
+import WidgetKit
 
 struct AddNewStockpileSavingView: View {
     
@@ -58,6 +59,7 @@ struct AddNewStockpileSavingView: View {
         
         try? self.managedObjectContext.save()
         self.showingSheet.toggle()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     var validInput: Bool {
@@ -267,6 +269,20 @@ struct AddNewStockpileSavingView_Previews: PreviewProvider {
             AddNewStockpileSavingView(showingSheet: .constant(true))
                 .previewDevice(.init(rawValue: "iPhone 11"))
                 .environment(\.colorScheme, .dark)
+            
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Text("Lifetime savings".uppercased())
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("Stockpile"))
+                    Text(50, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                        .font(.title.bold())
+                        .foregroundColor(Color("Stockpile"))
+                }
+                
+                Spacer()
+            }
+            .redacted(reason: .placeholder)
         }
     }
 }
