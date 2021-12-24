@@ -68,6 +68,8 @@
 		EF5FC3C827618544006F1BF0 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
 		EF5FC3CA27618549006F1BF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF5FC3CC27618549006F1BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF70D1BD27756BC900532625 /* Stockpile Screenshots.004.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.004.jpeg"; sourceTree = "<group>"; };
+		EF70D1BE27756BF700532625 /* Stockpile Screenshots.005.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.005.jpeg"; sourceTree = "<group>"; };
 		EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileView.swift; sourceTree = "<group>"; };
 		EF9996CF27692C9E00254545 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EF9996D2276931E300254545 /* Stockpile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stockpile.entitlements; sourceTree = "<group>"; };
@@ -164,6 +166,8 @@
 				EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */,
 				EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */,
 				EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */,
+				EF70D1BD27756BC900532625 /* Stockpile Screenshots.004.jpeg */,
+				EF70D1BE27756BF700532625 /* Stockpile Screenshots.005.jpeg */,
 				EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */,
 			);
 			path = Screenshots;

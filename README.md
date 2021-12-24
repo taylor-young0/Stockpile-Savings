@@ -9,3 +9,4 @@ Stockpile Savings helps you save money by encouraging you to buy more of your re
 
 | <img src="Screenshots/Stockpile Screenshots.002.jpeg" alt="Add new savings" width="450"/> | <img src="Screenshots/Stockpile Screenshots.003.jpeg" alt="Dark Mode" width="450"/> |
 | ------------- |---------------|
+| <img src="Screenshots/Stockpile Screenshots.004.jpeg" alt="Currencies" width="450"/> | <img src="Screenshots/Stockpile Screenshots.005.jpeg" alt="Widgets" width="450"/> |
