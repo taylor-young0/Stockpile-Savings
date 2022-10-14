@@ -81,7 +81,7 @@ struct RecentSavingsView: View {
                     action: { self.showingSheet.toggle() },
                     label: {
                         Image(systemName:"plus")
-                            .imageScale(.large)
+                            .font(.title3.bold())
                             .foregroundColor(Color("Stockpile"))
                             .padding(RecentSavingsView.paddingAmount)
                     }
