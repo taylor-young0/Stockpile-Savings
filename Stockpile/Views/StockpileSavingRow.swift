@@ -29,6 +29,7 @@ struct StockpileSavingRow: View {
                 Text(description)
                 Spacer()
                 Text("\(savingsLocalized) off")
+                    .monospacedDigit()
             }
             
             HStack {
@@ -38,6 +39,7 @@ struct StockpileSavingRow: View {
                 Spacer()
                 Text("\(percentageSavings, specifier: "%.0f")% savings")
                     .font(.subheadline)
+                    .monospacedDigit()
                     .foregroundColor(.gray)
             }
         }

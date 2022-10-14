@@ -192,6 +192,7 @@ struct WidgetsEntryView : View {
             Spacer()
             Text(savings.savings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                 .bold()
+                .monospacedDigit()
         }
         .padding(.bottom, 1)
     }
