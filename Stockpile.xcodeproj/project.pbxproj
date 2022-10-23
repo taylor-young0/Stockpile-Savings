@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,6 @@
 		EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
-		EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */; };
 		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
@@ -113,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA50C1D2499406900C7B00C /* SwiftUIFormHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +283,6 @@
 			);
 			name = Stockpile;
 			packageProductDependencies = (
-				EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */,
 			);
 			productName = Stockpile;
 			productReference = EFF1BBE2248459D1003D5FF5 /* Stockpile.app */;
@@ -319,7 +316,6 @@
 			);
 			mainGroup = EFF1BBD9248459D1003D5FF5;
 			packageReferences = (
-				EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */,
 			);
 			productRefGroup = EFF1BBE3248459D1003D5FF5 /* Products */;
 			projectDirPath = "";
@@ -664,25 +660,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jeroenzonneveld/SwiftUIFormHelper";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EFA50C1C2499406900C7B00C /* SwiftUIFormHelper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EFA50C1B2499406900C7B00C /* XCRemoteSwiftPackageReference "SwiftUIFormHelper" */;
-			productName = SwiftUIFormHelper;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */ = {
