@@ -21,9 +21,9 @@ struct AddNewStockpileSavingView: View {
     
     init(fromTemplate stockpile: StockpileSaving, showingSheet: Binding<Bool>) {
         // Format for the user's locale, as some locales use commas as the decimal separator
-        let consumption: String = stockpile.consumption.localizedDecimal
+        let consumption: String = stockpile.consumption.asLocalizedDecimal
         let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit ?? "") ?? .Day
-        let regularPrice: String = stockpile.regularPrice.localizedDecimal
+        let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
         
         _showingSheet = showingSheet
         _viewModel = StateObject(wrappedValue: AddNewStockpileSavingViewModel(productDescription: stockpile.productDescription ?? "",
@@ -135,7 +135,7 @@ struct AddNewStockpileSavingView: View {
                 Text("Regular price")
                 Divider()
                 Spacer()
-                TextField(Double.zero.localizedCurrency, text: $viewModel.regularPriceInput)
+                TextField(Double.zero.asLocalizedCurrency, text: $viewModel.regularPriceInput)
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
@@ -147,7 +147,7 @@ struct AddNewStockpileSavingView: View {
                 Text("Sale price")
                 Divider()
                 Spacer()
-                TextField(Double.zero.localizedCurrency, text: $viewModel.salePriceInput)
+                TextField(Double.zero.asLocalizedCurrency, text: $viewModel.salePriceInput)
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
@@ -171,7 +171,7 @@ struct AddNewStockpileSavingView: View {
             HStack {
                 Text("Maximum savings")
                 Spacer()
-                Text(viewModel.maximumSavings.localizedCurrency)
+                Text(viewModel.maximumSavings.asLocalizedCurrency)
             }
             .onTapGesture(perform: dismissKeyboard)
             
@@ -188,7 +188,7 @@ struct AddNewStockpileSavingView: View {
             HStack {
                 Text("Savings")
                 Spacer()
-                Text(viewModel.savings.localizedCurrency)
+                Text(viewModel.savings.asLocalizedCurrency)
             }
             .onTapGesture(perform: dismissKeyboard)
         }

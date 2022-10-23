@@ -9,13 +9,13 @@
 import Foundation
 
 extension Double {
-    var localizedCurrency: String {
+    var asLocalizedCurrency: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         return formatter.string(from: NSNumber(value: self)) ?? ""
     }
 
-    var localizedDecimal: String {
+    var asLocalizedDecimal: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter.string(from: NSNumber(value: self)) ?? ""

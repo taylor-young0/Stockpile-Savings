@@ -20,15 +20,11 @@ struct RecentSavingsView: View {
     @State var showingSheet = false
     
     var lifetimeSavings: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        
-        var savings = 0.0
+        var savings: Double = 0.0
         for stockpile in allStockpileSavings {
             savings += stockpile.savings
         }
-
-        return formatter.string(from: NSNumber(value: savings))!
+        return savings.asLocalizedCurrency
     }
     
     init() {
