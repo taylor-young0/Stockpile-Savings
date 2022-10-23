@@ -84,10 +84,16 @@ struct RecentSavingsView: View {
             .sheet(
                 isPresented: $showingSheet,
                 content: {
-                    AddNewStockpileView(showingSheet: $showingSheet)
-                        .environment(\.managedObjectContext, self.managedObjectContext)
+                    if recentStockpiles.count > 0 {
+                        AddNewStockpileView(showingSheet: $showingSheet)
+                            .environment(\.managedObjectContext, self.managedObjectContext)
+                    } else {
+                        NavigationView {
+                            AddNewStockpileSavingView(showingSheet: $showingSheet)
+                        }
+                    }
                 }
-        )
+            )
         }
     }
 }
