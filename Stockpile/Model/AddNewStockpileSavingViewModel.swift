@@ -148,17 +148,3 @@ class AddNewStockpileSavingViewModel: ObservableObject {
         return isInputValid ? Constants.stockpileColor : Color.secondary
     }
 }
-
-extension Double {
-    var localizedCurrency: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        return formatter.string(from: NSNumber(value: self)) ?? ""
-    }
-
-    var localizedDecimal: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: self)) ?? ""
-    }
-}
