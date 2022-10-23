@@ -37,7 +37,7 @@ struct AddNewStockpileView: View {
                     ForEach(sortedUnique, id: \.self) { desc in
                         let saving = allStockpileSavings.filter({ $0.productDescription == desc })
                         NavigationLink(destination: AddNewStockpileSavingView(fromTemplate: saving[0], showingSheet: $showingSheet)) {
-                            Text(saving[0].productDescription!)
+                            Text(saving[0].productDescription)
                         }
                     }
                     

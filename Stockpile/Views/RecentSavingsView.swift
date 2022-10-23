@@ -49,7 +49,7 @@ struct RecentSavingsView: View {
                 Section(header: Text("Recent Savings")) {
                     if recentStockpiles.count != 0 {
                         ForEach(recentStockpiles) { stockpile in
-                            StockpileSavingRow(description: stockpile.productDescription!, savings: stockpile.savings, unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
+                            StockpileSavingRow(description: stockpile.productDescription, savings: stockpile.savings, unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
                         }
                         .onDelete(perform: { indexSet in
                             let deleteItem = self.recentStockpiles[indexSet.first!]

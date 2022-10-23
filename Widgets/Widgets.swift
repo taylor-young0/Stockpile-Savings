@@ -61,10 +61,10 @@ struct Provider: TimelineProvider {
                 if let currentSavingsIndex = currentSavingsIndex {
                     // add previous savings of this item to the current savings
                     let currentSavings = stockpiles[currentSavingsIndex].savings
-                    stockpiles[currentSavingsIndex] = GroupedStockpileSaving(name: saving.productDescription!, savings: saving.savings + currentSavings)
+                    stockpiles[currentSavingsIndex] = GroupedStockpileSaving(name: saving.productDescription, savings: saving.savings + currentSavings)
                 } else {
                     // else, first time adding product of that name
-                    stockpiles.append(GroupedStockpileSaving(name: saving.productDescription!, savings: saving.savings))
+                    stockpiles.append(GroupedStockpileSaving(name: saving.productDescription, savings: saving.savings))
                 }
             }
             
