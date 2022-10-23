@@ -101,10 +101,10 @@ struct WidgetsEntryView : View {
         VStack(alignment: .leading) {
             Text("Lifetime savings".uppercased())
                 .fontWeight(.bold)
-                .foregroundColor(Color("Stockpile"))
+                .foregroundColor(Constants.stockpileColor)
             Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                 .font(.title.bold())
-                .foregroundColor(Color("Stockpile"))
+                .foregroundColor(Constants.stockpileColor)
             
             Spacer()
             
@@ -134,7 +134,7 @@ struct WidgetsEntryView : View {
     var lifetimeSavingsLarge: some View {
         VStack(alignment: .leading) {
             lifetimeSavingsHeader
-                .foregroundColor(Color("Stockpile"))
+                .foregroundColor(Constants.stockpileColor)
                 .padding(.bottom)
             
             ForEach(0..<numDisplayedSavings, id: \.self) { index in
@@ -160,10 +160,10 @@ struct WidgetsEntryView : View {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
-                    .foregroundColor(Color("Stockpile"))
+                    .foregroundColor(Constants.stockpileColor)
                 Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                     .font(.title.bold())
-                    .foregroundColor(Color("Stockpile"))
+                    .foregroundColor(Constants.stockpileColor)
             }
             
             Spacer()

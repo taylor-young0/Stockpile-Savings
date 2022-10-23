@@ -55,7 +55,9 @@ struct AddNewStockpileView: View {
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle(Text("Add Savings"), displayMode: .inline)
             .navigationBarItems(
-                leading: Button("Cancel", action: { showingSheet.toggle() }).foregroundColor(Color("Stockpile"))
+                leading:
+                    Button("Cancel", action: { showingSheet.toggle() })
+                        .foregroundColor(Constants.stockpileColor)
             )
         }
     }

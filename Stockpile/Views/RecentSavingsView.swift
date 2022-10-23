@@ -19,8 +19,6 @@ struct RecentSavingsView: View {
     
     @State var showingSheet = false
     
-    static let paddingAmount: CGFloat = 10
-    
     var lifetimeSavings: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -82,8 +80,8 @@ struct RecentSavingsView: View {
                     label: {
                         Image(systemName:"plus")
                             .font(.title3.bold())
-                            .foregroundColor(Color("Stockpile"))
-                            .padding(RecentSavingsView.paddingAmount)
+                            .foregroundColor(Constants.stockpileColor)
+                            .padding(Constants.defaultPadding)
                     }
                 )
             )

@@ -11,95 +11,9 @@ import SwiftUIFormHelper
 import WidgetKit
 
 struct AddNewStockpileSavingView: View {
-    
     @Environment(\.managedObjectContext) var managedObjectContext
-    
     @Binding var showingSheet: Bool
-    
-    @State var showingError: Bool = false
-    @State var productDescription: String = ""
-    @State var productExpiryDate: Date = Date()
-    @State var consumption: String = ""
-    @State var consumptionUnit: String = ConsumptionUnit.Day.rawValue
-    @State var regularPrice: String = ""
-    @State var salePrice: String = ""
-    @State var unitsPurchased: String = ""
-    
-    var maximumStockpileQuantity: Int {
-        let daysInConsumptionUnit = ConsumptionUnit.init(rawValue: consumptionUnit)?.numberOfDaysInUnit ?? 1
-        let consumptionInDays = (consumption.doubleValue ?? 0.0) / Double(daysInConsumptionUnit)
-        
-        let daysToExpiration = Calendar.current.dateComponents([.day], from: Date(), to: productExpiryDate)
-        return Int(consumptionInDays * Double(daysToExpiration.day ?? 0))
-    }
-    
-    var maximumSavings: Double {
-        let savingsPerUnit = (regularPrice.doubleValue ?? 0.0) - (salePrice.doubleValue ?? 0.0)
-        
-        return savingsPerUnit * Double(maximumStockpileQuantity)
-    }
-    
-    var savings: Double {
-        let savingsPerUnit = (regularPrice.doubleValue ?? 0.0) - (salePrice.doubleValue ?? 0.0)
-        let purchasedUnits = Int(unitsPurchased) ?? 0
-        
-        return savingsPerUnit * Double(purchasedUnits)
-    }
-    
-    fileprivate func addNewSavings() {
-        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
-        stockpileSaving.productDescription = self.productDescription
-        stockpileSaving.dateComputed = Date()
-        stockpileSaving.consumption = self.consumption.doubleValue!
-        stockpileSaving.consumptionUnit = self.consumptionUnit
-        stockpileSaving.productExpiryDate = self.productExpiryDate
-        stockpileSaving.regularPrice = self.regularPrice.doubleValue!
-        stockpileSaving.salePrice = self.salePrice.doubleValue!
-        stockpileSaving.unitsPurchased = Int(unitsPurchased)!
-        
-        try? self.managedObjectContext.save()
-        self.showingSheet.toggle()
-        WidgetCenter.shared.reloadAllTimelines()
-    }
-    
-    var validInput: Bool {
-        if productDescription.isEmpty || consumption.doubleValue == nil || regularPrice.doubleValue == nil
-            || salePrice.doubleValue == nil || Int(unitsPurchased) == nil || regularPrice.doubleValue! < salePrice.doubleValue! {
-            return false
-        }
-        
-        return true
-    }
-    
-    // colour depends on whether input is valid i.e., button is enabled
-    var addButtonColour: Color {
-        return validInput ? Color("Stockpile") : Color.secondary
-    }
-    
-    var savingsLocalized: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        
-        return formatter.string(from: NSNumber(value: savings))!
-    }
-    
-    var maxSavingsLocalized: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        
-        return formatter.string(from: NSNumber(value: maximumSavings))!
-    }
-    
-    var zeroDollarsLocalized: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        
-        return formatter.string(from: 0.00)!
-    }
-    
-    func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+    @StateObject var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
     
     init(showingSheet: Binding<Bool>) {
         _showingSheet = showingSheet
@@ -107,17 +21,35 @@ struct AddNewStockpileSavingView: View {
     
     init(fromTemplate stockpile: StockpileSaving, showingSheet: Binding<Bool>) {
         // Format for the user's locale, as some locales use commas as the decimal separator
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        
-        let consumption = formatter.string(for: stockpile.consumption)
-        let regularPrice = formatter.string(for: stockpile.regularPrice)
+        let consumption: String = stockpile.consumption.localizedDecimal
+        let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit ?? "") ?? .Day
+        let regularPrice: String = stockpile.regularPrice.localizedDecimal
         
         _showingSheet = showingSheet
-        _productDescription = .init(initialValue: stockpile.productDescription!)
-        _consumption = .init(initialValue: consumption!)
-        _consumptionUnit = .init(initialValue: stockpile.consumptionUnit!)
-        _regularPrice = .init(initialValue: regularPrice!)
+        _viewModel = StateObject(wrappedValue: AddNewStockpileSavingViewModel(productDescription: stockpile.productDescription ?? "",
+                                                                              consumption: consumption,
+                                                                              consumptionUnit: consumptionUnit,
+                                                                              regularPrice: regularPrice))
+    }
+
+    fileprivate func addNewSavings() {
+        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
+        stockpileSaving.productDescription = viewModel.productDescription
+        stockpileSaving.dateComputed = Date()
+        stockpileSaving.consumption = viewModel.consumption
+        stockpileSaving.consumptionUnit = viewModel.consumptionUnit.rawValue
+        stockpileSaving.productExpiryDate = viewModel.productExpiryDate
+        stockpileSaving.regularPrice = viewModel.regularPrice
+        stockpileSaving.salePrice = viewModel.salePrice
+        stockpileSaving.unitsPurchased = viewModel.unitsPurchased
+
+        try? self.managedObjectContext.save()
+        self.showingSheet.toggle()
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    func dismissKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     // MARK: - Body
@@ -131,22 +63,24 @@ struct AddNewStockpileSavingView: View {
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
-            leading: Button(
-                action: { self.showingSheet.toggle() },
-                label: { Text("Cancel") }
-            )
-            .padding(RecentSavingsView.paddingAmount)
-            .foregroundColor(Color("Stockpile")),
-            trailing: Button(
-                action: { self.addNewSavings() },
-                label: { Text("Add") }
-            )
-            .padding(RecentSavingsView.paddingAmount)
-            .foregroundColor(addButtonColour)
-            .disabled(!validInput)
+            leading:
+                Button(
+                    action: { self.showingSheet.toggle() },
+                    label: { Text("Cancel") }
+                )
+                .padding(Constants.defaultPadding)
+                .foregroundColor(Constants.stockpileColor),
+            trailing:
+                Button(
+                    action: { self.addNewSavings() },
+                    label: { Text("Add") }
+                )
+                .padding(Constants.defaultPadding)
+                .foregroundColor(viewModel.addButtonColour)
+                .disabled(!viewModel.isInputValid)
         )
         .alert(
-            isPresented: $showingError,
+            isPresented: $viewModel.showingError,
             content: {
                 Alert(
                     title: Text("Error"),
@@ -163,13 +97,13 @@ struct AddNewStockpileSavingView: View {
             HStack {
                 Text("Description")
                 Divider()
-                TextField("Product name", text: $productDescription)
+                TextField("Product name", text: $viewModel.productDescription)
                     .multilineTextAlignment(.trailing)
             }
             .onTapGesture(perform: dismissKeyboard)
             
             VStack(alignment: .leading) {
-                DatePicker("Expiry Date", selection: $productExpiryDate, in: Date()..., displayedComponents: .date)
+                DatePicker("Expiry Date", selection: $viewModel.productExpiryDate, in: Date()..., displayedComponents: .date)
                     .multilineTextAlignment(.trailing)
             }
             
@@ -177,16 +111,16 @@ struct AddNewStockpileSavingView: View {
                 HStack {
                     Text("Consumption")
                     Divider()
-                    TextField("units", text: $consumption)
+                    TextField("units", text: $viewModel.consumptionInput)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
-                    Text("/\(consumptionUnit)")
+                    Text("/\(viewModel.consumptionUnit.rawValue)")
                 }
                 .onTapGesture(perform: dismissKeyboard)
                 
-                Picker("Consumption Units", selection: $consumptionUnit) {
+                Picker("Consumption Units", selection: $viewModel.consumptionUnit) {
                     ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
-                        Text(unit.rawValue).tag(unit.rawValue)
+                        Text(unit.rawValue).tag(unit)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -201,7 +135,7 @@ struct AddNewStockpileSavingView: View {
                 Text("Regular price")
                 Divider()
                 Spacer()
-                TextField(zeroDollarsLocalized, text: $regularPrice)
+                TextField(Double.zero.localizedCurrency, text: $viewModel.regularPriceInput)
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
@@ -213,7 +147,7 @@ struct AddNewStockpileSavingView: View {
                 Text("Sale price")
                 Divider()
                 Spacer()
-                TextField(zeroDollarsLocalized, text: $salePrice)
+                TextField(Double.zero.localizedCurrency, text: $viewModel.salePriceInput)
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
@@ -225,18 +159,19 @@ struct AddNewStockpileSavingView: View {
     
     // MARK: Stockpile Information
     var stockpileInformation: some View {
-        Section(header: Text("Stockpile Info"), footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
+        Section(header: Text("Stockpile Info"),
+                footer: Text("Maximum stockpile quantity is the maximum number of units you could purchase to maximize savings without having the products expire.")) {
             HStack {
                 Text("Maximum stockpile quantity")
                 Spacer()
-                Text("\(maximumStockpileQuantity) unit\(maximumStockpileQuantity == 1 ? "" : "s")")
+                Text("\(viewModel.maximumStockpileQuantity) unit\(viewModel.maximumStockpileQuantity == 1 ? "" : "s")")
             }
             .onTapGesture(perform: dismissKeyboard)
             
             HStack {
                 Text("Maximum savings")
                 Spacer()
-                Text(maxSavingsLocalized)
+                Text(viewModel.maximumSavings.localizedCurrency)
             }
             .onTapGesture(perform: dismissKeyboard)
             
@@ -244,7 +179,7 @@ struct AddNewStockpileSavingView: View {
                 Text("Units purchased")
                 Divider()
                 Spacer()
-                TextField("0", text: $unitsPurchased)
+                TextField("0", text: $viewModel.unitsPurchasedInput)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
             }
@@ -253,7 +188,7 @@ struct AddNewStockpileSavingView: View {
             HStack {
                 Text("Savings")
                 Spacer()
-                Text(savingsLocalized)
+                Text(viewModel.savings.localizedCurrency)
             }
             .onTapGesture(perform: dismissKeyboard)
         }
@@ -274,10 +209,10 @@ struct AddNewStockpileSavingView_Previews: PreviewProvider {
                 VStack(alignment: .leading) {
                     Text("Lifetime savings".uppercased())
                         .fontWeight(.bold)
-                        .foregroundColor(Color("Stockpile"))
+                        .foregroundColor(Constants.stockpileColor)
                     Text(50, format: .currency(code: Locale.current.currencyCode ?? "USD"))
                         .font(.title.bold())
-                        .foregroundColor(Color("Stockpile"))
+                        .foregroundColor(Constants.stockpileColor)
                 }
                 
                 Spacer()

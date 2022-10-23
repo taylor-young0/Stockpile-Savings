@@ -24,6 +24,9 @@
 		EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
 		EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */; };
 		EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */; };
+		EFD838E42905B325009A7AC5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838E32905B325009A7AC5 /* Constants.swift */; };
+		EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838E32905B325009A7AC5 /* Constants.swift */; };
+		EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -82,6 +85,8 @@
 		EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionUnit.swift; sourceTree = "<group>"; };
 		EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySavingsRow.swift; sourceTree = "<group>"; };
 		EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSavingRow.swift; sourceTree = "<group>"; };
+		EFD838E32905B325009A7AC5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileSavingViewModel.swift; sourceTree = "<group>"; };
 		EFF1BBE2248459D1003D5FF5 /* Stockpile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockpile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +143,7 @@
 		EFAD7A18276A3A76004502CD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EFD838E32905B325009A7AC5 /* Constants.swift */,
 				EF9996CF27692C9E00254545 /* CoreDataStack.swift */,
 				EFAD7A19276A3AE3004502CD /* Model */,
 			);
@@ -190,6 +196,7 @@
 			children = (
 				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
 				EFD4ED0D271486FB003617BE /* String+Ext.swift */,
+				EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -355,6 +362,7 @@
 				EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */,
 				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
+				EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +373,7 @@
 				EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */,
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
 				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
+				EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
 				EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */,
 				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
@@ -372,6 +381,7 @@
 				EFD4ED0E271486FB003617BE /* String+Ext.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
+				EFD838E42905B325009A7AC5 /* Constants.swift in Sources */,
 				EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
 			);
