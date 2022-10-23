@@ -37,10 +37,6 @@ class AddNewStockpileSavingViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    struct NumberError: Error {
-
-    }
-
     init() {
         setupCombine()
     }
