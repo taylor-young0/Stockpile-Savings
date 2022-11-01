@@ -38,18 +38,18 @@ class AddNewStockpileSavingViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     init() {
-        setupCombine()
+        setupSubscribers()
     }
 
     init(productDescription: String, consumption: String, consumptionUnit: ConsumptionUnit, regularPrice: String) {
-        setupCombine()
+        setupSubscribers()
         self.productDescription = productDescription
         self.consumptionInput = consumption
         self.consumptionUnit = consumptionUnit
         self.regularPriceInput = regularPrice
     }
 
-    func setupCombine() {
+    func setupSubscribers() {
         $consumptionInput
             .map {
                 Double($0) ?? -1
