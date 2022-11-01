@@ -14,6 +14,7 @@
 		EF5FC3CF27618549006F1BF0 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
 		EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */; };
+		EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
 		EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -151,6 +152,7 @@
 		EFAD7A19276A3AE3004502CD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
 				EFAD7A24276A4310004502CD /* StockpileSaving.swift */,
 			);
 			path = Model;
@@ -192,7 +194,6 @@
 		EFD838B626E2662400163F9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
 				EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */,
 				EF7ADB8C2905E454004946C4 /* Double+Ext.swift */,
 			);
@@ -355,6 +356,7 @@
 			files = (
 				EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */,
 				EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */,
+				EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */,
 				EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */,
 				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
