@@ -10,6 +10,9 @@ import Foundation
 import SwiftUI
 
 struct Constants {
-    static let stockpileColor: Color = Color("Stockpile")
+    fileprivate static let stockpileColorAssetName = "Stockpile"
+
+    static let stockpileColor: Color = Color(stockpileColorAssetName)
+    static let stockpileUIColor: UIColor = UIColor(named: stockpileColorAssetName) ?? .white
     static let defaultPadding: CGFloat = 10.0
 }

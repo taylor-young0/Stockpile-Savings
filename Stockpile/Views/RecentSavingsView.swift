@@ -28,9 +28,8 @@ struct RecentSavingsView: View {
     }
     
     init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(named: "Stockpile")!]
-        
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(named: "Stockpile")!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
     }
         
     // MARK: - Body
