@@ -10,27 +10,27 @@ import CoreData
 import SwiftUI
 
 struct StockpileSavingRow: View {
-    
-    var description: String
-    var savings: Double
-    var unitsPurchased: Int
-    var percentageSavings: Double
+    private let viewModel: StockpileSavingRowViewModel
+
+    init(viewModel: StockpileSavingRowViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         VStack {
             HStack {
-                Text(description)
+                Text(viewModel.description)
                 Spacer()
-                Text("\(savings.asLocalizedCurrency) off")
+                Text("\(viewModel.savings.asLocalizedCurrency) off")
                     .monospacedDigit()
             }
             
             HStack {
-                Text("\(unitsPurchased) unit\(unitsPurchased == 1 ? "" : "s")")
+                Text("\(viewModel.unitsPurchased) unit\(viewModel.unitsPurchased == 1 ? "" : "s")")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
-                Text("\(percentageSavings, specifier: "%.0f")% savings")
+                Text("\(viewModel.percentageSavings, specifier: "%.0f")% savings")
                     .font(.subheadline)
                     .monospacedDigit()
                     .foregroundColor(.gray)
@@ -40,29 +40,25 @@ struct StockpileSavingRow: View {
 }
 
 struct StockpileSavingRow_Previews: PreviewProvider {
-    
-    static var description = "🧀 Organic Meadow cheese"
-    static var savings = 10.0
-    static var unitsPurchased = 5
-    static var percentageSavings = 20.0
-    
+    static let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: "🧀 Organic Meadow cheese", savings: 10.0, unitsPurchased: 5, percentageSavings: 20.0)
+
     static var previews: some View {
-        StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
+        StockpileSavingRow(viewModel: viewModel)
             .previewLayout(.fixed(width: 375, height: 70))
             .padding(.horizontal)
         
-        StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
+        StockpileSavingRow(viewModel: viewModel)
             .preferredColorScheme(.dark)
             .previewLayout(.fixed(width: 375, height: 70))
             .padding(.horizontal)
             
         List {
-            StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
+            StockpileSavingRow(viewModel: viewModel)
         }
         .listStyle(InsetGroupedListStyle())
             
         List {
-            StockpileSavingRow(description: description, savings: savings, unitsPurchased: unitsPurchased, percentageSavings: percentageSavings)
+            StockpileSavingRow(viewModel: viewModel)
         }
         .preferredColorScheme(.dark)
         .listStyle(InsetGroupedListStyle())
