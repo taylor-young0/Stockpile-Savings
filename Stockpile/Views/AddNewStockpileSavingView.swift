@@ -61,23 +61,23 @@ struct AddNewStockpileSavingView: View {
         }
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(
-            leading:
-                Button(
-                    action: { self.showingSheet.toggle() },
-                    label: { Text("Cancel") }
-                )
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") {
+                    self.showingSheet.toggle()
+                }
                 .padding(Constants.defaultPadding)
-                .foregroundColor(Constants.stockpileColor),
-            trailing:
-                Button(
-                    action: { self.addNewSavings() },
-                    label: { Text("Add") }
-                )
+                .foregroundColor(Constants.stockpileColor)
+            }
+            ToolbarItem(placement: .primaryAction) {
+                Button("Add") {
+                    self.addNewSavings()
+                }
                 .padding(Constants.defaultPadding)
                 .foregroundColor(viewModel.addButtonColour)
                 .disabled(!viewModel.isInputValid)
-        )
+            }
+        }
         .alert(
             isPresented: $viewModel.showingError,
             content: {

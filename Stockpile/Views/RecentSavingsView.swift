@@ -73,17 +73,18 @@ struct RecentSavingsView: View {
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle(Text("Stockpile"))
-            .navigationBarItems(
-                trailing: Button(
-                    action: { self.showingSheet.toggle() },
-                    label: {
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        self.showingSheet.toggle()
+                    } label: {
                         Image(systemName:"plus")
                             .font(.title3.bold())
                             .foregroundColor(Constants.stockpileColor)
                             .padding(Constants.defaultPadding)
                     }
-                )
-            )
+                }
+            }
             .sheet(
                 isPresented: $showingSheet,
                 content: {
