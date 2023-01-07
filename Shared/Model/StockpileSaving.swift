@@ -85,7 +85,6 @@ extension StockpileSaving {
     @nonobjc public class func getRecentSavings(fetchLimit num: Int) -> NSFetchRequest<StockpileSaving> {
         let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
         request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
-        request.fetchBatchSize = num
         request.fetchLimit = num
         return request
     }
