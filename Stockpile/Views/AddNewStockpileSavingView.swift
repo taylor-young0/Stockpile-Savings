@@ -197,12 +197,16 @@ struct AddNewStockpileSavingView: View {
 struct AddNewStockpileSavingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AddNewStockpileSavingView(showingSheet: .constant(true))
-                .previewDevice(.init(rawValue: "iPhone 11"))
+            NavigationView {
+                AddNewStockpileSavingView(showingSheet: .constant(true))
+                    .previewDevice(.init(rawValue: "iPhone 11"))
+            }
             
-            AddNewStockpileSavingView(showingSheet: .constant(true))
-                .previewDevice(.init(rawValue: "iPhone 11"))
-                .environment(\.colorScheme, .dark)
+            NavigationView {
+                AddNewStockpileSavingView(showingSheet: .constant(true))
+                    .previewDevice(.init(rawValue: "iPhone 11"))
+                    .environment(\.colorScheme, .dark)
+            }
             
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
