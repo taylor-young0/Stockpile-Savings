@@ -40,7 +40,8 @@ struct StockpileSavingRow: View {
 }
 
 struct StockpileSavingRow_Previews: PreviewProvider {
-    static let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: "🧀 Organic Meadow cheese", savings: 10.0, unitsPurchased: 5, percentageSavings: 20.0)
+    static let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: "🧀 Organic Meadow cheese", savings: 10.0,
+                                                                                    unitsPurchased: 5, percentageSavings: 20.0)
 
     static var previews: some View {
         StockpileSavingRow(viewModel: viewModel)
