@@ -21,7 +21,7 @@ jobs:
           echo Using default scheme: $defaultScheme
       - name: Build
         env:
-          scheme: ${{ defaultScheme }}
+          scheme: ${{ env.defaultScheme }}
           platform: ${{ 'iOS Simulator' }}
         run: |
           filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"
