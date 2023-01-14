@@ -71,4 +71,68 @@ final class AddNewStockpileSavingViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
+    func testInvalidConsumptionIsInvalid() {
+        setUpWithValidSampleData()
+        viewModel.consumptionInput = "a"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.consumptionInput = "0"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.consumptionInput = "-1"
+        XCTAssertFalse(viewModel.isInputValid)
+    }
+
+    func testInvalidRegularPriceIsInvalid() {
+        setUpWithValidSampleData()
+        viewModel.regularPriceInput = "b"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.regularPriceInput = "0"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.regularPriceInput = "-1"
+        XCTAssertFalse(viewModel.isInputValid)
+    }
+
+    func testInvalidSalePriceIsInvalid() {
+        setUpWithValidSampleData()
+        viewModel.salePriceInput = "c"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.salePriceInput = "-1"
+        XCTAssertFalse(viewModel.isInputValid)
+    }
+
+    func testInvalidUnitsPurchasedIsInvalid() {
+        setUpWithValidSampleData()
+        viewModel.unitsPurchasedInput = "d"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.unitsPurchasedInput = "0"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.unitsPurchasedInput = "-1"
+        XCTAssertFalse(viewModel.isInputValid)
+    }
+
+    func testSalePriceGreaterEqualToRegularPrice() {
+        setUpWithValidSampleData()
+        viewModel.salePriceInput = "4.99"
+        viewModel.regularPriceInput = "4.99"
+        XCTAssertFalse(viewModel.isInputValid)
+
+        setUpWithValidSampleData()
+        viewModel.salePriceInput = "5.99"
+        viewModel.regularPriceInput = "4.99"
+        XCTAssertFalse(viewModel.isInputValid)
+    }
+
 }
