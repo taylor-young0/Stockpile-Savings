@@ -21,9 +21,8 @@ jobs:
           echo Using default scheme: $defaultScheme
       - name: Build
         env:
-          scheme: ${{ env.defaultScheme }}
           platform: ${{ 'iOS Simulator' }}
         run: |
           filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=iPhone 13"
+          xcodebuild build-for-testing -scheme "$defaultScheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=iPhone 13"
