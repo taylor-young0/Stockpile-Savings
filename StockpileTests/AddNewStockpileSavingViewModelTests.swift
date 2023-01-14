@@ -8,7 +8,7 @@
 
 import XCTest
 
-final class StockpileTests: XCTestCase {
+final class AddNewStockpileSavingViewModelTests: XCTestCase {
 
     var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
 
