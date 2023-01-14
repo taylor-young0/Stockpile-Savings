@@ -10,22 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct RecentSavingsView: View {
-
-    @FetchRequest(fetchRequest: StockpileSaving.getRecentSavings(fetchLimit: 10)) var recentStockpiles: FetchedResults<StockpileSaving>
-    @FetchRequest(fetchRequest: StockpileSaving.getAllSavings()) var allStockpileSavings: FetchedResults<StockpileSaving>
-    
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @Environment(\.presentationMode) var presentationMode
-    
-    @State var showingSheet = false
-    
-    var lifetimeSavings: String {
-        var savings: Double = 0.0
-        for stockpile in allStockpileSavings {
-            savings += stockpile.savings
-        }
-        return savings.asLocalizedCurrency
-    }
+    @StateObject private var viewModel: RecentSavingsViewModel = RecentSavingsViewModel()
     
     init() {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
@@ -39,46 +24,45 @@ struct RecentSavingsView: View {
             List {
                 Section {
                     HStack {
-                        Text("🤑 Lifetime savings")
+                        Text(viewModel.lifetimeSavingsText)
                         Spacer()
-                        Text(lifetimeSavings)
+                        Text(viewModel.lifetimeSavings)
                     }
                 }
                 
-                Section(header: Text("Recent Savings")) {
-                    if recentStockpiles.count != 0 {
-                        ForEach(recentStockpiles) { stockpile in
+                Section(header: Text(viewModel.recentSavingsHeader)) {
+                    if viewModel.recentStockpiles.count != 0 {
+                        ForEach(viewModel.recentStockpiles) { stockpile in
                             let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: stockpile.productDescription,
                                                                                                      savings: stockpile.savings,
                                                                                                      unitsPurchased: stockpile.unitsPurchased,
                                                                                                      percentageSavings: stockpile.percentageSavings)
                             StockpileSavingRow(viewModel: viewModel)
                         }
-                        .onDelete(perform: { indexSet in
-                            let deleteItem = self.recentStockpiles[indexSet.first!]
-                            self.managedObjectContext.delete(deleteItem)
-                            
-                            do {
-                                try self.managedObjectContext.save()
-                            } catch {
-                                print(error)
-                            }
-                            
-                            WidgetCenter.shared.reloadAllTimelines()
-                        })
+                        .onDelete { indexSet in
+                            viewModel.deleteStockpileSaving(at: indexSet.first)
+                        }
                     } else {
                         EmptySavingsRow()
                     }
                 }
             }
+            .onAppear {
+                viewModel.reloadData()
+            }
+            .onChange(of: viewModel.showingSheet, perform: { newValue in
+                if newValue == false {
+                    viewModel.reloadData()
+                }
+            })
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle(Text("Stockpile"))
+            .navigationBarTitle(Text(viewModel.navigationBarTitle))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
-                        self.showingSheet.toggle()
+                        viewModel.showingSheet.toggle()
                     } label: {
-                        Image(systemName:"plus")
+                        Image(systemName: viewModel.addStockpileSavingIconName)
                             .font(.title3.bold())
                             .foregroundColor(Constants.stockpileColor)
                             .padding(Constants.defaultPadding)
@@ -86,18 +70,20 @@ struct RecentSavingsView: View {
                 }
             }
             .sheet(
-                isPresented: $showingSheet,
+                isPresented: $viewModel.showingSheet,
                 content: {
-                    if recentStockpiles.count > 0 {
-                        AddNewStockpileView(showingSheet: $showingSheet)
-                            .environment(\.managedObjectContext, self.managedObjectContext)
+                    if viewModel.recentStockpiles.count > 0 {
+                        AddNewStockpileView(showingSheet: $viewModel.showingSheet)
                     } else {
                         NavigationView {
-                            AddNewStockpileSavingView(showingSheet: $showingSheet)
+                            AddNewStockpileSavingView(showingSheet: $viewModel.showingSheet)
                         }
                     }
                 }
             )
+            .alert(viewModel.errorText, isPresented: $viewModel.showingErrorAlert) {
+                Button("OK", role: .cancel) { }
+            }
         }
     }
 }
@@ -105,10 +91,10 @@ struct RecentSavingsView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecentSavingsView().environment(\.managedObjectContext, CoreDataStack.shared.persistentContainer.viewContext)
+            RecentSavingsView()
                 .previewDevice(.init(rawValue: "iPhone 11"))
             
-            RecentSavingsView().environment(\.managedObjectContext, CoreDataStack.shared.persistentContainer.viewContext)
+            RecentSavingsView()
                 .environment(\.colorScheme, .dark)
                 .previewDevice(.init(rawValue: "iPhone 11"))
             
