@@ -13,6 +13,7 @@ struct AddNewStockpileSavingView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var showingSheet: Bool
     @StateObject var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
+    @FocusState var focusedField: AddNewStockpileSavingField?
     
     init(showingSheet: Binding<Bool>) {
         _showingSheet = showingSheet
@@ -48,7 +49,7 @@ struct AddNewStockpileSavingView: View {
     }
 
     func dismissKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        focusedField = nil
     }
     
     // MARK: - Body
@@ -77,6 +78,11 @@ struct AddNewStockpileSavingView: View {
                 .foregroundColor(viewModel.addButtonColour)
                 .disabled(!viewModel.isInputValid)
             }
+            ToolbarItem(placement: .keyboard) {
+                Button("Done") {
+                    dismissKeyboard()
+                }
+            }
         }
         .alert(
             isPresented: $viewModel.showingError,
@@ -98,6 +104,7 @@ struct AddNewStockpileSavingView: View {
                 Divider()
                 TextField("Product name", text: $viewModel.productDescription)
                     .multilineTextAlignment(.trailing)
+                    .focused($focusedField, equals: .description)
             }
             .onTapGesture(perform: dismissKeyboard)
             
@@ -113,6 +120,7 @@ struct AddNewStockpileSavingView: View {
                     TextField("units", text: $viewModel.consumptionInput)
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
+                        .focused($focusedField, equals: .consumption)
                     Text("/\(viewModel.consumptionUnit.rawValue)")
                 }
                 .onTapGesture(perform: dismissKeyboard)
@@ -138,6 +146,7 @@ struct AddNewStockpileSavingView: View {
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
+                    .focused($focusedField, equals: .regularPrice)
                 Text(Locale.current.currencyCode ?? "")
             }
             .onTapGesture(perform: dismissKeyboard)
@@ -150,6 +159,7 @@ struct AddNewStockpileSavingView: View {
                     .multilineTextAlignment(.trailing)
                     .scaledToFit()
                     .keyboardType(.decimalPad)
+                    .focused($focusedField, equals: .salePrice)
                 Text(Locale.current.currencyCode ?? "")
             }
             .onTapGesture(perform: dismissKeyboard)
@@ -181,6 +191,7 @@ struct AddNewStockpileSavingView: View {
                 TextField("0", text: $viewModel.unitsPurchasedInput)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numberPad)
+                    .focused($focusedField, equals: .unitsPurchased)
             }
             .onTapGesture(perform: dismissKeyboard)
             
