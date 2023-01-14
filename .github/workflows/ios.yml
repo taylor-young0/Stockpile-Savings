@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build Stockpile scheme using iPhone simulator
+    name: Build and Test default scheme using iPhone simulator
     runs-on: macos-12
 
     steps:
@@ -17,12 +17,15 @@ jobs:
         uses: actions/checkout@v2
       - name: Set Default Scheme to Stockpile
         run: |
-          defaultScheme="Stockpile"
-          echo Using default scheme: $defaultScheme
+          echo Stockpile | cat >default
+          echo Using default scheme: $default
       - name: Build
         env:
+          scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
         run: |
-          filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"
+          # xcrun xctrace returns via stderr, not the expected stdout (see https://developer.apple.com/forums/thread/663959)
+          if [ $scheme = default ]; then scheme=$(cat default); fi
+          filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild build-for-testing -scheme "$defaultScheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=iPhone 13"
+          xcodebuild build-for-testing -scheme "$scheme" -"$filetype_parameter" "$file_to_build" -destination "platform=$platform,name=iPhone 13"
