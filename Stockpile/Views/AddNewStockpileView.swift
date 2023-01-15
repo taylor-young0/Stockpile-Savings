@@ -9,25 +9,11 @@
 import SwiftUI
 
 struct AddNewStockpileView: View {
-    @FetchRequest(fetchRequest: StockpileSaving.getAllSavings()) var allStockpileSavings: FetchedResults<StockpileSaving>
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @Binding var showingSheet: Bool
+    @StateObject private var viewModel: AddNewStockpileViewModel = AddNewStockpileViewModel()
+    @Binding private var showingSheet: Bool
 
-    var uniqueSavings: [StockpileSaving] {
-        // if running in preview show sample savings, see https://stackoverflow.com/a/61741858
-        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
-            return StockpileSaving.samples
-        } else {
-            var uniqueDescriptions: [String] = []
-            var uniqueSavings: [StockpileSaving] = []
-            for saving in allStockpileSavings {
-                if !uniqueDescriptions.contains(saving.productDescription) {
-                    uniqueSavings.append(saving)
-                    uniqueDescriptions.append(saving.productDescription)
-                }
-            }
-            return uniqueSavings
-        }
+    init(showingSheet: Binding<Bool>) {
+        self._showingSheet = showingSheet
     }
 
     // MARK: - Body
@@ -42,7 +28,7 @@ struct AddNewStockpileView: View {
                 }
                 
                 Section(header: Text("Create from template")) {
-                    ForEach(uniqueSavings, id: \.self) { stockpileSaving in
+                    ForEach(viewModel.uniqueSavings, id: \.self) { stockpileSaving in
                         NavigationLink(destination: AddNewStockpileSavingView(fromTemplate: stockpileSaving, showingSheet: $showingSheet)) {
                             Text(stockpileSaving.productDescription)
                         }
@@ -59,6 +45,12 @@ struct AddNewStockpileView: View {
                     .padding(Constants.defaultPadding)
                     .foregroundColor(Constants.stockpileColor)
                 }
+            }
+            .alert(viewModel.errorText, isPresented: $viewModel.showingErrorAlert) {
+                Button("OK", role: .cancel) { }
+            }
+            .onAppear {
+                viewModel.reloadData()
             }
         }
     }
