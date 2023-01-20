@@ -108,7 +108,7 @@ struct WidgetsEntryView : View {
             
             Spacer()
             
-            Text("\(entry.stockpiles.count) total savings")
+            Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
                 .foregroundColor(.gray)
         }
         .padding()
