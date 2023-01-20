@@ -33,11 +33,7 @@ struct RecentSavingsView: View {
                 Section(header: Text(viewModel.recentSavingsHeader)) {
                     if viewModel.recentStockpiles.count != 0 {
                         ForEach(viewModel.recentStockpiles) { stockpile in
-                            let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: stockpile.productDescription,
-                                                                                                     savings: stockpile.savings,
-                                                                                                     unitsPurchased: stockpile.unitsPurchased,
-                                                                                                     percentageSavings: stockpile.percentageSavings)
-                            StockpileSavingRow(viewModel: viewModel)
+                            StockpileSavingRow(stockpile: stockpile)
                         }
                         .onDelete { indexSet in
                             viewModel.deleteStockpileSaving(at: indexSet.first)
