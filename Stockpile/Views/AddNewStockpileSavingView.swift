@@ -117,11 +117,13 @@ struct AddNewStockpileSavingView: View {
                 HStack {
                     Text("Consumption")
                     Divider()
-                    TextField("units", text: $viewModel.consumptionInput)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.decimalPad)
-                        .focused($focusedField, equals: .consumption)
-                    Text("/\(viewModel.consumptionUnit.rawValue)")
+                    HStack(spacing: 2) {
+                        TextField("units", text: $viewModel.consumptionInput)
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                            .focused($focusedField, equals: .consumption)
+                        Text("/\(viewModel.consumptionUnit.rawValue)")
+                    }
                 }
                 .onTapGesture(perform: dismissKeyboard)
                 
