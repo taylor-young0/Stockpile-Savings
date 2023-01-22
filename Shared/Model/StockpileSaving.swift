@@ -32,18 +32,3 @@ public class StockpileSaving: NSManagedObject, Identifiable {
         return (((regularPrice - salePrice) / regularPrice) * 100)
     }
 }
-
-extension StockpileSaving {
-    @nonobjc public class func getRecentSavings(fetchLimit num: Int = 10) -> NSFetchRequest<StockpileSaving> {
-        let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
-        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
-        request.fetchLimit = num
-        return request
-    }
-    
-    @nonobjc public class func getAllSavings() -> NSFetchRequest<StockpileSaving> {
-        let request = NSFetchRequest<StockpileSaving>(entityName: "StockpileSaving")
-        request.sortDescriptors = [NSSortDescriptor(key: "dateComputed", ascending: false)]
-        return request
-    }
-}
