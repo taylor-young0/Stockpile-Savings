@@ -46,6 +46,7 @@
 		EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */; };
 		EFED9E5D297DFD600085D90E /* StockpileSaving+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */; };
 		EFED9E5F297E04820085D90E /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5E297E04820085D90E /* String+Ext.swift */; };
+		EFED9E60297E06E00085D90E /* StockpileSaving+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -465,6 +466,7 @@
 			files = (
 				EF94DC4729109BA400F8C713 /* AddNewStockpileSavingViewModel.swift in Sources */,
 				EF94DC4829109DFA00F8C713 /* ConsumptionUnit.swift in Sources */,
+				EFED9E60297E06E00085D90E /* StockpileSaving+FetchRequest.swift in Sources */,
 				EF56C815296A5C6200EAE3A3 /* StockpileSaving+Samples.swift in Sources */,
 				EF94DC4129109B3D00F8C713 /* AddNewStockpileSavingViewModelTests.swift in Sources */,
 				EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */,
