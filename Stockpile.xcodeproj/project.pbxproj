@@ -45,6 +45,7 @@
 		EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838E32905B325009A7AC5 /* Constants.swift */; };
 		EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */; };
 		EFED9E5D297DFD600085D90E /* StockpileSaving+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */; };
+		EFED9E5F297E04820085D90E /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5E297E04820085D90E /* String+Ext.swift */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -122,6 +123,7 @@
 		EFD838E32905B325009A7AC5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileSavingViewModel.swift; sourceTree = "<group>"; };
 		EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockpileSaving+FetchRequest.swift"; sourceTree = "<group>"; };
+		EFED9E5E297E04820085D90E /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		EFF1BBE2248459D1003D5FF5 /* Stockpile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockpile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		EFD838B626E2662400163F9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EFED9E5E297E04820085D90E /* String+Ext.swift */,
 				EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */,
 				EFFB682729635C4800D2A704 /* StockpileSavingRowViewModel.swift */,
 				EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */,
@@ -494,6 +497,7 @@
 				EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFFB682829635C4800D2A704 /* StockpileSavingRowViewModel.swift in Sources */,
+				EFED9E5F297E04820085D90E /* String+Ext.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
 				EFD838E42905B325009A7AC5 /* Constants.swift in Sources */,
 				EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */,

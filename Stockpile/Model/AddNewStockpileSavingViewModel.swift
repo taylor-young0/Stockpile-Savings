@@ -52,7 +52,7 @@ class AddNewStockpileSavingViewModel: ObservableObject {
     func setupSubscribers() {
         $consumptionInput
             .map {
-                Double($0) ?? -1
+                $0.doubleValue ?? -1
             }
             .removeDuplicates()
             .sink(receiveValue: { [unowned self] consumption in
@@ -67,7 +67,7 @@ class AddNewStockpileSavingViewModel: ObservableObject {
 
         $regularPriceInput
             .map {
-                Double($0) ?? -1
+                $0.doubleValue ?? -1
             }
             .removeDuplicates()
             .sink(receiveValue: { [unowned self] regularPrice in
@@ -82,7 +82,7 @@ class AddNewStockpileSavingViewModel: ObservableObject {
 
         $salePriceInput
             .map {
-                Double($0) ?? -1
+                $0.doubleValue ?? -1
             }
             .removeDuplicates()
             .sink(receiveValue: { [unowned self] salePrice in
