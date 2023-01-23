@@ -47,6 +47,7 @@
 		EFED9E5D297DFD600085D90E /* StockpileSaving+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */; };
 		EFED9E5F297E04820085D90E /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5E297E04820085D90E /* String+Ext.swift */; };
 		EFED9E60297E06E00085D90E /* StockpileSaving+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */; };
+		EFED9E61297E07160085D90E /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFED9E5E297E04820085D90E /* String+Ext.swift */; };
 		EFF1BBE6248459D1003D5FF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE5248459D1003D5FF5 /* AppDelegate.swift */; };
 		EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE7248459D1003D5FF5 /* SceneDelegate.swift */; };
 		EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
@@ -201,6 +202,7 @@
 				EFD838E32905B325009A7AC5 /* Constants.swift */,
 				EF9996CF27692C9E00254545 /* CoreDataStack.swift */,
 				EF7ADB8C2905E454004946C4 /* Double+Ext.swift */,
+				EFED9E5E297E04820085D90E /* String+Ext.swift */,
 				EFAD7A19276A3AE3004502CD /* Model */,
 			);
 			path = Shared;
@@ -253,7 +255,6 @@
 		EFD838B626E2662400163F9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EFED9E5E297E04820085D90E /* String+Ext.swift */,
 				EFDA073F28FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift */,
 				EFFB682729635C4800D2A704 /* StockpileSavingRowViewModel.swift */,
 				EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */,
@@ -472,6 +473,7 @@
 				EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */,
 				EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */,
 				EFB7772F2974BFE100198090 /* AddNewStockpileViewModelTests.swift in Sources */,
+				EFED9E61297E07160085D90E /* String+Ext.swift in Sources */,
 				EF94DC4929109E3200F8C713 /* Constants.swift in Sources */,
 				EF94DC4A29109E3800F8C713 /* StockpileSaving.swift in Sources */,
 				EF56C811296A5BAE00EAE3A3 /* CoreDataStack.swift in Sources */,
