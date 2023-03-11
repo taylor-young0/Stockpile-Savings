@@ -78,7 +78,8 @@ struct AddNewStockpileSavingView: View {
                 .foregroundColor(viewModel.addButtonColour)
                 .disabled(!viewModel.isInputValid)
             }
-            ToolbarItem(placement: .keyboard) {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
                 Button("Done") {
                     dismissKeyboard()
                 }
