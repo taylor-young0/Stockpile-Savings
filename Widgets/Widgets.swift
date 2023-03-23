@@ -161,7 +161,7 @@ struct WidgetsEntryView : View {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
                     .foregroundColor(Constants.stockpileColor)
-                Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                Text(entry.lifetimeSavings.asLocalizedCurrency)
                     .font(.title.bold())
                     .foregroundColor(Constants.stockpileColor)
             }
@@ -190,7 +190,7 @@ struct WidgetsEntryView : View {
         return HStack {
             Text(savings.name)
             Spacer()
-            Text(savings.savings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+            Text(savings.savings.asLocalizedCurrency)
                 .bold()
                 .monospacedDigit()
         }
