@@ -15,6 +15,7 @@ struct HomeView: View {
                 headerView
                     .padding(.horizontal)
                 statsSection
+                recentPurchasesSection
             }
         }
         .background(Color.gray.opacity(0.3))
@@ -51,6 +52,44 @@ struct HomeView: View {
                 }
             }
         }
+    }
+
+    var recentPurchasesSection: some View {
+        VStack(alignment: .leading) {
+            Text("Recent savings")
+                .font(.headline)
+                .padding(.horizontal)
+
+            ZStack {
+                Color.white
+
+                VStack(alignment: .leading, spacing: 0) {
+                    RecentSavingsRow(emoji: "🍌", name: "Bananas", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                    RecentSavingsRow(emoji: "🥑", name: "Avocados", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                    RecentSavingsRow(emoji: "🥐", name: "Croissants", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                    RecentSavingsRow(emoji: "🍇", name: "Grapes", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                    RecentSavingsRow(emoji: "🥨", name: "Pretzels", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                    viewAllSavingsRow
+                }
+            }
+            .cornerRadius(10)
+        }
+    }
+
+    var viewAllSavingsRow: some View {
+        HStack {
+            Text("View all savings")
+                .font(.caption)
+                .fontWeight(.medium)
+
+            Spacer(minLength: 0)
+
+            Image(systemName: "arrow.right.square.fill")
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.white, Color("Stockpile"))
+                .font(.title3)
+        }
+        .padding()
     }
 }
 
