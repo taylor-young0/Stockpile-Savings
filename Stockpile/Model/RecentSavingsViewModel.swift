@@ -29,6 +29,37 @@ class RecentSavingsViewModel: ObservableObject {
         return savings.asLocalizedCurrency
     }
 
+    var firstSavingsDate: Date? {
+        return allStockpileSavings.last?.dateComputed ?? nil
+    }
+
+    var averagePercentageSavings: Int? {
+        guard allStockpileSavings.count != 0 else {
+            return nil
+        }
+
+        var totalPercentageSavings: Double = 0.0
+        for stockpile in allStockpileSavings {
+            totalPercentageSavings += stockpile.percentageSavings
+        }
+
+        return Int(totalPercentageSavings) / allStockpileSavings.count
+    }
+
+    var percentageSavingsRange: (Int, Int)? {
+        let sortedSavings: [Int] = allStockpileSavings.sorted {
+            $0.percentageSavings < $1.percentageSavings
+        }.map {
+            Int($0.percentageSavings)
+        }
+
+        if let leastSavings = sortedSavings.first, let mostSavings = sortedSavings.last, leastSavings != mostSavings {
+            return (leastSavings, mostSavings)
+        }
+
+        return nil
+    }
+
     var recentStockpiles: [StockpileSaving] {
         return Array(allStockpileSavings.prefix(10))
     }

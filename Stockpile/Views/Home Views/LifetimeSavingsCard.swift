@@ -9,8 +9,11 @@
 import SwiftUI
 
 struct LifetimeSavingsCard: View {
+    var lifetimeSavings: String
+    var firstSavingsDate: Date?
+
     var body: some View {
-        BaseStatisticsCard(color: .black) {
+        BaseStatisticsCard(color: .gray) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("CAD")
                     .font(.headline)
@@ -18,18 +21,20 @@ struct LifetimeSavingsCard: View {
                 VStack(alignment: .leading) {
                     Text("Lifetime savings")
                         .font(.caption)
-                    Text("$287.19")
+                    Text(lifetimeSavings)
                         .font(.title)
                 }
                 .padding(.vertical)
 
                 Spacer()
 
-                VStack(alignment: .leading) {
-                    Text("Since")
-                        .font(.caption)
-                    Text("January 10th, 2021")
-                        .font(.caption2)
+                if let firstSavingsDate {
+                    VStack(alignment: .leading) {
+                        Text("Since")
+                            .font(.caption)
+                        Text(firstSavingsDate, style: .date)
+                            .font(.caption2)
+                    }
                 }
             }
             .padding()
@@ -42,7 +47,7 @@ struct LifetimeSavingsCard: View {
 struct LifetimeSavingsCard_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            LifetimeSavingsCard()
+            LifetimeSavingsCard(lifetimeSavings: "$287.19", firstSavingsDate: Date())
         }
     }
 }

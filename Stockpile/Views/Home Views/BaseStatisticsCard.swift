@@ -27,7 +27,7 @@ struct BaseStatisticsCard<Content: View>: View {
 struct BaseStatisticCard_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            LifetimeSavingsCard()
+            LifetimeSavingsCard(lifetimeSavings: "$287.19", firstSavingsDate: Date())
         }
     }
 }

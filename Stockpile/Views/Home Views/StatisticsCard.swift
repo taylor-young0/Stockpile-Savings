@@ -18,7 +18,7 @@ struct StatisticsCard: View {
     var body: some View {
         switch type {
         case .lifetimeSavings:
-            LifetimeSavingsCard()
+            LifetimeSavingsCard(lifetimeSavings: "$287.19", firstSavingsDate: Date())
         case .averagePercentageSavings:
             PercentageSavingsCard()
         }

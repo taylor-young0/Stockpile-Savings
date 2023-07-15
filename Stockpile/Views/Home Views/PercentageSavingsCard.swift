@@ -9,24 +9,37 @@
 import SwiftUI
 
 struct PercentageSavingsCard: View {
+    var averagePercentageSavings: Int?
+    var savingsRange: (Int, Int)?
+
+    private var averagePercentageSavingsText: String {
+        if let averagePercentageSavings {
+            return "\(averagePercentageSavings)%"
+        } else {
+            return "--"
+        }
+    }
+
     var body: some View {
         BaseStatisticsCard(color: Color("Stockpile")) {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading) {
                     Text("Average percentage savings")
                         .font(.caption)
-                    Text("30%")
+                    Text(averagePercentageSavingsText)
                         .font(.title)
                 }
                 .padding(.bottom)
 
                 Spacer()
 
-                VStack(alignment: .leading) {
-                    Text("Range")
-                        .font(.caption)
-                    Text("10% - 65%")
-                        .font(.caption2)
+                if let savingsRange {
+                    VStack(alignment: .leading) {
+                        Text("Range")
+                            .font(.caption)
+                        Text("\(savingsRange.0)% - \(savingsRange.1)%")
+                            .font(.caption2)
+                    }
                 }
             }
             .padding()
@@ -39,7 +52,7 @@ struct PercentageSavingsCard: View {
 struct PercentageSavingsCard_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            PercentageSavingsCard()
+            PercentageSavingsCard(averagePercentageSavings: 25, savingsRange: (20, 50))
         }
     }
 }

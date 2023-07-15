@@ -18,18 +18,29 @@ struct RecentSavingsView: View {
     }
         
     // MARK: - Body
-    
+
+    var statisticsCardsView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                LifetimeSavingsCard(lifetimeSavings: viewModel.lifetimeSavings, firstSavingsDate: viewModel.firstSavingsDate)
+                PercentageSavingsCard(averagePercentageSavings: viewModel.averagePercentageSavings, savingsRange: viewModel.percentageSavingsRange)
+            }
+            .padding(.horizontal, 20)
+        }
+        .listRowInsets(EdgeInsets())
+        .padding(.horizontal, -20)
+    }
+
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    HStack {
-                        Text(viewModel.lifetimeSavingsText)
-                        Spacer()
-                        Text(viewModel.lifetimeSavings)
-                    }
+                    EmptyView()
+                } footer: {
+                    statisticsCardsView
+                        .textCase(.none)
                 }
-                
+
                 Section(header: Text(viewModel.recentSavingsHeader)) {
                     if viewModel.recentStockpiles.count != 0 {
                         ForEach(viewModel.recentStockpiles) { stockpile in
