@@ -38,6 +38,7 @@
 		EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */; };
 		EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */; };
 		EF9EE7032A5B279A0071221A /* RecentSavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */; };
+		EF9EE7062A6234E90071221A /* AllSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7052A6234E90071221A /* AllSavingsView.swift */; };
 		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
@@ -125,6 +126,7 @@
 		EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCard.swift; sourceTree = "<group>"; };
 		EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsRow.swift; sourceTree = "<group>"; };
+		EF9EE7052A6234E90071221A /* AllSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSavingsView.swift; sourceTree = "<group>"; };
 		EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFB7772C2974BB2E00198090 /* AddNewStockpileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileViewModel.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */,
 				EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */,
 				EF9EE6F72A59D28C0071221A /* HomeView.swift */,
+				EF9EE7052A6234E90071221A /* AllSavingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				EF9EE6F82A59D28C0071221A /* HomeView.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
+				EF9EE7062A6234E90071221A /* AllSavingsView.swift in Sources */,
 				EF220DED29724D2E0092CA18 /* AddNewStockpileSavingField.swift in Sources */,
 				EF9EE6FB2A5A4B350071221A /* BaseStatisticsCard.swift in Sources */,
 				EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */,
