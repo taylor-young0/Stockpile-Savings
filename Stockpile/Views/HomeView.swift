@@ -10,30 +10,25 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                headerView
-                    .padding(.horizontal)
-                statsSection
-                recentPurchasesSection
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    statsSection
+                    recentPurchasesSection
+                }
             }
-        }
-        .background(Color.gray.opacity(0.3))
-    }
+            .background(Color.gray.opacity(0.3))
+            .navigationTitle(Text("Stockpile"))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
 
-    var headerView: some View {
-        HStack(alignment: .firstTextBaseline) {
-            Text("Stockpile")
-                .font(.title3.bold())
-
-            Spacer(minLength: 0)
-
-            Button {
-
-            } label: {
-                Image(systemName: "plus.circle.fill")
-                    .foregroundColor(Color("Stockpile"))
-                    .font(.title)
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(Color("Stockpile"))
+                            .font(.title3)
+                    }
+                }
             }
         }
     }
