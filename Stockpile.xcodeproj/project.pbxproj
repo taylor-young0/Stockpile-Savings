@@ -32,14 +32,11 @@
 		EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
-		EF9EE6F82A59D28C0071221A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6F72A59D28C0071221A /* HomeView.swift */; };
 		EF9EE6FB2A5A4B350071221A /* BaseStatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FA2A5A4B350071221A /* BaseStatisticsCard.swift */; };
 		EF9EE6FD2A5A4BA30071221A /* PercentageSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */; };
 		EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */; };
 		EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */; };
 		EF9EE7032A5B279A0071221A /* RecentSavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */; };
-		EF9EE7062A6234E90071221A /* AllSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7052A6234E90071221A /* AllSavingsView.swift */; };
-		EF9EE7082A6242E30071221A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7072A6242E30071221A /* HomeViewModel.swift */; };
 		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
@@ -121,14 +118,11 @@
 		EF9996CF27692C9E00254545 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EF9996D2276931E300254545 /* Stockpile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stockpile.entitlements; sourceTree = "<group>"; };
 		EF9996D32769322400254545 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
-		EF9EE6F72A59D28C0071221A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EF9EE6FA2A5A4B350071221A /* BaseStatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStatisticsCard.swift; sourceTree = "<group>"; };
 		EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCard.swift; sourceTree = "<group>"; };
 		EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsRow.swift; sourceTree = "<group>"; };
-		EF9EE7052A6234E90071221A /* AllSavingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSavingsView.swift; sourceTree = "<group>"; };
-		EF9EE7072A6242E30071221A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFB7772C2974BB2E00198090 /* AddNewStockpileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileViewModel.swift; sourceTree = "<group>"; };
@@ -277,8 +271,6 @@
 				EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */,
 				EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */,
 				EF8BCC3F26EF9943007AED38 /* AddNewStockpileView.swift */,
-				EF9EE6F72A59D28C0071221A /* HomeView.swift */,
-				EF9EE7052A6234E90071221A /* AllSavingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,7 +283,6 @@
 				EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */,
 				EF220DEC29724D2E0092CA18 /* AddNewStockpileSavingField.swift */,
 				EFB7772C2974BB2E00198090 /* AddNewStockpileViewModel.swift */,
-				EF9EE7072A6242E30071221A /* HomeViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -525,15 +516,12 @@
 				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */,
 				EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */,
-				EF9EE6F82A59D28C0071221A /* HomeView.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
-				EF9EE7062A6234E90071221A /* AllSavingsView.swift in Sources */,
 				EF220DED29724D2E0092CA18 /* AddNewStockpileSavingField.swift in Sources */,
 				EF9EE6FB2A5A4B350071221A /* BaseStatisticsCard.swift in Sources */,
 				EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */,
 				EFB7772D2974BB2E00198090 /* AddNewStockpileViewModel.swift in Sources */,
-				EF9EE7082A6242E30071221A /* HomeViewModel.swift in Sources */,
 				EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */,
 				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
 				EF56C816296A5DE100EAE3A3 /* StockpileSaving+Samples.swift in Sources */,
