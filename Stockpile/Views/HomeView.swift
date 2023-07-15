@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @StateObject private var viewModel: HomeViewModel = HomeViewModel()
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -59,12 +61,14 @@ struct HomeView: View {
                 Color.white
 
                 VStack(alignment: .leading, spacing: 0) {
-                    RecentSavingsRow(emoji: "🍌", name: "Bananas", units: 2, savingsAmount: 4, savingsPercentage: 25)
-                    RecentSavingsRow(emoji: "🥑", name: "Avocados", units: 2, savingsAmount: 4, savingsPercentage: 25)
-                    RecentSavingsRow(emoji: "🥐", name: "Croissants", units: 2, savingsAmount: 4, savingsPercentage: 25)
-                    RecentSavingsRow(emoji: "🍇", name: "Grapes", units: 2, savingsAmount: 4, savingsPercentage: 25)
-                    RecentSavingsRow(emoji: "🥨", name: "Pretzels", units: 2, savingsAmount: 4, savingsPercentage: 25)
-                    viewAllSavingsRow
+                    if viewModel.allStockpileSavings.isEmpty {
+                        noSavingsYetRow
+                    } else {
+                        ForEach(viewModel.allStockpileSavings) { stockpile in
+                            RecentSavingsRow(emoji: "🍌", name: "Bananas", units: 2, savingsAmount: 4, savingsPercentage: 25)
+                        }
+                        viewAllSavingsRow
+                    }
                 }
             }
             .cornerRadius(10)
@@ -83,6 +87,17 @@ struct HomeView: View {
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.white, Color("Stockpile"))
                 .font(.title3)
+        }
+        .padding()
+    }
+
+    var noSavingsYetRow: some View {
+        VStack(alignment: .leading) {
+            Text("No savings added yet!")
+                .font(.caption)
+                .fontWeight(.medium)
+            Text("Add savings by completing a new calculation by pressing the + icon in the top right")
+                .font(.caption2)
         }
         .padding()
     }
