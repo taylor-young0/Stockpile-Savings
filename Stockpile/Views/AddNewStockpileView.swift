@@ -37,7 +37,8 @@ struct AddNewStockpileView: View {
                 }
             }
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle(Text("Add Savings"), displayMode: .inline)
+            .navigationTitle(Text("Add Savings"))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {

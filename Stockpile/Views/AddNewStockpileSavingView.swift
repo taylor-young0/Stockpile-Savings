@@ -60,6 +60,8 @@ struct AddNewStockpileSavingView: View {
             pricingInformation
             stockpileInformation
         }
+        .navigationTitle(Text("New Savings"))
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
