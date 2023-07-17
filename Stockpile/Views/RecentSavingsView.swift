@@ -40,6 +40,7 @@ struct RecentSavingsView: View {
                 } footer: {
                     statisticsCardsView
                         .textCase(.none)
+                        .padding(.top)
                 }
 
                 Section(header: Text(viewModel.recentSavingsHeader)) {
