@@ -28,15 +28,6 @@ struct EmptySavingsRow: View {
 
 struct EmptySavingsRow_Previews: PreviewProvider {
     static var previews: some View {
-        EmptySavingsRow()
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-        
-        EmptySavingsRow()
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-            
         List {
             EmptySavingsRow()
         }

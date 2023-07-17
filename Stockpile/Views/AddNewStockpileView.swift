@@ -59,8 +59,11 @@ struct AddNewStockpileView: View {
 
 struct AddNewStockpileView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewStockpileView(savings: [
-            MockStockpileSaving(productDescription: "🍌 Bananas", regularPrice: 4, salePrice: 2, unitsPurchased: 2)
-        ], showingSheet: .constant(true))
+        Group {
+            AddNewStockpileView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+
+            AddNewStockpileView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+                .preferredColorScheme(.dark)
+        }
     }
 }

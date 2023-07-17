@@ -45,29 +45,16 @@ struct StockpileSavingRow: View {
 }
 
 struct StockpileSavingRow_Previews: PreviewProvider {
-    static let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: "🧀 Organic Meadow cheese", savings: 10.0,
-                                                                                    unitsPurchased: 5, percentageSavings: 20.0)
-
     static var previews: some View {
-        StockpileSavingRow(viewModel: viewModel)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-        
-        StockpileSavingRow(viewModel: viewModel)
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-            
         List {
-            StockpileSavingRow(viewModel: viewModel)
+            StockpileSavingRow(stockpile: MockStockpileSaving.samples[0])
         }
         .listStyle(InsetGroupedListStyle())
             
         List {
-            StockpileSavingRow(viewModel: viewModel)
+            StockpileSavingRow(stockpile: MockStockpileSaving.samples[0])
         }
         .preferredColorScheme(.dark)
         .listStyle(InsetGroupedListStyle())
     }
-    
 }

@@ -99,18 +99,14 @@ struct RecentSavingsView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecentSavingsView(savings: [
-                MockStockpileSaving(productDescription: "🍌 Bananas", regularPrice: 2, salePrice: 1, unitsPurchased: 2),
-                MockStockpileSaving(productDescription: "🥑 Avocados", regularPrice: 2, salePrice: 1, unitsPurchased: 2)
-            ])
-            .previewDevice(.init(rawValue: "iPhone 11"))
-            
+            RecentSavingsView(savings: MockStockpileSaving.samples)
+
+            RecentSavingsView(savings: Array(MockStockpileSaving.samples.prefix(through: 2)))
+
             RecentSavingsView()
+
+            RecentSavingsView(savings: MockStockpileSaving.samples)
                 .environment(\.colorScheme, .dark)
-                .previewDevice(.init(rawValue: "iPhone 11"))
-            
-            EmptySavingsRow().previewLayout(.fixed(width: 375, height: 70))
-                .padding(.horizontal)
         }
     }
 }

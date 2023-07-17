@@ -213,28 +213,12 @@ struct AddNewStockpileSavingView_Previews: PreviewProvider {
         Group {
             NavigationView {
                 AddNewStockpileSavingView(showingSheet: .constant(true))
-                    .previewDevice(.init(rawValue: "iPhone 11"))
             }
             
             NavigationView {
                 AddNewStockpileSavingView(showingSheet: .constant(true))
-                    .previewDevice(.init(rawValue: "iPhone 11"))
                     .environment(\.colorScheme, .dark)
             }
-            
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text("Lifetime savings".uppercased())
-                        .fontWeight(.bold)
-                        .foregroundColor(Constants.stockpileColor)
-                    Text(50, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                        .font(.title.bold())
-                        .foregroundColor(Constants.stockpileColor)
-                }
-                
-                Spacer()
-            }
-            .redacted(reason: .placeholder)
         }
     }
 }
