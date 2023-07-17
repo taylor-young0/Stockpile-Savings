@@ -14,8 +14,6 @@
 		EF56C811296A5BAE00EAE3A3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF56C812296A5BBC00EAE3A3 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
 		EF56C813296A5BC100EAE3A3 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
-		EF56C815296A5C6200EAE3A3 /* StockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C814296A5C6200EAE3A3 /* StockpileSaving+Samples.swift */; };
-		EF56C816296A5DE100EAE3A3 /* StockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C814296A5C6200EAE3A3 /* StockpileSaving+Samples.swift */; };
 		EF5FC3C427618544006F1BF0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C327618544006F1BF0 /* WidgetKit.framework */; };
 		EF5FC3C627618544006F1BF0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C527618544006F1BF0 /* SwiftUI.framework */; };
 		EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FC3C827618544006F1BF0 /* Widgets.swift */; };
@@ -43,6 +41,9 @@
 		EFAD3AF72A64BC2400E73082 /* StockpileSavingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */; };
 		EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */; };
 		EFAD3AF92A64BC2400E73082 /* StockpileSavingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */; };
+		EFAD3AFB2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */; };
+		EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */; };
+		EFAD3AFD2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */; };
 		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
@@ -108,7 +109,6 @@
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
 		EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsViewModel.swift; sourceTree = "<group>"; };
 		EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentSavingsViewModelTests.swift; sourceTree = "<group>"; };
-		EF56C814296A5C6200EAE3A3 /* StockpileSaving+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StockpileSaving+Samples.swift"; sourceTree = "<group>"; };
 		EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5FC3C327618544006F1BF0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EF5FC3C527618544006F1BF0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -131,6 +131,7 @@
 		EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsRow.swift; sourceTree = "<group>"; };
 		EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSavingType.swift; sourceTree = "<group>"; };
+		EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockStockpileSaving+Samples.swift"; sourceTree = "<group>"; };
 		EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFB7772C2974BB2E00198090 /* AddNewStockpileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileViewModel.swift; sourceTree = "<group>"; };
@@ -243,9 +244,9 @@
 			children = (
 				EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */,
 				EFAD7A24276A4310004502CD /* StockpileSaving.swift */,
-				EF56C814296A5C6200EAE3A3 /* StockpileSaving+Samples.swift */,
 				EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */,
 				EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */,
+				EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */,
 				EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */,
 			);
 			path = Model;
@@ -491,6 +492,7 @@
 				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
+				EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */,
 			);
@@ -502,8 +504,8 @@
 			files = (
 				EF94DC4729109BA400F8C713 /* AddNewStockpileSavingViewModel.swift in Sources */,
 				EF94DC4829109DFA00F8C713 /* ConsumptionUnit.swift in Sources */,
+				EFAD3AFD2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EFED9E60297E06E00085D90E /* StockpileSaving+FetchRequest.swift in Sources */,
-				EF56C815296A5C6200EAE3A3 /* StockpileSaving+Samples.swift in Sources */,
 				EF94DC4129109B3D00F8C713 /* AddNewStockpileSavingViewModelTests.swift in Sources */,
 				EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */,
 				EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */,
@@ -529,6 +531,7 @@
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
 				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFDA074028FAF52B00AE3C5A /* AddNewStockpileSavingViewModel.swift in Sources */,
+				EFAD3AFB2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
@@ -538,7 +541,6 @@
 				EFB7772D2974BB2E00198090 /* AddNewStockpileViewModel.swift in Sources */,
 				EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */,
 				EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */,
-				EF56C816296A5DE100EAE3A3 /* StockpileSaving+Samples.swift in Sources */,
 				EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */,
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFFB682829635C4800D2A704 /* StockpileSavingRowViewModel.swift in Sources */,
