@@ -19,7 +19,7 @@ struct AddNewStockpileSavingView: View {
         _showingSheet = showingSheet
     }
     
-    init(fromTemplate stockpile: StockpileSaving, showingSheet: Binding<Bool>) {
+    init(fromTemplate stockpile: any StockpileSavingType, showingSheet: Binding<Bool>) {
         // Format for the user's locale, as some locales use commas as the decimal separator
         let consumption: String = stockpile.consumption.asLocalizedDecimal
         let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit) ?? .Day

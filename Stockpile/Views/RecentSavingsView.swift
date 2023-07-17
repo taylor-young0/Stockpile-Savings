@@ -10,11 +10,12 @@ import SwiftUI
 import WidgetKit
 
 struct RecentSavingsView: View {
-    @StateObject private var viewModel: RecentSavingsViewModel = RecentSavingsViewModel()
+    @StateObject private var viewModel: RecentSavingsViewModel
     
-    init() {
+    init(savings: [any StockpileSavingType] = []) {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
+        _viewModel = StateObject(wrappedValue: RecentSavingsViewModel(savings: savings))
     }
         
     // MARK: - Body
@@ -43,7 +44,7 @@ struct RecentSavingsView: View {
 
                 Section(header: Text(viewModel.recentSavingsHeader)) {
                     if viewModel.recentStockpiles.count != 0 {
-                        ForEach(viewModel.recentStockpiles) { stockpile in
+                        ForEach(viewModel.recentStockpiles, id: \.id) { stockpile in
                             StockpileSavingRow(stockpile: stockpile)
                         }
                         .onDelete { indexSet in
@@ -98,8 +99,11 @@ struct RecentSavingsView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecentSavingsView()
-                .previewDevice(.init(rawValue: "iPhone 11"))
+            RecentSavingsView(savings: [
+                MockStockpileSaving(productDescription: "🍌 Bananas", regularPrice: 2, salePrice: 1, unitsPurchased: 2),
+                MockStockpileSaving(productDescription: "🥑 Avocados", regularPrice: 2, salePrice: 1, unitsPurchased: 2)
+            ])
+            .previewDevice(.init(rawValue: "iPhone 11"))
             
             RecentSavingsView()
                 .environment(\.colorScheme, .dark)

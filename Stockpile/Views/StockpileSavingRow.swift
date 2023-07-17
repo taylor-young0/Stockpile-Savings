@@ -16,7 +16,7 @@ struct StockpileSavingRow: View {
         self.viewModel = viewModel
     }
 
-    init(stockpile: StockpileSaving) {
+    init(stockpile: any StockpileSavingType) {
         self.viewModel = StockpileSavingRowViewModel(description: stockpile.productDescription, savings: stockpile.savings,
                                                      unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
     }

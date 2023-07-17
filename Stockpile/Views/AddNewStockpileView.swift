@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct AddNewStockpileView: View {
-    @StateObject private var viewModel: AddNewStockpileViewModel = AddNewStockpileViewModel()
+    @StateObject private var viewModel: AddNewStockpileViewModel
     @Binding private var showingSheet: Bool
 
-    init(showingSheet: Binding<Bool>) {
+    init(savings: [any StockpileSavingType] = [], showingSheet: Binding<Bool>) {
+        self._viewModel = StateObject(wrappedValue: AddNewStockpileViewModel(savings: savings))
         self._showingSheet = showingSheet
     }
 
@@ -28,7 +29,7 @@ struct AddNewStockpileView: View {
                 }
                 
                 Section(header: Text("Create from template")) {
-                    ForEach(viewModel.uniqueSavings, id: \.self) { stockpileSaving in
+                    ForEach(viewModel.uniqueSavings, id: \.id) { stockpileSaving in
                         NavigationLink(destination: AddNewStockpileSavingView(fromTemplate: stockpileSaving, showingSheet: $showingSheet)) {
                             Text(stockpileSaving.productDescription)
                         }
@@ -58,6 +59,8 @@ struct AddNewStockpileView: View {
 
 struct AddNewStockpileView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewStockpileView(showingSheet: .constant(true))
+        AddNewStockpileView(savings: [
+            MockStockpileSaving(productDescription: "🍌 Bananas", regularPrice: 4, salePrice: 2, unitsPurchased: 2)
+        ], showingSheet: .constant(true))
     }
 }

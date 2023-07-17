@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 @objc(StockpileSaving)
-public class StockpileSaving: NSManagedObject, Identifiable {
+public class StockpileSaving: NSManagedObject, Identifiable, StockpileSavingType {
+    public let id: UUID = UUID()
+
     @NSManaged public var consumption: Double
     @NSManaged public var consumptionUnit: String
     @NSManaged public var dateComputed: Date

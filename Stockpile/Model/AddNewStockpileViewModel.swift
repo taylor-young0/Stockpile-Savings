@@ -11,35 +11,36 @@ import Combine
 import CoreData
 
 class AddNewStockpileViewModel: ObservableObject {
-    @Published var allStockpileSavings: [StockpileSaving] = []
+    @Published var allStockpileSavings: [any StockpileSavingType] = []
     @Published var errorText: String = ""
     @Published var showingErrorAlert = false
     private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
 
-    var uniqueSavings: [StockpileSaving] {
-        // if running in preview show sample savings, see https://stackoverflow.com/a/61741858
-        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
-            return StockpileSaving.samples
-        } else {
-            var uniqueDescriptions: [String] = []
-            var uniqueSavings: [StockpileSaving] = []
-            for saving in allStockpileSavings {
-                if !uniqueDescriptions.contains(saving.productDescription) {
-                    uniqueSavings.append(saving)
-                    uniqueDescriptions.append(saving.productDescription)
-                }
+    init(savings: [any StockpileSavingType] = []) {
+        self.allStockpileSavings = savings
+    }
+
+    var uniqueSavings: [any StockpileSavingType] {
+        var uniqueDescriptions: [String] = []
+        var uniqueSavings: [any StockpileSavingType] = []
+        for saving in allStockpileSavings {
+            if !uniqueDescriptions.contains(saving.productDescription) {
+                uniqueSavings.append(saving)
+                uniqueDescriptions.append(saving.productDescription)
             }
-            return uniqueSavings
         }
+        return uniqueSavings
     }
 
     private func fetchAllStockpiles() {
-        do {
-            let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
-            allStockpileSavings = fetchResults
-        } catch {
-            errorText = "An error occurred when trying to fetch all savings."
-            showingErrorAlert = true
+        if allStockpileSavings.isEmpty || allStockpileSavings.first is StockpileSaving {
+            do {
+                let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
+                allStockpileSavings = fetchResults
+            } catch {
+                errorText = "An error occurred when trying to fetch all savings."
+                showingErrorAlert = true
+            }
         }
     }
 

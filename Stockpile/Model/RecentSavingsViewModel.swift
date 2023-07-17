@@ -17,9 +17,13 @@ class RecentSavingsViewModel: ObservableObject {
     let lifetimeSavingsText: String = "🤑 Lifetime savings"
     let recentSavingsHeader: String = "Recent Savings"
     @Published var errorText: String = ""
-    @Published var allStockpileSavings: [StockpileSaving] = []
+    @Published var allStockpileSavings: [any StockpileSavingType]
     @Published var showingSheet: Bool = false
     @Published var showingErrorAlert: Bool = false
+
+    init(savings: [any StockpileSavingType] = []) {
+        self.allStockpileSavings = savings
+    }
 
     var lifetimeSavings: String {
         var savings: Double = 0.0
@@ -60,17 +64,19 @@ class RecentSavingsViewModel: ObservableObject {
         return nil
     }
 
-    var recentStockpiles: [StockpileSaving] {
+    var recentStockpiles: [any StockpileSavingType] {
         return Array(allStockpileSavings.prefix(10))
     }
 
     private func fetchAllStockpiles() {
-        do {
-            let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
-            allStockpileSavings = fetchResults
-        } catch {
-            errorText = "An error occurred when trying to fetch all savings."
-            showingErrorAlert = true
+        if allStockpileSavings.isEmpty || allStockpileSavings.first is StockpileSaving {
+            do {
+                let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
+                allStockpileSavings = fetchResults
+            } catch {
+                errorText = "An error occurred when trying to fetch all savings."
+                showingErrorAlert = true
+            }
         }
     }
 
@@ -79,13 +85,12 @@ class RecentSavingsViewModel: ObservableObject {
     }
 
     func deleteStockpileSaving(at index: IndexSet.Element?) {
-        guard let index, index < recentStockpiles.count else {
+        guard let index, index < recentStockpiles.count, let itemToDelete = recentStockpiles[index] as? StockpileSaving else {
             errorText = "Could not find a savings to delete. Please try again."
             showingErrorAlert = true
             return
         }
 
-        let itemToDelete: StockpileSaving = recentStockpiles[index]
         self.managedObjectContext.delete(itemToDelete)
 
         do {
