@@ -15,21 +15,9 @@ struct AddSavingsFormView: View {
     @StateObject var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
     @FocusState var focusedField: AddSavingsFormField?
     
-    init(showingSheet: Binding<Bool>) {
+    init(fromTemplate stockpile: (any StockpileSavingType)? = nil, showingSheet: Binding<Bool>) {
         _showingSheet = showingSheet
-    }
-    
-    init(fromTemplate stockpile: any StockpileSavingType, showingSheet: Binding<Bool>) {
-        // Format for the user's locale, as some locales use commas as the decimal separator
-        let consumption: String = stockpile.consumption.asLocalizedDecimal
-        let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit) ?? .Day
-        let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
-        
-        _showingSheet = showingSheet
-        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(productDescription: stockpile.productDescription,
-                                                                       consumption: consumption,
-                                                                       consumptionUnit: consumptionUnit,
-                                                                       regularPrice: regularPrice))
+        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(fromTemplate: stockpile))
     }
 
     fileprivate func addNewSavings() {

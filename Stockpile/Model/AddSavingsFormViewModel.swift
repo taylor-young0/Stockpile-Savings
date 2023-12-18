@@ -37,12 +37,20 @@ class AddSavingsFormViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(productDescription: String = "", consumption: String = "", consumptionUnit: ConsumptionUnit = .Day, regularPrice: String = "") {
+    init(fromTemplate stockpile: (any StockpileSavingType)? = nil) {
         setupSubscribers()
-        self.productDescription = productDescription
-        self.consumptionInput = consumption
-        self.consumptionUnit = consumptionUnit
-        self.regularPriceInput = regularPrice
+
+        if let stockpile {
+            // Format for the user's locale, as some locales use commas as the decimal separator
+            let consumption: String = stockpile.consumption.asLocalizedDecimal
+            let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit) ?? .Day
+            let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
+            
+            self.productDescription = stockpile.productDescription
+            self.consumptionInput = consumption
+            self.consumptionUnit = consumptionUnit
+            self.regularPriceInput = regularPrice
+        }
     }
 
     func setupSubscribers() {
