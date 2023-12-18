@@ -20,7 +20,8 @@ extension MockStockpileSaving {
             MockStockpileSaving(productDescription: "🔋 Batteries", regularPrice: 14.99, salePrice: 12.99, unitsPurchased: 2),
             MockStockpileSaving(productDescription: "💡 Lightbulbs", regularPrice: 10.99, salePrice: 8.99, unitsPurchased: 4),
             MockStockpileSaving(productDescription: "🪒 Razor blades", regularPrice: 54.99, salePrice: 38.99, unitsPurchased: 2),
-            MockStockpileSaving(productDescription: "🐢 Turtle food", regularPrice: 9.99, salePrice: 8.99, unitsPurchased: 3)
+            MockStockpileSaving(productDescription: "🐢 Turtle food", regularPrice: 9.99, salePrice: 8.99, unitsPurchased: 3),
+            MockStockpileSaving(productDescription: "🥕 Carrots", regularPrice: 2.99, salePrice: 2.49, unitsPurchased: 2)
         ]
     }
 }
