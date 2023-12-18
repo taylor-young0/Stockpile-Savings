@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF220DED29724D2E0092CA18 /* AddNewStockpileSavingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF220DEC29724D2E0092CA18 /* AddNewStockpileSavingField.swift */; };
+		EF220DED29724D2E0092CA18 /* AddSavingsFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */; };
 		EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
 		EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
@@ -102,7 +102,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EF220DEC29724D2E0092CA18 /* AddNewStockpileSavingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewStockpileSavingField.swift; sourceTree = "<group>"; };
+		EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingsFormField.swift; sourceTree = "<group>"; };
 		EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.001.jpeg"; sourceTree = "<group>"; };
 		EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.002.jpeg"; sourceTree = "<group>"; };
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 				EFDA073F28FAF52B00AE3C5A /* AddSavingsFormViewModel.swift */,
 				EFFB682729635C4800D2A704 /* StockpileSavingRowViewModel.swift */,
 				EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */,
-				EF220DEC29724D2E0092CA18 /* AddNewStockpileSavingField.swift */,
+				EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */,
 				EFB7772C2974BB2E00198090 /* AddNewStockpileViewModel.swift */,
 			);
 			path = Model;
@@ -532,7 +532,7 @@
 				EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
-				EF220DED29724D2E0092CA18 /* AddNewStockpileSavingField.swift in Sources */,
+				EF220DED29724D2E0092CA18 /* AddSavingsFormField.swift in Sources */,
 				EF9EE6FB2A5A4B350071221A /* BaseStatisticsCard.swift in Sources */,
 				EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */,
 				EFB7772D2974BB2E00198090 /* AddNewStockpileViewModel.swift in Sources */,

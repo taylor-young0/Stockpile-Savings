@@ -13,7 +13,7 @@ struct AddSavingsFormView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var showingSheet: Bool
     @StateObject var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
-    @FocusState var focusedField: AddNewStockpileSavingField?
+    @FocusState var focusedField: AddSavingsFormField?
     
     init(showingSheet: Binding<Bool>) {
         _showingSheet = showingSheet
