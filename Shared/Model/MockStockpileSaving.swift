@@ -30,13 +30,4 @@ class MockStockpileSaving: StockpileSavingType {
         self.salePrice = salePrice
         self.unitsPurchased = unitsPurchased
     }
-
-    var savings: Double {
-        let savingsPerUnit = regularPrice - salePrice
-        return savingsPerUnit * Double(unitsPurchased)
-    }
-
-    var percentageSavings: Double {
-        return (((regularPrice - salePrice) / regularPrice) * 100)
-    }
 }

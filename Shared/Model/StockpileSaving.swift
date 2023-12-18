@@ -21,16 +21,4 @@ public class StockpileSaving: NSManagedObject, Identifiable, StockpileSavingType
     @NSManaged public var regularPrice: Double
     @NSManaged public var salePrice: Double
     @NSManaged public var unitsPurchased: Int
-
-    /// The total monetary savings in dollars for the StockpileSaving assuming the user buys
-    /// unitsPurchased amount.
-    var savings: Double {
-        let savingsPerUnit = regularPrice - salePrice
-        return savingsPerUnit * Double(unitsPurchased)
-    }
-    
-    /// The percentage savings per unit purchased given the salePrice and regularPrice
-    var percentageSavings: Double {
-        return (((regularPrice - salePrice) / regularPrice) * 100)
-    }
 }

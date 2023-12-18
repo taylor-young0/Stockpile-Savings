@@ -21,3 +21,17 @@ protocol StockpileSavingType: AnyObject {
     var savings: Double { get }
     var percentageSavings: Double { get }
 }
+
+extension StockpileSavingType {
+    /// The total monetary savings in dollars for the StockpileSaving assuming the user buys
+    /// unitsPurchased amount.
+    var savings: Double {
+        let savingsPerUnit = regularPrice - salePrice
+        return savingsPerUnit * Double(unitsPurchased)
+    }
+
+    /// The percentage savings per unit purchased given the salePrice and regularPrice
+    var percentageSavings: Double {
+        return (((regularPrice - salePrice) / regularPrice) * 100)
+    }
+}
