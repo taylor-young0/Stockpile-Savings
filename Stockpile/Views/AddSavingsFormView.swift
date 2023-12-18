@@ -114,6 +114,9 @@ struct AddSavingsFormView: View {
                             .keyboardType(.decimalPad)
                             .focused($focusedField, equals: .consumption)
                         Text("/\(viewModel.consumptionUnit.rawValue)")
+                            .onTapGesture {
+                                focusedField = .consumption
+                            }
                     }
                 }
                 .onTapGesture(perform: dismissKeyboard)
