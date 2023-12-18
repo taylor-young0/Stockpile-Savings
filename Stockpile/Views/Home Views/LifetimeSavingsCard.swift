@@ -15,16 +15,12 @@ struct LifetimeSavingsCard: View {
     var body: some View {
         BaseStatisticsCard(color: .gray) {
             VStack(alignment: .leading, spacing: 0) {
-                Text("CAD")
-                    .font(.headline)
-
                 VStack(alignment: .leading) {
                     Text("Lifetime savings")
                         .font(.caption)
                     Text(lifetimeSavings)
                         .font(.title)
                 }
-                .padding(.vertical)
 
                 Spacer()
 
