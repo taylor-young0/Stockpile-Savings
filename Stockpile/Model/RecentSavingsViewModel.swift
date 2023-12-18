@@ -12,10 +12,6 @@ import WidgetKit
 
 class RecentSavingsViewModel: ObservableObject {
     private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
-    let navigationBarTitle: String = "Stockpile"
-    let addStockpileSavingIconName: String = "plus"
-    let lifetimeSavingsText: String = "🤑 Lifetime savings"
-    let recentSavingsHeader: String = "Recent Savings"
     var errorText: String = ""
     @Published var allStockpileSavings: [any StockpileSavingType]
     @Published var showingSheet: Bool = false

@@ -43,7 +43,7 @@ struct RecentSavingsView: View {
                         .padding(.top)
                 }
 
-                Section(header: Text(viewModel.recentSavingsHeader)) {
+                Section(header: Text("Recent Savings")) {
                     if viewModel.recentStockpiles.count != 0 {
                         ForEach(viewModel.recentStockpiles, id: \.id) { stockpile in
                             StockpileSavingRow(stockpile: stockpile)
@@ -65,13 +65,13 @@ struct RecentSavingsView: View {
                 }
             })
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle(Text(viewModel.navigationBarTitle))
+            .navigationBarTitle(Text("Stockpile"))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         viewModel.showingSheet.toggle()
                     } label: {
-                        Image(systemName: viewModel.addStockpileSavingIconName)
+                        Image(systemName: "plus")
                             .font(.title3.bold())
                             .foregroundColor(Constants.stockpileColor)
                             .padding(Constants.defaultPadding)
