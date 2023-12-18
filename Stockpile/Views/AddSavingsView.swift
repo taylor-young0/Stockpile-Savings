@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileView.swift
+//  AddSavingsView.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2021-09-13.
@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-struct AddNewStockpileView: View {
-    @StateObject private var viewModel: AddNewStockpileViewModel
+struct AddSavingsView: View {
+    @StateObject private var viewModel: AddSavingsViewModel
     @Binding private var showingSheet: Bool
 
     init(savings: [any StockpileSavingType] = [], showingSheet: Binding<Bool>) {
-        self._viewModel = StateObject(wrappedValue: AddNewStockpileViewModel(savings: savings))
+        self._viewModel = StateObject(wrappedValue: AddSavingsViewModel(savings: savings))
         self._showingSheet = showingSheet
     }
 
@@ -61,9 +61,9 @@ struct AddNewStockpileView: View {
 struct AddNewStockpileView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AddNewStockpileView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+            AddSavingsView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
 
-            AddNewStockpileView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+            AddSavingsView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
                 .preferredColorScheme(.dark)
         }
     }

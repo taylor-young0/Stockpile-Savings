@@ -82,7 +82,7 @@ struct RecentSavingsView: View {
                 isPresented: $viewModel.showingSheet,
                 content: {
                     if viewModel.recentStockpiles.count > 0 {
-                        AddNewStockpileView(showingSheet: $viewModel.showingSheet)
+                        AddSavingsView(showingSheet: $viewModel.showingSheet)
                     } else {
                         NavigationView {
                             AddSavingsFormView(showingSheet: $viewModel.showingSheet)

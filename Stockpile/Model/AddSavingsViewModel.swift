@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileViewModel.swift
+//  AddSavingsViewModel.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2023-01-15.
@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import CoreData
 
-class AddNewStockpileViewModel: ObservableObject {
+class AddSavingsViewModel: ObservableObject {
     @Published var allStockpileSavings: [any StockpileSavingType] = []
     @Published var showingErrorAlert = false
     private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
