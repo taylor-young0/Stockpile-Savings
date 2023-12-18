@@ -12,10 +12,22 @@ final class AddSavingsViewModelTests: XCTestCase {
     var viewModel: AddSavingsViewModel = AddSavingsViewModel()
 
     override func setUp() {
+        super.setUp()
         viewModel = AddSavingsViewModel()
     }
 
     func testErrorAlertStartsHidden() {
         XCTAssertFalse(viewModel.showingErrorAlert)
+    }
+
+    func testUniqueSavingsStartsEmpty() {
+        XCTAssert(viewModel.uniqueSavings.isEmpty)
+    }
+
+    func testUniqueSavings() {
+        let uniqueSavings: [MockStockpileSaving] = MockStockpileSaving.samples
+        viewModel = AddSavingsViewModel(savings: uniqueSavings + uniqueSavings)
+
+        XCTAssertEqual(viewModel.uniqueSavings as? [MockStockpileSaving], uniqueSavings)
     }
 }

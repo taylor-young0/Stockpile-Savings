@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MockStockpileSaving: StockpileSavingType {
+class MockStockpileSaving: StockpileSavingType, Equatable {
     let id: UUID = UUID()
     var consumption: Double
     var consumptionUnit: String
@@ -29,5 +29,9 @@ class MockStockpileSaving: StockpileSavingType {
         self.regularPrice = regularPrice
         self.salePrice = salePrice
         self.unitsPurchased = unitsPurchased
+    }
+
+    static func == (lhs: MockStockpileSaving, rhs: MockStockpileSaving) -> Bool {
+        lhs.productDescription == rhs.productDescription
     }
 }
