@@ -48,7 +48,7 @@ struct AddNewStockpileView: View {
                     .foregroundColor(Constants.stockpileColor)
                 }
             }
-            .alert(viewModel.errorText, isPresented: $viewModel.showingErrorAlert) {
+            .alert("An error occurred when trying to fetch all savings.", isPresented: $viewModel.showingErrorAlert) {
                 Button("OK", role: .cancel) { }
             }
             .onAppear {
