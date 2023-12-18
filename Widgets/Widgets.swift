@@ -98,18 +98,21 @@ struct WidgetsEntryView : View {
     }
     
     var lifetimeSavingsSmall: some View {
-        VStack(alignment: .leading) {
-            Text("Lifetime savings".uppercased())
-                .fontWeight(.bold)
-                .foregroundColor(Constants.stockpileColor)
-            Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                .font(.title.bold())
-                .foregroundColor(Constants.stockpileColor)
-            
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Lifetime savings".uppercased())
+                    .fontWeight(.bold)
+                    .foregroundColor(Constants.stockpileColor)
+                Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    .font(.title.bold())
+                    .foregroundColor(Constants.stockpileColor)
+
+                Spacer()
+
+                Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
+                    .foregroundColor(.gray)
+            }
             Spacer()
-            
-            Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
-                .foregroundColor(.gray)
         }
         .padding()
     }
