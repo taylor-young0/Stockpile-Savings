@@ -87,98 +87,14 @@ struct LifetimeSavingsWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     var entry: LifetimeSavingsEntry
 
-    @ViewBuilder
     var body: some View {
         switch (family) {
         case .systemSmall:
             LifetimeSavingsSmallView(entry: entry)
-        case .systemMedium: lifetimeSavingsMedium
-        case .systemLarge: lifetimeSavingsLarge
-        default: Text("")
+        case .systemMedium, .systemLarge:
+            LifetimeSavingsMediumLargeView(entry: entry)
+        default: EmptyView()
         }
-    }
-    
-    var lifetimeSavingsMedium: some View {
-        VStack(alignment: .trailing) {
-            lifetimeSavingsHeader
-            
-            ForEach(0..<numDisplayedSavings, id: \.self) { index in
-                recentSavingsCell(savings: entry.stockpiles[index])
-                    .lineLimit(1)
-            }
-            
-            // only show if there is not enough space to show all savings
-            Text("\(numNonDisplayedSavings) more")
-                .foregroundColor(.gray)
-                .opacity(numNonDisplayedSavings >= 1 ? 1 : 0)
-        }
-        .padding()
-    }
-    
-    var lifetimeSavingsLarge: some View {
-        VStack(alignment: .leading) {
-            lifetimeSavingsHeader
-                .foregroundColor(Constants.stockpileColor)
-                .padding(.bottom)
-            
-            ForEach(0..<numDisplayedSavings, id: \.self) { index in
-                recentSavingsCell(savings: entry.stockpiles[index])
-                    .lineLimit(1)
-            }
-            
-            Spacer()
-            
-            HStack {
-                Spacer()
-                // only show if there is not enough space to show all savings
-                Text("\(numNonDisplayedSavings) more")
-                    .foregroundColor(.gray)
-                    .opacity(numNonDisplayedSavings >= 1 ? 1 : 0)
-            }
-        }
-        .padding()
-    }
-    
-    var lifetimeSavingsHeader: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading) {
-                Text("Lifetime savings".uppercased())
-                    .fontWeight(.bold)
-                    .foregroundColor(Constants.stockpileColor)
-                Text(entry.lifetimeSavings.asLocalizedCurrency)
-                    .font(.title.bold())
-                    .foregroundColor(Constants.stockpileColor)
-            }
-            
-            Spacer()
-        }
-    }
-    
-    var numDisplayedSavings: Int {
-        switch(family) {
-            
-        case .systemMedium:
-            return min(2, entry.stockpiles.count)
-        case .systemLarge:
-            return min(7, entry.stockpiles.count)
-        default:
-            return 0
-        }
-    }
-    
-    var numNonDisplayedSavings: Int {
-        return entry.stockpiles.count - numDisplayedSavings
-    }
-    
-    func recentSavingsCell(savings: GroupedStockpileSaving) -> some View {
-        return HStack {
-            Text(savings.name)
-            Spacer()
-            Text(savings.savings.asLocalizedCurrency)
-                .bold()
-                .monospacedDigit()
-        }
-        .padding(.bottom, 1)
     }
 }
 
