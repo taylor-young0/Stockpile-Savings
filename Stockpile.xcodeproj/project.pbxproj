@@ -18,7 +18,7 @@
 		EF56C813296A5BC100EAE3A3 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
 		EF5FC3C427618544006F1BF0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C327618544006F1BF0 /* WidgetKit.framework */; };
 		EF5FC3C627618544006F1BF0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C527618544006F1BF0 /* SwiftUI.framework */; };
-		EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FC3C827618544006F1BF0 /* Widgets.swift */; };
+		EF5FC3C927618544006F1BF0 /* LifetimeSavingsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FC3C827618544006F1BF0 /* LifetimeSavingsWidget.swift */; };
 		EF5FC3CB27618549006F1BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5FC3CA27618549006F1BF0 /* Assets.xcassets */; };
 		EF5FC3CF27618549006F1BF0 /* WidgetsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
@@ -115,7 +115,7 @@
 		EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5FC3C327618544006F1BF0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		EF5FC3C527618544006F1BF0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		EF5FC3C827618544006F1BF0 /* Widgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widgets.swift; sourceTree = "<group>"; };
+		EF5FC3C827618544006F1BF0 /* LifetimeSavingsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsWidget.swift; sourceTree = "<group>"; };
 		EF5FC3CA27618549006F1BF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF5FC3CC27618549006F1BF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF70D1BD27756BC900532625 /* Stockpile Screenshots.004.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.004.jpeg"; sourceTree = "<group>"; };
@@ -199,7 +199,7 @@
 		EF5FC3C727618544006F1BF0 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				EF5FC3C827618544006F1BF0 /* Widgets.swift */,
+				EF5FC3C827618544006F1BF0 /* LifetimeSavingsWidget.swift */,
 				EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */,
 				EF2E42092B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift */,
 				EFAD7A1D276A3C07004502CD /* Model */,
@@ -487,7 +487,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5FC3C927618544006F1BF0 /* Widgets.swift in Sources */,
+				EF5FC3C927618544006F1BF0 /* LifetimeSavingsWidget.swift in Sources */,
 				EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */,
 				EF56C813296A5BC100EAE3A3 /* Double+Ext.swift in Sources */,
 				EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */,

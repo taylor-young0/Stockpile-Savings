@@ -1,6 +1,6 @@
 //
-//  Widgets.swift
-//  Widgets
+//  LifetimeSavingsWidget.swift
+//  LifetimeSavingsWidget
 //
 //  Created by Taylor Young on 2021-12-08.
 //  Copyright © 2021 Taylor Young. All rights reserved.
@@ -99,7 +99,7 @@ struct LifetimeSavingsWidgetView: View {
 }
 
 @main
-struct Widgets: Widget {
+struct LifetimeSavingsWidget: Widget {
     let kind: String = "Lifetime Savings"
 
     var body: some WidgetConfiguration {
