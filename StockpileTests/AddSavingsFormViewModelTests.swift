@@ -1,6 +1,6 @@
 //
-//  StockpileTests.swift
-//  StockpileTests
+//  AddSavingsFormViewModelTests.swift
+//  AddSavingsFormViewModelTests
 //
 //  Created by Taylor Young on 2022-10-31.
 //  Copyright © 2022 Taylor Young. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-final class AddNewStockpileSavingViewModelTests: XCTestCase {
+final class AddSavingsFormViewModelTests: XCTestCase {
 
     var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
 
