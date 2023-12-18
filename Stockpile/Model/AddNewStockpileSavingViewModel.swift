@@ -37,11 +37,7 @@ class AddNewStockpileSavingViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init() {
-        setupSubscribers()
-    }
-
-    init(productDescription: String, consumption: String, consumptionUnit: ConsumptionUnit, regularPrice: String) {
+    init(productDescription: String = "", consumption: String = "", consumptionUnit: ConsumptionUnit = .Day, regularPrice: String = "") {
         setupSubscribers()
         self.productDescription = productDescription
         self.consumptionInput = consumption
