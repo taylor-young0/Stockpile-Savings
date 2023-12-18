@@ -26,6 +26,10 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         viewModel.unitsPurchasedInput = "4"
     }
 
+    func testShowingErrorStartsFalse() {
+        XCTAssertFalse(viewModel.showingError)
+    }
+
     func testEmptyViewModelIsInvalidInput() {
         XCTAssertFalse(viewModel.isInputValid)
     }
