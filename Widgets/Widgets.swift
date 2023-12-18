@@ -103,7 +103,7 @@ struct WidgetsEntryView : View {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
                     .foregroundColor(Constants.stockpileColor)
-                Text(entry.lifetimeSavings, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                Text(entry.lifetimeSavings.asLocalizedCurrency)
                     .font(.title.bold())
                     .foregroundColor(Constants.stockpileColor)
 
