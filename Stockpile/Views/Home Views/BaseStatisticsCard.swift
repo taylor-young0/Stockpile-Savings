@@ -18,7 +18,7 @@ struct BaseStatisticsCard<Content: View>: View {
             content()
         }
         .frame(width: 200)
-        .frame(minHeight: 180)
+        .frame(minHeight: 160)
         .clipShape(Rectangle())
         .cornerRadius(15)
     }
