@@ -19,10 +19,10 @@ final class AddSavingsFormViewModelTests: XCTestCase {
     func setUpWithValidSampleData() {
         viewModel = AddSavingsFormViewModel(
             fromTemplate: MockStockpileSaving(
-                consumption: 3.0, consumptionUnit: .Week, productDescription: "🍎 Apples", regularPrice: 3.99, salePrice: 2.99, unitsPurchased: 4
+                consumption: 3.0, consumptionUnit: .Week, productDescription: "🍎 Apples", regularPrice: 3.99, salePrice: 2.49, unitsPurchased: 4
             )
         )
-        viewModel.salePriceInput = "2.99"
+        viewModel.salePriceInput = "2.49"
         viewModel.unitsPurchasedInput = "4"
     }
 
@@ -45,12 +45,6 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssert(viewModel.regularPriceInput.isEmpty)
         XCTAssert(viewModel.salePriceInput.isEmpty)
         XCTAssert(viewModel.unitsPurchasedInput.isEmpty)
-    }
-
-    func testDefaultComputedData() {
-        XCTAssert(viewModel.maximumStockpileQuantity == 0)
-        XCTAssert(viewModel.maximumSavings == 0)
-        XCTAssert(viewModel.savings == 0)
     }
 
     func testOneMissingValueIsInvalidInput() {
@@ -139,4 +133,57 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
+    func testMaximumStockpileQuantityInvalid() {
+        XCTAssertEqual(viewModel.maximumStockpileQuantity, 0)
+    }
+
+    func testMaximumStockpileQuantityValid() {
+        setUpWithValidSampleData()
+        let nextWeek: Date = Calendar.current.date(byAdding: .day, value: 7, to: .now)!
+
+        viewModel.consumptionUnit = .Day
+        viewModel.productExpiryDate = nextWeek
+        XCTAssertEqual(viewModel.maximumStockpileQuantity, 18)
+
+        viewModel.consumptionUnit = .Week
+        XCTAssertEqual(viewModel.maximumStockpileQuantity, 2)
+
+        viewModel.consumptionUnit = .Month
+        XCTAssertEqual(viewModel.maximumStockpileQuantity, 0)
+    }
+
+    func testMaximumSavingsInvalid() {
+        XCTAssertEqual(viewModel.maximumSavings, 0)
+    }
+
+    func testMaximumSavingsValid() {
+        setUpWithValidSampleData()
+        let nextWeek: Date = Calendar.current.date(byAdding: .day, value: 7, to: .now)!
+
+        viewModel.consumptionUnit = .Day
+        viewModel.productExpiryDate = nextWeek
+        XCTAssertEqual(viewModel.maximumSavings, 27)
+
+        viewModel.consumptionUnit = .Week
+        XCTAssertEqual(viewModel.maximumSavings, 3)
+
+        viewModel.consumptionUnit = .Month
+        XCTAssertEqual(viewModel.maximumSavings, 0)
+    }
+
+    func testSavingsInvalid() {
+        XCTAssertEqual(viewModel.savings, 0)
+    }
+
+    func testSavingsValid() {
+        setUpWithValidSampleData()
+        viewModel.unitsPurchasedInput = "55"
+        XCTAssertEqual(viewModel.savings, 82.5)
+    }
+
+    func testAddButtonColor() {
+        XCTAssertEqual(viewModel.addButtonColour, .secondary)
+        setUpWithValidSampleData()
+        XCTAssertEqual(viewModel.addButtonColour, Constants.stockpileColor)
+    }
 }
