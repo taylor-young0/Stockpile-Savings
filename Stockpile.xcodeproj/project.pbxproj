@@ -274,11 +274,11 @@
 			isa = PBXGroup;
 			children = (
 				EF9EE6F92A5A4B1D0071221A /* Home Views */,
-				EF8BCC3F26EF9943007AED38 /* AddSavingsView.swift */,
-				EFF1BC002484718B003D5FF5 /* AddSavingsFormView.swift */,
 				EFF1BBEC248459D1003D5FF5 /* RecentSavingsView.swift */,
 				EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */,
 				EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */,
+				EF8BCC3F26EF9943007AED38 /* AddSavingsView.swift */,
+				EFF1BC002484718B003D5FF5 /* AddSavingsFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,11 +286,11 @@
 		EFD838B626E2662400163F9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EFDA073F28FAF52B00AE3C5A /* AddSavingsFormViewModel.swift */,
-				EFFB682729635C4800D2A704 /* StockpileSavingRowViewModel.swift */,
 				EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */,
-				EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */,
+				EFFB682729635C4800D2A704 /* StockpileSavingRowViewModel.swift */,
 				EFB7772C2974BB2E00198090 /* AddSavingsViewModel.swift */,
+				EFDA073F28FAF52B00AE3C5A /* AddSavingsFormViewModel.swift */,
+				EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
