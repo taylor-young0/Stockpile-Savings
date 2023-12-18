@@ -34,7 +34,6 @@
 		EF9EE6FD2A5A4BA30071221A /* PercentageSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */; };
 		EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */; };
 		EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */; };
-		EF9EE7032A5B279A0071221A /* RecentSavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */; };
 		EFAD3AF32A64BBBE00E73082 /* MockStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */; };
 		EFAD3AF42A64BBBE00E73082 /* MockStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */; };
 		EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */; };
@@ -128,7 +127,6 @@
 		EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCard.swift; sourceTree = "<group>"; };
-		EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSavingsRow.swift; sourceTree = "<group>"; };
 		EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSavingType.swift; sourceTree = "<group>"; };
 		EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockStockpileSaving+Samples.swift"; sourceTree = "<group>"; };
@@ -222,7 +220,6 @@
 				EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */,
 				EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */,
 				EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */,
-				EF9EE7022A5B279A0071221A /* RecentSavingsRow.swift */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -545,7 +542,6 @@
 				EFF1BC012484718B003D5FF5 /* AddNewStockpileSavingView.swift in Sources */,
 				EFFB682829635C4800D2A704 /* StockpileSavingRowViewModel.swift in Sources */,
 				EFED9E5F297E04820085D90E /* String+Ext.swift in Sources */,
-				EF9EE7032A5B279A0071221A /* RecentSavingsRow.swift in Sources */,
 				EFF1BBED248459D1003D5FF5 /* RecentSavingsView.swift in Sources */,
 				EFD838E42905B325009A7AC5 /* Constants.swift in Sources */,
 				EF8BCC4026EF9943007AED38 /* AddNewStockpileView.swift in Sources */,
