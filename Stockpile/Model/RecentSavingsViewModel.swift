@@ -16,7 +16,7 @@ class RecentSavingsViewModel: ObservableObject {
     let addStockpileSavingIconName: String = "plus"
     let lifetimeSavingsText: String = "🤑 Lifetime savings"
     let recentSavingsHeader: String = "Recent Savings"
-    @Published var errorText: String = ""
+    var errorText: String = ""
     @Published var allStockpileSavings: [any StockpileSavingType]
     @Published var showingSheet: Bool = false
     @Published var showingErrorAlert: Bool = false
