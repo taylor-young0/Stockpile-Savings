@@ -84,6 +84,7 @@ struct AddSavingsFormView: View {
                 )
             }
         )
+        .tint(Constants.stockpileColor)
     }
     
     // MARK: Product Information
