@@ -10,7 +10,7 @@ import WidgetKit
 import SwiftUI
 import CoreData
 
-struct Provider: TimelineProvider {
+struct LifetimeSavingsProvider: TimelineProvider {
     let lifetimeSavings = 143.74
     let stockpiles = [
         GroupedStockpileSaving(name: "🌭 6-pack Hot Dogs", savings: 100.0),
@@ -18,16 +18,16 @@ struct Provider: TimelineProvider {
         GroupedStockpileSaving(name: "🥜 Crunchy Peanut Butter", savings: 8.0)
     ]
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)
+    func placeholder(in context: Context) -> LifetimeSavingsEntry {
+        return LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (LifetimeSavingsEntry) -> ()) {
         let results = getSavingsAndStockpiles()
         let lifetimeSavings = results.0
         let stockpiles = results.1
         
-        let entry = SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)
+        let entry = LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)
         completion(entry)
     }
 
@@ -36,7 +36,7 @@ struct Provider: TimelineProvider {
         let lifetimeSavings = results.0
         let stockpiles = results.1
         
-        let entries: [SimpleEntry] = [SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)]
+        let entries: [LifetimeSavingsEntry] = [LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles)]
         
         let timeline = Timeline(entries: entries, policy: .never)
         completion(timeline)
@@ -77,7 +77,7 @@ struct Provider: TimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct LifetimeSavingsEntry: TimelineEntry {
     let date: Date
     let lifetimeSavings: Double
     let stockpiles: [GroupedStockpileSaving]
@@ -85,7 +85,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct WidgetsEntryView : View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    var entry: Provider.Entry
+    var entry: LifetimeSavingsProvider.Entry
 
     @ViewBuilder
     var body: some View {
@@ -206,7 +206,7 @@ struct Widgets: Widget {
     let kind: String = "Lifetime Savings"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: LifetimeSavingsProvider()) { entry in
             WidgetsEntryView(entry: entry)
         }
         .configurationDisplayName("Lifetime Savings")
@@ -226,31 +226,31 @@ struct Widgets_Previews: PreviewProvider {
 
         // MARK: systemSmall
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 8")
             .previewContext(WidgetPreviewContext(family: .systemSmall))
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 13 Pro Max")
             .previewContext(WidgetPreviewContext(family: .systemSmall))
         
         // MARK: systemMedium
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 8")
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 13 Pro Max")
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         
         // MARK: systemLarge
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 8")
             .previewContext(WidgetPreviewContext(family: .systemLarge))
         
-        WidgetsEntryView(entry: SimpleEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        WidgetsEntryView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
             .previewDevice("iPhone 13 Pro Max")
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
