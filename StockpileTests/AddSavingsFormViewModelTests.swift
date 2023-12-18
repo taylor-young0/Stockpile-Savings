@@ -13,6 +13,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
     var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
 
     override func setUp() {
+        super.setUp()
         viewModel = AddSavingsFormViewModel()
     }
 
