@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileSavingViewModel.swift
+//  AddSavingsFormViewModel.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2022-10-15.
@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class AddNewStockpileSavingViewModel: ObservableObject {
+class AddSavingsFormViewModel: ObservableObject {
     @Published var showingError: Bool = false
     // MARK: Input
     @Published var productDescription: String = "" {

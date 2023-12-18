@@ -23,14 +23,14 @@ struct AddNewStockpileView: View {
         NavigationView {
             List {
                 Section {
-                    NavigationLink(destination: AddNewStockpileSavingView(showingSheet: $showingSheet)) {
+                    NavigationLink(destination: AddSavingsFormView(showingSheet: $showingSheet)) {
                         Text("💰 Add new savings from scratch")
                     }
                 }
                 
                 Section(header: Text("Create from template")) {
                     ForEach(viewModel.uniqueSavings, id: \.id) { stockpileSaving in
-                        NavigationLink(destination: AddNewStockpileSavingView(fromTemplate: stockpileSaving, showingSheet: $showingSheet)) {
+                        NavigationLink(destination: AddSavingsFormView(fromTemplate: stockpileSaving, showingSheet: $showingSheet)) {
                             Text(stockpileSaving.productDescription)
                         }
                     }

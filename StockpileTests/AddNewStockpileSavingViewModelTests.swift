@@ -10,14 +10,14 @@ import XCTest
 
 final class AddNewStockpileSavingViewModelTests: XCTestCase {
 
-    var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
+    var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
 
     override func setUp() {
-        viewModel = AddNewStockpileSavingViewModel()
+        viewModel = AddSavingsFormViewModel()
     }
 
     func setUpWithValidSampleData() {
-        viewModel = AddNewStockpileSavingViewModel(productDescription: "🍎 Apples", consumption: "3", consumptionUnit: .Week, regularPrice: "3.99")
+        viewModel = AddSavingsFormViewModel(productDescription: "🍎 Apples", consumption: "3", consumptionUnit: .Week, regularPrice: "3.99")
         viewModel.salePriceInput = "2.99"
         viewModel.unitsPurchasedInput = "4"
     }

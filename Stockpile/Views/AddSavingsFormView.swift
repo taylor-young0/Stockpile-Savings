@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileSavingView.swift
+//  AddSavingsFormView.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2020-05-31.
@@ -9,10 +9,10 @@
 import SwiftUI
 import WidgetKit
 
-struct AddNewStockpileSavingView: View {
+struct AddSavingsFormView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var showingSheet: Bool
-    @StateObject var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
+    @StateObject var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
     @FocusState var focusedField: AddNewStockpileSavingField?
     
     init(showingSheet: Binding<Bool>) {
@@ -26,10 +26,10 @@ struct AddNewStockpileSavingView: View {
         let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
         
         _showingSheet = showingSheet
-        _viewModel = StateObject(wrappedValue: AddNewStockpileSavingViewModel(productDescription: stockpile.productDescription,
-                                                                              consumption: consumption,
-                                                                              consumptionUnit: consumptionUnit,
-                                                                              regularPrice: regularPrice))
+        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(productDescription: stockpile.productDescription,
+                                                                       consumption: consumption,
+                                                                       consumptionUnit: consumptionUnit,
+                                                                       regularPrice: regularPrice))
     }
 
     fileprivate func addNewSavings() {
@@ -214,11 +214,11 @@ struct AddNewStockpileSavingView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                AddNewStockpileSavingView(showingSheet: .constant(true))
+                AddSavingsFormView(showingSheet: .constant(true))
             }
             
             NavigationView {
-                AddNewStockpileSavingView(showingSheet: .constant(true))
+                AddSavingsFormView(showingSheet: .constant(true))
                     .environment(\.colorScheme, .dark)
             }
         }

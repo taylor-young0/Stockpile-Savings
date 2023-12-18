@@ -85,7 +85,7 @@ struct RecentSavingsView: View {
                         AddNewStockpileView(showingSheet: $viewModel.showingSheet)
                     } else {
                         NavigationView {
-                            AddNewStockpileSavingView(showingSheet: $viewModel.showingSheet)
+                            AddSavingsFormView(showingSheet: $viewModel.showingSheet)
                         }
                     }
                 }
