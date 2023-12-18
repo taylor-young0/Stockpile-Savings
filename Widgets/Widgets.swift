@@ -31,7 +31,7 @@ struct LifetimeSavingsProvider: TimelineProvider {
         completion(entry)
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<LifetimeSavingsEntry>) -> ()) {
         let results = getSavingsAndStockpiles()
         let lifetimeSavings = results.0
         let stockpiles = results.1
@@ -85,36 +85,17 @@ struct LifetimeSavingsEntry: TimelineEntry {
 
 struct LifetimeSavingsWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
-    var entry: LifetimeSavingsProvider.Entry
+    var entry: LifetimeSavingsEntry
 
     @ViewBuilder
     var body: some View {
         switch (family) {
-        case .systemSmall: lifetimeSavingsSmall
+        case .systemSmall:
+            LifetimeSavingsSmallView(entry: entry)
         case .systemMedium: lifetimeSavingsMedium
         case .systemLarge: lifetimeSavingsLarge
         default: Text("")
         }
-    }
-    
-    var lifetimeSavingsSmall: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("Lifetime savings".uppercased())
-                    .fontWeight(.bold)
-                    .foregroundColor(Constants.stockpileColor)
-                Text(entry.lifetimeSavings.asLocalizedCurrency)
-                    .font(.title.bold())
-                    .foregroundColor(Constants.stockpileColor)
-
-                Spacer()
-
-                Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
-                    .foregroundColor(.gray)
-            }
-            Spacer()
-        }
-        .padding()
     }
     
     var lifetimeSavingsMedium: some View {

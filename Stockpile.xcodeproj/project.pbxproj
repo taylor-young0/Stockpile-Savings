@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF220DED29724D2E0092CA18 /* AddSavingsFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */; };
+		EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */; };
 		EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
 		EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingsFormField.swift; sourceTree = "<group>"; };
+		EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallView.swift; sourceTree = "<group>"; };
 		EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.001.jpeg"; sourceTree = "<group>"; };
 		EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.002.jpeg"; sourceTree = "<group>"; };
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5FC3C827618544006F1BF0 /* Widgets.swift */,
+				EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */,
 				EFAD7A1D276A3C07004502CD /* Model */,
 				EF5FC3CA27618549006F1BF0 /* Assets.xcassets */,
 				EF5FC3CC27618549006F1BF0 /* Info.plist */,
@@ -490,6 +493,7 @@
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
+				EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */,
 				EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */,
 			);
