@@ -117,14 +117,14 @@ struct AddSavingsFormView: View {
                     }
                 }
                 .onTapGesture(perform: dismissKeyboard)
-                
-                Picker("Consumption Units", selection: $viewModel.consumptionUnit) {
-                    ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
-                        Text(unit.rawValue).tag(unit)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
             }
+
+            Picker("Consumption Units", selection: $viewModel.consumptionUnit) {
+                ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
+                    Text(unit.rawValue).tag(unit)
+                }
+            }
+            .pickerStyle(.menu)
         }
     }
     
