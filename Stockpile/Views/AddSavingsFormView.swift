@@ -50,7 +50,6 @@ struct AddSavingsFormView: View {
         }
         .navigationTitle(Text("New Savings"))
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarTitle(Text("New Savings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
