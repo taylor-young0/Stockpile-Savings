@@ -12,9 +12,9 @@ import CoreData
 
 class AddNewStockpileViewModel: ObservableObject {
     @Published var allStockpileSavings: [any StockpileSavingType] = []
-    @Published var errorText: String = ""
     @Published var showingErrorAlert = false
     private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+    private let errorText: String = "An error occurred when trying to fetch all savings."
 
     init(savings: [any StockpileSavingType] = []) {
         self.allStockpileSavings = savings
@@ -38,7 +38,6 @@ class AddNewStockpileViewModel: ObservableObject {
                 let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
                 allStockpileSavings = fetchResults
             } catch {
-                errorText = "An error occurred when trying to fetch all savings."
                 showingErrorAlert = true
             }
         }
