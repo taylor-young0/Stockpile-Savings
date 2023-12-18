@@ -10,18 +10,11 @@ import SwiftUI
 
 struct EmptySavingsRow: View {
     var body: some View {
-        VStack {
-            HStack() {
-                Text("😢 No savings added yet!")
-                Spacer()
-            }
-            
-            HStack {
-                Text("Add savings by completing a new calculation by pressing the + icon in the top right")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 4) {
+            Text("😢 No savings added yet!")
+            Text("Add a new savings by pressing the + icon in the top right.")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
     }
 }
