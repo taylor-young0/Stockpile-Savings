@@ -17,16 +17,16 @@ struct LifetimeSavingsSmallView: View {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
-                    .foregroundColor(Constants.stockpileColor)
                 Text(entry.lifetimeSavings.asLocalizedCurrency)
                     .font(.title.bold())
-                    .foregroundColor(Constants.stockpileColor)
                 
                 Spacer()
                 
                 Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
                     .foregroundColor(.gray)
             }
+            .foregroundColor(Constants.stockpileColor)
+
             Spacer()
         }
         .padding()
