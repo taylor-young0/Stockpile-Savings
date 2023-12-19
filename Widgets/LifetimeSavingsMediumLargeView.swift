@@ -10,24 +10,27 @@ import SwiftUI
 import WidgetKit
 
 struct LifetimeSavingsMediumLargeView: View {
-    @Environment(\.widgetFamily) var family: WidgetFamily
-    var entry: LifetimeSavingsProvider.Entry
+    private let viewModel: LifetimeSavingsMediumLargeViewModel
+
+    init(entry: LifetimeSavingsProvider.Entry, family: WidgetFamily) {
+        self.viewModel = LifetimeSavingsMediumLargeViewModel(entry: entry, family: family)
+    }
 
     var body: some View {
         VStack(alignment: .trailing) {
             lifetimeSavingsHeader
-                .padding(.bottom, family == .systemLarge ? 6 : 0)
+                .padding(.bottom, viewModel.family == .systemLarge ? 6 : 0)
 
-            ForEach(0..<numDisplayedSavings, id: \.self) { index in
-                recentSavingsCell(savings: entry.stockpiles[index])
+            ForEach(0..<viewModel.numDisplayedSavings, id: \.self) { index in
+                recentSavingsCell(stockpile: viewModel.stockpiles[index])
                     .lineLimit(1)
             }
 
             Spacer()
 
             // only show if there is not enough space to show all savings
-            if numNonDisplayedSavings > 0 {
-                Text("\(numNonDisplayedSavings) more")
+            if viewModel.shouldShowNumNonDisplayedSavingsText {
+                Text(viewModel.numNonDisplayedSavingsText)
                     .foregroundColor(.gray)
             }
         }
@@ -39,40 +42,24 @@ struct LifetimeSavingsMediumLargeView: View {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
-                    .foregroundColor(Constants.stockpileColor)
-                Text(entry.lifetimeSavings.asLocalizedCurrency)
+                Text(viewModel.lifetimeSavingsFormatted)
                     .font(.title.bold())
-                    .foregroundColor(Constants.stockpileColor)
             }
+            .foregroundColor(Constants.stockpileColor)
 
             Spacer()
         }
     }
 
-    func recentSavingsCell(savings: GroupedStockpileSaving) -> some View {
+    func recentSavingsCell(stockpile: GroupedStockpileSaving) -> some View {
         HStack {
-            Text(savings.name)
+            Text(stockpile.name)
             Spacer()
-            Text(savings.savings.asLocalizedCurrency)
+            Text(viewModel.currencyFormatted(stockpile.savings))
                 .bold()
                 .monospacedDigit()
         }
         .padding(.bottom, 1)
-    }
-
-    var numDisplayedSavings: Int {
-        switch(family) {
-        case .systemMedium:
-            return min(2, entry.stockpiles.count)
-        case .systemLarge:
-            return min(7, entry.stockpiles.count)
-        default:
-            return 0
-        }
-    }
-
-    var numNonDisplayedSavings: Int {
-        return entry.stockpiles.count - numDisplayedSavings
     }
 }
 
@@ -85,10 +72,10 @@ struct LifetimeSavingsMediumView_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles), family: .systemMedium)
             .previewContext(WidgetPreviewContext(family: .systemMedium))
 
-        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
+        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles), family: .systemLarge)
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

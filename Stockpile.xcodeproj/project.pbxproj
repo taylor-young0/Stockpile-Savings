@@ -16,6 +16,9 @@
 		EF2E42132B31DBE4000BBEC3 /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */; };
 		EF2E42182B31DF7A000BBEC3 /* LifetimeSavingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */; };
+		EF2E421A2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42192B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift */; };
+		EF2E421B2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42192B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift */; };
+		EF2E42202B31EA5F000BBEC3 /* LifetimeSavingsMediumLargeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E421F2B31EA5F000BBEC3 /* LifetimeSavingsMediumLargeViewModelTests.swift */; };
 		EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
 		EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
@@ -116,6 +119,8 @@
 		EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallViewModel.swift; sourceTree = "<group>"; };
 		EF2E420F2B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallViewModelTests.swift; sourceTree = "<group>"; };
 		EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsEntry.swift; sourceTree = "<group>"; };
+		EF2E42192B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsMediumLargeViewModel.swift; sourceTree = "<group>"; };
+		EF2E421F2B31EA5F000BBEC3 /* LifetimeSavingsMediumLargeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsMediumLargeViewModelTests.swift; sourceTree = "<group>"; };
 		EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.001.jpeg"; sourceTree = "<group>"; };
 		EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.002.jpeg"; sourceTree = "<group>"; };
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
@@ -200,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				EF2E420F2B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift */,
+				EF2E421F2B31EA5F000BBEC3 /* LifetimeSavingsMediumLargeViewModelTests.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 			children = (
 				EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */,
 				EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */,
+				EF2E42192B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift */,
 				EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */,
 			);
 			path = Model;
@@ -513,6 +520,7 @@
 				EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */,
 				EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */,
 				EF2E420A2B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift in Sources */,
+				EF2E421A2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */,
 				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
@@ -545,8 +553,10 @@
 				EF2E42112B31DB68000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */,
 				EF94DC4A29109E3800F8C713 /* StockpileSaving.swift in Sources */,
 				EFAD3AF92A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
+				EF2E42202B31EA5F000BBEC3 /* LifetimeSavingsMediumLargeViewModelTests.swift in Sources */,
 				EF56C811296A5BAE00EAE3A3 /* CoreDataStack.swift in Sources */,
 				EFB777302974C03400198090 /* AddSavingsViewModel.swift in Sources */,
+				EF2E421B2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */,
 				EF2E42102B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift in Sources */,
 				EF56C812296A5BBC00EAE3A3 /* Double+Ext.swift in Sources */,
 			);

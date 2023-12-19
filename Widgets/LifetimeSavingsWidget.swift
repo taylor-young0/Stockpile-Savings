@@ -86,7 +86,7 @@ struct LifetimeSavingsWidgetView: View {
         case .systemSmall:
             LifetimeSavingsSmallView(entry: entry)
         case .systemMedium, .systemLarge:
-            LifetimeSavingsMediumLargeView(entry: entry)
+            LifetimeSavingsMediumLargeView(entry: entry, family: family)
         default: EmptyView()
         }
     }
