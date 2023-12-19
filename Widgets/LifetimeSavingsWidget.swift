@@ -77,12 +77,6 @@ struct LifetimeSavingsProvider: TimelineProvider {
     }
 }
 
-struct LifetimeSavingsEntry: TimelineEntry {
-    let date: Date
-    let lifetimeSavings: Double
-    let stockpiles: [GroupedStockpileSaving]
-}
-
 struct LifetimeSavingsWidgetView: View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     var entry: LifetimeSavingsEntry

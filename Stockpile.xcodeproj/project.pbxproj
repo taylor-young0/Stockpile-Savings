@@ -10,6 +10,12 @@
 		EF220DED29724D2E0092CA18 /* AddSavingsFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */; };
 		EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */; };
 		EF2E420A2B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42092B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift */; };
+		EF2E420D2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */; };
+		EF2E42102B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E420F2B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift */; };
+		EF2E42112B31DB68000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */; };
+		EF2E42132B31DBE4000BBEC3 /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
+		EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */; };
+		EF2E42182B31DF7A000BBEC3 /* LifetimeSavingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */; };
 		EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
 		EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
@@ -107,6 +113,9 @@
 		EF220DEC29724D2E0092CA18 /* AddSavingsFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingsFormField.swift; sourceTree = "<group>"; };
 		EF2E42072B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallView.swift; sourceTree = "<group>"; };
 		EF2E42092B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsMediumLargeView.swift; sourceTree = "<group>"; };
+		EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallViewModel.swift; sourceTree = "<group>"; };
+		EF2E420F2B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsSmallViewModelTests.swift; sourceTree = "<group>"; };
+		EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsEntry.swift; sourceTree = "<group>"; };
 		EF34A2D0272D90B80096946F /* Stockpile Screenshots.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.001.jpeg"; sourceTree = "<group>"; };
 		EF34A2D1272D90B90096946F /* Stockpile Screenshots.002.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.002.jpeg"; sourceTree = "<group>"; };
 		EF34A2D2272D90B90096946F /* Stockpile Screenshots.003.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Stockpile Screenshots.003.jpeg"; sourceTree = "<group>"; };
@@ -187,6 +196,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF2E420E2B31DAE7000BBEC3 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				EF2E420F2B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		EF5FC3C227618543006F1BF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +229,7 @@
 		EF94DC3F29109B3D00F8C713 /* StockpileTests */ = {
 			isa = PBXGroup;
 			children = (
+				EF2E420E2B31DAE7000BBEC3 /* Widgets */,
 				EF94DC4029109B3D00F8C713 /* AddSavingsFormViewModelTests.swift */,
 				EFB7772E2974BFE100198090 /* AddSavingsViewModelTests.swift */,
 				EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */,
@@ -259,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */,
+				EF2E420C2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift */,
+				EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -497,7 +517,9 @@
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
+				EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */,
 				EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */,
+				EF2E420D2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */,
 				EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */,
 			);
@@ -512,16 +534,20 @@
 				EFAD3AFD2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EFED9E60297E06E00085D90E /* StockpileSaving+FetchRequest.swift in Sources */,
 				EF94DC4129109B3D00F8C713 /* AddSavingsFormViewModelTests.swift in Sources */,
+				EF2E42182B31DF7A000BBEC3 /* LifetimeSavingsEntry.swift in Sources */,
 				EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */,
 				EF56C810296A58ED00EAE3A3 /* RecentSavingsViewModel.swift in Sources */,
+				EF2E42132B31DBE4000BBEC3 /* GroupedStockpileSaving.swift in Sources */,
 				EFB7772F2974BFE100198090 /* AddSavingsViewModelTests.swift in Sources */,
 				EFED9E61297E07160085D90E /* String+Ext.swift in Sources */,
 				EFAD3AF42A64BBBE00E73082 /* MockStockpileSaving.swift in Sources */,
 				EF94DC4929109E3200F8C713 /* Constants.swift in Sources */,
+				EF2E42112B31DB68000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */,
 				EF94DC4A29109E3800F8C713 /* StockpileSaving.swift in Sources */,
 				EFAD3AF92A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EF56C811296A5BAE00EAE3A3 /* CoreDataStack.swift in Sources */,
 				EFB777302974C03400198090 /* AddSavingsViewModel.swift in Sources */,
+				EF2E42102B31DB1A000BBEC3 /* LifetimeSavingsSmallViewModelTests.swift in Sources */,
 				EF56C812296A5BBC00EAE3A3 /* Double+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

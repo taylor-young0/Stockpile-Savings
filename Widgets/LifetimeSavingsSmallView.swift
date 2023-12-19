@@ -10,20 +10,27 @@ import SwiftUI
 import WidgetKit
 
 struct LifetimeSavingsSmallView: View {
-    var entry: LifetimeSavingsProvider.Entry
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize: DynamicTypeSize
+    private let viewModel: LifetimeSavingsSmallViewModel
+
+    init(entry: LifetimeSavingsProvider.Entry) {
+        self.viewModel = LifetimeSavingsSmallViewModel(entry: entry)
+    }
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
                     .fontWeight(.bold)
-                Text(entry.lifetimeSavings.asLocalizedCurrency)
+                Text(viewModel.lifetimeSavingsFormatted)
                     .font(.title.bold())
                 
-                Spacer()
-                
-                Text("\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")")
-                    .foregroundColor(.gray)
+                Spacer(minLength: 0)
+
+                if viewModel.shouldShowTotalSavingsText(for: dynamicTypeSize) {
+                    Text(viewModel.totalSavingsText)
+                        .foregroundColor(.gray)
+                }
             }
             .foregroundColor(Constants.stockpileColor)
 
