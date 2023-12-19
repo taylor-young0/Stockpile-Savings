@@ -27,8 +27,8 @@ struct LifetimeSavingsSmallView: View {
                 
                 Spacer(minLength: 0)
 
-                if viewModel.shouldShowTotalSavingsText(for: dynamicTypeSize) {
-                    Text(viewModel.totalSavingsText)
+                if viewModel.shouldShowNumberOfItemsText(for: dynamicTypeSize) {
+                    Text(viewModel.numberOfItemsText)
                         .foregroundColor(.gray)
                 }
             }

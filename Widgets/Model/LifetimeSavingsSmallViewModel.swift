@@ -20,11 +20,11 @@ struct LifetimeSavingsSmallViewModel {
         entry.lifetimeSavings.asLocalizedCurrency
     }
 
-    var totalSavingsText: String {
-        "\(entry.stockpiles.count) total saving\(entry.stockpiles.count == 1 ? "" : "s")"
+    var numberOfItemsText: String {
+        "on \(entry.stockpiles.count) item\(entry.stockpiles.count == 1 ? "" : "s")"
     }
 
-    func shouldShowTotalSavingsText(for dynamicTypeSize: DynamicTypeSize) -> Bool {
+    func shouldShowNumberOfItemsText(for dynamicTypeSize: DynamicTypeSize) -> Bool {
         dynamicTypeSize <= .large
     }
 }

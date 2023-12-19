@@ -38,22 +38,22 @@ final class LifetimeSavingsSmallViewModelTests: XCTestCase {
     }
 
     func testTotalSavingsText() {
-        XCTAssertEqual(viewModel.totalSavingsText, "1 total saving")
+        XCTAssertEqual(viewModel.numberOfItemsText, "on 1 item")
 
         setUpWithStockpiles([])
-        XCTAssertEqual(viewModel.totalSavingsText, "0 total savings")
+        XCTAssertEqual(viewModel.numberOfItemsText, "on 0 items")
 
         setUpWithStockpiles([
             GroupedStockpileSaving(name: "Apples", savings: 4.18),
             GroupedStockpileSaving(name: "Oranges", savings: 5.89),
             GroupedStockpileSaving(name: "Bananas", savings: 12.89)
         ])
-        XCTAssertEqual(viewModel.totalSavingsText, "3 total savings")
+        XCTAssertEqual(viewModel.numberOfItemsText, "on 3 items")
     }
 
     func testTotalSavingsTextHides() {
-        XCTAssertTrue(viewModel.shouldShowTotalSavingsText(for: .large))
-        XCTAssertFalse(viewModel.shouldShowTotalSavingsText(for: .xLarge))
+        XCTAssertTrue(viewModel.shouldShowNumberOfItemsText(for: .large))
+        XCTAssertFalse(viewModel.shouldShowNumberOfItemsText(for: .xLarge))
     }
 
 }
