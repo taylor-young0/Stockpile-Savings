@@ -34,14 +34,14 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         )
     }
 
-    func testLifetimeSavingsFormatting() {
+    func test_lifetimeSavingsFormatting() {
         XCTAssertEqual(viewModel.lifetimeSavingsFormatted, "$25.87")
 
         setUpWithStockpiles([])
         XCTAssertEqual(viewModel.lifetimeSavingsFormatted, "$0.00")
     }
 
-    func testShouldntShowNumNonDisplayedSavingsText() {
+    func test_shouldntShowNumNonDisplayedSavingsText() {
         XCTAssertFalse(viewModel.shouldShowNumNonDisplayedSavingsText)
 
         setUpWithStockpiles([
@@ -62,7 +62,7 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.shouldShowNumNonDisplayedSavingsText)
     }
 
-    func testShouldShowNumNonDisplayedSavingsText() {
+    func test_shouldShowNumNonDisplayedSavingsText() {
         setUpWithStockpiles([
             GroupedStockpileSaving(name: "Apple", savings: 2),
             GroupedStockpileSaving(name: "Banana", savings: 2),
@@ -83,7 +83,7 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.shouldShowNumNonDisplayedSavingsText)
     }
 
-    func testNumNonDisplayedSavingsText() {
+    func test_numNonDisplayedSavingsText() {
         setUpWithStockpiles([
             GroupedStockpileSaving(name: "Apple", savings: 2),
             GroupedStockpileSaving(name: "Banana", savings: 2),
@@ -105,7 +105,7 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.numNonDisplayedSavingsText, "1 more")
     }
 
-    func testNumDisplayedSavingsMedium() {
+    func test_numDisplayedSavingsMedium() {
         XCTAssertEqual(viewModel.numDisplayedSavings, 1)
 
         setUpWithStockpiles([
@@ -123,7 +123,7 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.numDisplayedSavings, 2)
     }
 
-    func testNumDisplayedSavingsLarge() {
+    func test_numDisplayedSavingsLarge() {
         setUpWithStockpiles([
             GroupedStockpileSaving(name: "Apple", savings: 2),
             GroupedStockpileSaving(name: "Banana", savings: 2)
@@ -154,7 +154,7 @@ final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.numDisplayedSavings, 7)
     }
 
-    func testCurrencyFormatting() {
+    func test_currencyFormatting() {
         XCTAssertEqual(viewModel.currencyFormatted(0.0), "$0.00")
         XCTAssertEqual(viewModel.currencyFormatted(12.87), "$12.87")
     }

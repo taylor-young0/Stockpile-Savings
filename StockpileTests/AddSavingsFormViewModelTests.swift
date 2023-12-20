@@ -64,7 +64,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(context.hasSaved)
     }
 
-    func testShowingErrorStartsFalse() {
+    func test_showingErrorStartsFalse() {
         XCTAssertFalse(viewModel.showingError)
     }
 
@@ -72,16 +72,16 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.showingSheet)
     }
 
-    func testEmptyViewModelIsInvalidInput() {
+    func test_emptyViewModelIsInvalidInput() {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testSampleDataIsValidInput() {
+    func test_sampleDataIsValidInput() {
         setUpWithValidSampleData()
         XCTAssert(viewModel.isInputValid)
     }
 
-    func testDefaultInputData() {
+    func test_defaultInputData() {
         XCTAssert(viewModel.productDescription.isEmpty)
         let date: Date = Date()
         let comparison: ComparisonResult = Calendar.current.compare(viewModel.productExpiryDate, to: date, toGranularity: .day)
@@ -93,7 +93,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssert(viewModel.unitsPurchasedInput.isEmpty)
     }
 
-    func testOneMissingValueIsInvalidInput() {
+    func test_oneMissingValueIsInvalidInput() {
         setUpWithValidSampleData()
         viewModel.productDescription = ""
         XCTAssertFalse(viewModel.isInputValid)
@@ -115,7 +115,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testInvalidConsumptionIsInvalid() {
+    func test_invalidConsumptionIsInvalid() {
         setUpWithValidSampleData()
         viewModel.consumptionInput = "a"
         XCTAssertFalse(viewModel.isInputValid)
@@ -129,7 +129,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testInvalidRegularPriceIsInvalid() {
+    func test_invalidRegularPriceIsInvalid() {
         setUpWithValidSampleData()
         viewModel.regularPriceInput = "b"
         XCTAssertFalse(viewModel.isInputValid)
@@ -143,7 +143,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testInvalidSalePriceIsInvalid() {
+    func test_invalidSalePriceIsInvalid() {
         setUpWithValidSampleData()
         viewModel.salePriceInput = "c"
         XCTAssertFalse(viewModel.isInputValid)
@@ -153,7 +153,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testInvalidUnitsPurchasedIsInvalid() {
+    func test_invalidUnitsPurchasedIsInvalid() {
         setUpWithValidSampleData()
         viewModel.unitsPurchasedInput = "d"
         XCTAssertFalse(viewModel.isInputValid)
@@ -167,7 +167,7 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testSalePriceGreaterEqualToRegularPrice() {
+    func test_salePriceGreaterEqualToRegularPrice() {
         setUpWithValidSampleData()
         viewModel.salePriceInput = "4.99"
         viewModel.regularPriceInput = "4.99"
@@ -179,11 +179,11 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isInputValid)
     }
 
-    func testMaximumStockpileQuantityInvalid() {
+    func test_maximumStockpileQuantityInvalid() {
         XCTAssertEqual(viewModel.maximumStockpileQuantity, 0)
     }
 
-    func testMaximumStockpileQuantityValid() {
+    func test_maximumStockpileQuantityValid() {
         setUpWithValidSampleData()
         let nextWeek: Date = Calendar.current.date(byAdding: .day, value: 7, to: .now)!
 
@@ -198,11 +198,11 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.maximumStockpileQuantity, 0)
     }
 
-    func testMaximumSavingsInvalid() {
+    func test_maximumSavingsInvalid() {
         XCTAssertEqual(viewModel.maximumSavings, 0)
     }
 
-    func testMaximumSavingsValid() {
+    func test_maximumSavingsValid() {
         setUpWithValidSampleData()
         let nextWeek: Date = Calendar.current.date(byAdding: .day, value: 7, to: .now)!
 
@@ -217,17 +217,17 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.maximumSavings, 0)
     }
 
-    func testSavingsInvalid() {
+    func test_savingsInvalid() {
         XCTAssertEqual(viewModel.savings, 0)
     }
 
-    func testSavingsValid() {
+    func test_savingsValid() {
         setUpWithValidSampleData()
         viewModel.unitsPurchasedInput = "55"
         XCTAssertEqual(viewModel.savings, 82.5)
     }
 
-    func testAddButtonColor() {
+    func test_addButtonColor() {
         XCTAssertEqual(viewModel.addButtonColour, .secondary)
         setUpWithValidSampleData()
         XCTAssertEqual(viewModel.addButtonColour, Constants.stockpileColor)

@@ -21,15 +21,15 @@ final class RecentSavingsViewModelTests: XCTestCase {
         viewModel = RecentSavingsViewModel(savings: MockStockpileSaving.samples)
     }
 
-    func testErrorAlertStartsHidden() {
+    func test_errorAlertStartsHidden() {
         XCTAssertFalse(viewModel.showingErrorAlert)
     }
 
-    func testShowingSheetStartsFalse() {
+    func test_showingSheetStartsFalse() {
         XCTAssertFalse(viewModel.showingSheet)
     }
 
-    func testMissingIndexShowsError() {
+    func test_missingIndexShowsError() {
         guard !viewModel.showingErrorAlert else {
             XCTFail("Was expecting error alert to initially be hidden")
             return
@@ -40,7 +40,7 @@ final class RecentSavingsViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.errorText, "Could not find a savings to delete. Please try again.")
     }
 
-    func testInvalidIndexShowsError() {
+    func test_invalidIndexShowsError() {
         guard !viewModel.showingErrorAlert else {
             XCTFail("Was expecting error alert to initially be hidden")
             return
@@ -56,50 +56,50 @@ final class RecentSavingsViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.errorText, "Could not find a savings to delete. Please try again.")
     }
 
-    func testLifetimeSavingsDefaultsToZero() {
+    func test_lifetimeSavingsDefaultsToZero() {
         XCTAssertEqual(viewModel.lifetimeSavings, "$0.00")
     }
 
-    func testLifetimeSavings() {
+    func test_lifetimeSavings() {
         setUpWithSamples()
         XCTAssertEqual(viewModel.lifetimeSavings, "$71.50")
     }
 
-    func testFirstSavingsDateDefaultsToNil() {
+    func test_firstSavingsDateDefaultsToNil() {
         XCTAssertNil(viewModel.firstSavingsDate)
     }
 
-    func testFirstSavingsDate() {
+    func test_firstSavingsDate() {
         setUpWithSamples()
         let date: Date = Date()
         let comparison: ComparisonResult = Calendar.current.compare(viewModel.firstSavingsDate!, to: date, toGranularity: .day)
         XCTAssert(comparison == .orderedSame)
     }
 
-    func testAveragePercentageSavingsDefaultsToNil() {
+    func test_averagePercentageSavingsDefaultsToNil() {
         XCTAssertNil(viewModel.averagePercentageSavings)
     }
 
-    func testAveragePercentageSavings() {
+    func test_averagePercentageSavings() {
         setUpWithSamples()
         XCTAssertEqual(viewModel.averagePercentageSavings, 21)
     }
 
-    func testPercentageSavingsRangeDefaultsToNil() {
+    func test_percentageSavingsRangeDefaultsToNil() {
         XCTAssertNil(viewModel.percentageSavingsRange)
     }
 
-    func testPercentageSavingsRange() {
+    func test_percentageSavingsRange() {
         setUpWithSamples()
         XCTAssertEqual(viewModel.percentageSavingsRange?.0, 10)
         XCTAssertEqual(viewModel.percentageSavingsRange?.1, 50)
     }
 
-    func testRecentStockpilesDefaultsEmpty() {
+    func test_recentStockpilesDefaultsEmpty() {
         XCTAssert(viewModel.recentStockpiles.isEmpty)
     }
 
-    func testRecentStockpiles() {
+    func test_recentStockpiles() {
         setUpWithSamples()
         XCTAssertEqual(viewModel.recentStockpiles.count, 10)
     }

@@ -31,14 +31,14 @@ final class LifetimeSavingsSmallViewModelTests: XCTestCase {
         )
     }
 
-    func testLifetimeSavingsFormatting() {
+    func test_lifetimeSavingsFormatting() {
         XCTAssertEqual(viewModel.lifetimeSavingsFormatted, "$25.87")
 
         setUpWithStockpiles([])
         XCTAssertEqual(viewModel.lifetimeSavingsFormatted, "$0.00")
     }
 
-    func testTotalSavingsText() {
+    func test_totalSavingsText() {
         XCTAssertEqual(viewModel.numberOfItemsText, "on 1 item")
 
         setUpWithStockpiles([])
@@ -52,7 +52,7 @@ final class LifetimeSavingsSmallViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.numberOfItemsText, "on 3 items")
     }
 
-    func testTotalSavingsTextHides() {
+    func test_totalSavingsTextHides() {
         XCTAssertTrue(viewModel.shouldShowNumberOfItemsText(for: .large))
         XCTAssertFalse(viewModel.shouldShowNumberOfItemsText(for: .xLarge))
     }

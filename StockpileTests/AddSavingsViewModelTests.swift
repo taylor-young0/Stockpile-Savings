@@ -17,15 +17,15 @@ final class AddSavingsViewModelTests: XCTestCase {
         viewModel = AddSavingsViewModel()
     }
 
-    func testErrorAlertStartsHidden() {
+    func test_errorAlertStartsHidden() {
         XCTAssertFalse(viewModel.showingErrorAlert)
     }
 
-    func testUniqueSavingsStartsEmpty() {
+    func test_uniqueSavingsStartsEmpty() {
         XCTAssert(viewModel.uniqueSavings.isEmpty)
     }
 
-    func testUniqueSavings() {
+    func test_uniqueSavings() {
         let uniqueSavings: [MockStockpileSaving] = MockStockpileSaving.samples
         viewModel = AddSavingsViewModel(savings: uniqueSavings + uniqueSavings)
 
