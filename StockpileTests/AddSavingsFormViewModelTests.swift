@@ -7,28 +7,69 @@
 //
 
 import XCTest
+@testable import Stockpile
 
 final class AddSavingsFormViewModelTests: XCTestCase {
 
-    var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
+    var viewModel: AddSavingsFormViewModel!
+    var context: MockManagedObjectContext!
+    var widgetCenter: MockWidgetCenter!
 
     override func setUp() {
         super.setUp()
-        viewModel = AddSavingsFormViewModel()
+        self.context = MockManagedObjectContext()
+        self.widgetCenter = MockWidgetCenter()
+        self.viewModel = AddSavingsFormViewModel(context: context, widgetCenter: widgetCenter)
     }
 
-    func setUpWithValidSampleData() {
-        viewModel = AddSavingsFormViewModel(
+    func setUpWithValidSampleData(throwsSavingError: Bool = false) {
+        self.context = MockManagedObjectContext()
+        self.context.throwError = throwsSavingError
+        self.widgetCenter = MockWidgetCenter()
+        self.viewModel = AddSavingsFormViewModel(
             fromTemplate: MockStockpileSaving(
                 consumption: 3.0, consumptionUnit: .Week, productDescription: "🍎 Apples", regularPrice: 3.99, salePrice: 2.49, unitsPurchased: 4
-            )
+            ),
+            context: self.context,
+            widgetCenter: self.widgetCenter
         )
+
         viewModel.salePriceInput = "2.49"
         viewModel.unitsPurchasedInput = "4"
     }
 
+    func test_addSavingsValidInput() {
+        setUpWithValidSampleData()
+        viewModel.addSavings()
+
+        XCTAssertFalse(viewModel.showingSheet)
+        XCTAssertTrue(widgetCenter.hasReloadedTimelines)
+        XCTAssertTrue(context.hasSaved)
+    }
+
+    func test_addSavingsValidInputThrowsError() {
+        setUpWithValidSampleData(throwsSavingError: true)
+        viewModel.addSavings()
+
+        XCTAssertTrue(viewModel.showingSheet)
+        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
+        XCTAssertFalse(context.hasSaved)
+    }
+
+    func test_addSavingsInvalidInput() {
+        viewModel.addSavings()
+
+        XCTAssertTrue(viewModel.showingSheet)
+        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
+        XCTAssertFalse(context.hasSaved)
+    }
+
     func testShowingErrorStartsFalse() {
         XCTAssertFalse(viewModel.showingError)
+    }
+
+    func test_showingSheetStartsTrue() {
+        XCTAssertTrue(viewModel.showingSheet)
     }
 
     func testEmptyViewModelIsInvalidInput() {

@@ -8,6 +8,7 @@
 
 import XCTest
 import WidgetKit
+@testable import WidgetsExtension
 
 final class LifetimeSavingsMediumLargeViewModelTests: XCTestCase {
 

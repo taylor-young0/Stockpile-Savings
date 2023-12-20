@@ -10,30 +10,13 @@ import SwiftUI
 import WidgetKit
 
 struct AddSavingsFormView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
     @Binding var showingSheet: Bool
-    @StateObject var viewModel: AddSavingsFormViewModel = AddSavingsFormViewModel()
+    @StateObject var viewModel: AddSavingsFormViewModel
     @FocusState var focusedField: AddSavingsFormField?
     
     init(fromTemplate stockpile: (any StockpileSavingType)? = nil, showingSheet: Binding<Bool>) {
         _showingSheet = showingSheet
         _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(fromTemplate: stockpile))
-    }
-
-    fileprivate func addNewSavings() {
-        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
-        stockpileSaving.productDescription = viewModel.productDescription
-        stockpileSaving.dateComputed = Date()
-        stockpileSaving.consumption = viewModel.consumption
-        stockpileSaving.consumptionUnit = viewModel.consumptionUnit.rawValue
-        stockpileSaving.productExpiryDate = viewModel.productExpiryDate
-        stockpileSaving.regularPrice = viewModel.regularPrice
-        stockpileSaving.salePrice = viewModel.salePrice
-        stockpileSaving.unitsPurchased = viewModel.unitsPurchased
-
-        try? self.managedObjectContext.save()
-        self.showingSheet.toggle()
-        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func dismissKeyboard() {
@@ -54,14 +37,14 @@ struct AddSavingsFormView: View {
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
-                    self.showingSheet.toggle()
+                    viewModel.showingSheet.toggle()
                 }
                 .padding(Constants.defaultPadding)
                 .foregroundColor(Constants.stockpileColor)
             }
             ToolbarItem(placement: .primaryAction) {
                 Button("Add") {
-                    self.addNewSavings()
+                    viewModel.addSavings()
                 }
                 .padding(Constants.defaultPadding)
                 .foregroundColor(viewModel.addButtonColour)
@@ -85,6 +68,9 @@ struct AddSavingsFormView: View {
             }
         )
         .tint(Constants.stockpileColor)
+        .onChange(of: viewModel.showingSheet) {
+            showingSheet = $0
+        }
     }
     
     // MARK: Product Information

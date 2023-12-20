@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Stockpile
 
 final class RecentSavingsViewModelTests: XCTestCase {
     var viewModel: RecentSavingsViewModel = RecentSavingsViewModel()

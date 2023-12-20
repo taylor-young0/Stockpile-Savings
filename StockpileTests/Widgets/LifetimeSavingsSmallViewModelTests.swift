@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import WidgetsExtension
 
 final class LifetimeSavingsSmallViewModelTests: XCTestCase {
 

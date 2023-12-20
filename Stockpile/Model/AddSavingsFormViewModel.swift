@@ -8,8 +8,14 @@
 
 import SwiftUI
 import Combine
+import CoreData
+import WidgetKit
 
 class AddSavingsFormViewModel: ObservableObject {
+    private let managedObjectContext: ManagedObjectContextProtocol
+    private let widgetCenter: WidgetCenterProtocol
+
+    @Published var showingSheet: Bool = true
     @Published var showingError: Bool = false
     // MARK: Input
     @Published var productDescription: String = "" {
@@ -37,8 +43,12 @@ class AddSavingsFormViewModel: ObservableObject {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(fromTemplate stockpile: (any StockpileSavingType)? = nil) {
-        setupSubscribers()
+    init(fromTemplate stockpile: (any StockpileSavingType)? = nil,
+         context: ManagedObjectContextProtocol = CoreDataStack.shared.persistentContainer.viewContext,
+         widgetCenter: WidgetCenterProtocol = WidgetCenter.shared) {
+        self.managedObjectContext = context
+        self.widgetCenter = widgetCenter
+        self.setupSubscribers()
 
         if let stockpile {
             // Format for the user's locale, as some locales use commas as the decimal separator
@@ -150,5 +160,31 @@ class AddSavingsFormViewModel: ObservableObject {
     // colour depends on whether input is valid i.e., button is enabled
     var addButtonColour: Color {
         return isInputValid ? Constants.stockpileColor : Color.secondary
+    }
+
+    func addSavings() {
+        guard isInputValid else {
+            return
+        }
+
+        if let context = managedObjectContext as? NSManagedObjectContext {
+            let stockpileSaving = StockpileSaving(context: context)
+            stockpileSaving.productDescription = productDescription
+            stockpileSaving.dateComputed = Date()
+            stockpileSaving.consumption = consumption
+            stockpileSaving.consumptionUnit = consumptionUnit.rawValue
+            stockpileSaving.productExpiryDate = productExpiryDate
+            stockpileSaving.regularPrice = regularPrice
+            stockpileSaving.salePrice = salePrice
+            stockpileSaving.unitsPurchased = unitsPurchased
+        }
+
+        do {
+            try self.managedObjectContext.save()
+            self.widgetCenter.reloadTimelines()
+            self.showingSheet = false
+        } catch {
+            self.showingError = true
+        }
     }
 }
