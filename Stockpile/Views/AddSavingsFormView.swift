@@ -187,7 +187,7 @@ struct AddSavingsFormView: View {
     }
 }
 
-struct AddNewStockpileSavingView_Previews: PreviewProvider {
+struct AddSavingsFormView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {

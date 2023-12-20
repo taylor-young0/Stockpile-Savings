@@ -58,7 +58,7 @@ struct AddSavingsView: View {
     }
 }
 
-struct AddNewStockpileView_Previews: PreviewProvider {
+struct AddSavingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AddSavingsView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))

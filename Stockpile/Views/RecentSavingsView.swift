@@ -97,7 +97,7 @@ struct RecentSavingsView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RecentSavingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RecentSavingsView(savings: MockStockpileSaving.samples)
