@@ -31,6 +31,7 @@ struct LifetimeSavingsMediumLargeView: View {
             // only show if there is not enough space to show all savings
             if viewModel.shouldShowNumNonDisplayedSavingsText {
                 Text(viewModel.numNonDisplayedSavingsText)
+                    .font(.footnote)
                     .foregroundColor(.gray)
             }
         }
@@ -41,7 +42,7 @@ struct LifetimeSavingsMediumLargeView: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
-                    .fontWeight(.bold)
+                    .font(.caption.bold())
                 Text(viewModel.lifetimeSavingsFormatted)
                     .font(.title.bold())
             }

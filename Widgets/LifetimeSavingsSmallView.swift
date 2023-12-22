@@ -21,7 +21,7 @@ struct LifetimeSavingsSmallView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text("Lifetime savings".uppercased())
-                    .fontWeight(.bold)
+                    .font(.caption.bold())
                 Text(viewModel.lifetimeSavingsFormatted)
                     .font(.title.bold())
                 
@@ -29,6 +29,7 @@ struct LifetimeSavingsSmallView: View {
 
                 if viewModel.shouldShowNumberOfItemsText(for: dynamicTypeSize) {
                     Text(viewModel.numberOfItemsText)
+                        .font(.footnote)
                         .foregroundColor(.gray)
                 }
             }
