@@ -25,11 +25,7 @@ class RecentSavingsViewModel: ObservableObject {
     }
 
     var lifetimeSavings: String {
-        var savings: Double = 0.0
-        for stockpile in allStockpileSavings {
-            savings += stockpile.savings
-        }
-        return savings.asLocalizedCurrency
+        return allStockpileSavings.reduce(0) { $0 + $1.savings }.asLocalizedCurrency
     }
 
     var firstSavingsDate: Date? {
@@ -41,9 +37,8 @@ class RecentSavingsViewModel: ObservableObject {
             return nil
         }
 
-        var totalPercentageSavings: Double = 0.0
-        for stockpile in allStockpileSavings {
-            totalPercentageSavings += stockpile.percentageSavings
+        var totalPercentageSavings: Double = allStockpileSavings.reduce(0) {
+            $0 + $1.percentageSavings
         }
 
         return Int(totalPercentageSavings) / allStockpileSavings.count
