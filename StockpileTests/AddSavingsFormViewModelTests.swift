@@ -12,39 +12,48 @@ import XCTest
 final class AddSavingsFormViewModelTests: XCTestCase {
 
     var viewModel: AddSavingsFormViewModel!
-    var context: MockManagedObjectContext!
     var widgetCenter: MockWidgetCenter!
 
     override func setUp() {
         super.setUp()
-        self.context = MockManagedObjectContext()
+
         self.widgetCenter = MockWidgetCenter()
-        self.viewModel = AddSavingsFormViewModel(context: context, widgetCenter: widgetCenter)
+        self.setUpEmpty()
     }
 
     func setUpWithValidSampleData(throwsSavingError: Bool = false) {
-        self.context = MockManagedObjectContext()
-        self.context.throwError = throwsSavingError
-        self.widgetCenter = MockWidgetCenter()
-        self.viewModel = AddSavingsFormViewModel(
-            fromTemplate: MockStockpileSaving(
-                consumption: 3.0, consumptionUnit: .Week, productDescription: "🍎 Apples", regularPrice: 3.99, salePrice: 2.49, unitsPurchased: 4
-            ),
-            context: self.context,
-            widgetCenter: self.widgetCenter
+        let mockStockpile: MockStockpileSaving = MockStockpileSaving(
+            consumption: 3.0,
+            consumptionUnit: .Week,
+            productDescription: "🍎 Apples",
+            regularPrice: 3.99,
+            salePrice: 2.49,
+            unitsPurchased: 4
         )
+        let context: ManagedObjectContextType = throwsSavingError ? MockManagedObjectContext() : StorageType.inmemory(.none).managedObjectContext
+
+        viewModel = AddSavingsFormViewModel(fromTemplate: mockStockpile, context: context, widgetCenter: widgetCenter)
 
         viewModel.salePriceInput = "2.49"
         viewModel.unitsPurchasedInput = "4"
     }
 
-    func test_addSavingsValidInput() {
+    func setUpEmpty() {
+        viewModel = AddSavingsFormViewModel(context: StorageType.inmemory(.none).managedObjectContext)
+    }
+
+    func test_sampleValidDataIsValid() {
+        setUpWithValidSampleData()
+        XCTAssertTrue(viewModel.isInputValid)
+    }
+
+    func test_addSavingsWithValidInput() {
         setUpWithValidSampleData()
         viewModel.addSavings()
 
         XCTAssertFalse(viewModel.showingSheet)
+        XCTAssertFalse(viewModel.showingError)
         XCTAssertTrue(widgetCenter.hasReloadedTimelines)
-        XCTAssertTrue(context.hasSaved)
     }
 
     func test_addSavingsValidInputThrowsError() {
@@ -52,45 +61,52 @@ final class AddSavingsFormViewModelTests: XCTestCase {
         viewModel.addSavings()
 
         XCTAssertTrue(viewModel.showingSheet)
+        XCTAssertTrue(viewModel.showingError)
         XCTAssertFalse(widgetCenter.hasReloadedTimelines)
-        XCTAssertFalse(context.hasSaved)
     }
 
     func test_addSavingsInvalidInput() {
         viewModel.addSavings()
 
-        XCTAssertTrue(viewModel.showingSheet)
-        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
-        XCTAssertFalse(context.hasSaved)
-    }
-
-    func test_showingErrorStartsFalse() {
-        XCTAssertFalse(viewModel.showingError)
-    }
-
-    func test_showingSheetStartsTrue() {
-        XCTAssertTrue(viewModel.showingSheet)
-    }
-
-    func test_emptyViewModelIsInvalidInput() {
         XCTAssertFalse(viewModel.isInputValid)
+        XCTAssertTrue(viewModel.showingSheet)
+        XCTAssertFalse(viewModel.showingError)
+        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
     }
 
-    func test_sampleDataIsValidInput() {
-        setUpWithValidSampleData()
-        XCTAssert(viewModel.isInputValid)
-    }
-
-    func test_defaultInputData() {
-        XCTAssert(viewModel.productDescription.isEmpty)
+    func test_defaultValues() {
         let date: Date = Date()
-        let comparison: ComparisonResult = Calendar.current.compare(viewModel.productExpiryDate, to: date, toGranularity: .day)
-        XCTAssert(comparison == .orderedSame)
-        XCTAssert(viewModel.consumptionInput.isEmpty)
-        XCTAssert(viewModel.consumptionUnit == .Day)
-        XCTAssert(viewModel.regularPriceInput.isEmpty)
-        XCTAssert(viewModel.salePriceInput.isEmpty)
-        XCTAssert(viewModel.unitsPurchasedInput.isEmpty)
+        let expiryDateComparison = Calendar.current.compare(viewModel.productExpiryDate, to: date, toGranularity: .day)
+
+        XCTAssertTrue(viewModel.showingSheet)
+        XCTAssertFalse(viewModel.showingError)
+        XCTAssertTrue(viewModel.productDescription.isEmpty)
+        XCTAssertEqual(expiryDateComparison, .orderedSame)
+        XCTAssertTrue(viewModel.consumptionInput.isEmpty)
+        XCTAssertEqual(viewModel.consumptionUnit, .Day)
+        XCTAssertTrue(viewModel.regularPriceInput.isEmpty)
+        XCTAssertTrue(viewModel.salePriceInput.isEmpty)
+        XCTAssertTrue(viewModel.unitsPurchasedInput.isEmpty)
+    }
+
+    func test_createFromTemplatePopulatedFields() {
+        let templateSavings = MockStockpileSaving(
+            consumption: 4,
+            consumptionUnit: .Week,
+            productDescription: "🍊 Oranges",
+            regularPrice: 2.99,
+            salePrice: 1.99,
+            unitsPurchased: 2
+        )
+        viewModel = AddSavingsFormViewModel(fromTemplate: templateSavings, context: StorageType.inmemory(.none).managedObjectContext, widgetCenter: widgetCenter)
+
+        XCTAssertEqual(viewModel.productDescription, "🍊 Oranges")
+        XCTAssertEqual(viewModel.regularPriceInput, "2.99")
+        XCTAssertEqual(viewModel.consumptionInput, "4")
+        XCTAssertEqual(viewModel.consumptionUnit, .Week)
+
+        XCTAssertTrue(viewModel.salePriceInput.isEmpty)
+        XCTAssertTrue(viewModel.unitsPurchasedInput.isEmpty)
     }
 
     func test_oneMissingValueIsInvalidInput() {

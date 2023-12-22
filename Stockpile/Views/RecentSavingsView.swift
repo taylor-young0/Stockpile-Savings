@@ -12,10 +12,10 @@ import WidgetKit
 struct RecentSavingsView: View {
     @StateObject private var viewModel: RecentSavingsViewModel
     
-    init(savings: [any StockpileSavingType] = []) {
+    init(context: ManagedObjectContextType = StorageType.persistent.managedObjectContext) {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
-        _viewModel = StateObject(wrappedValue: RecentSavingsViewModel(savings: savings))
+        _viewModel = StateObject(wrappedValue: RecentSavingsViewModel(context: context))
     }
         
     // MARK: - Body
@@ -100,13 +100,13 @@ struct RecentSavingsView: View {
 struct RecentSavingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RecentSavingsView(savings: MockStockpileSaving.samples)
-
-            RecentSavingsView(savings: Array(MockStockpileSaving.samples.prefix(through: 2)))
+            RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
 
             RecentSavingsView()
 
-            RecentSavingsView(savings: MockStockpileSaving.samples)
+            RecentSavingsView()
+
+            RecentSavingsView()
                 .environment(\.colorScheme, .dark)
         }
     }

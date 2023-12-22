@@ -14,13 +14,15 @@
 		EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42162B31DF62000BBEC3 /* LifetimeSavingsEntry.swift */; };
 		EF2E421A2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2E42192B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift */; };
 		EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80C296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift */; };
-		EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF56C813296A5BC100EAE3A3 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
 		EF5FC3C427618544006F1BF0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C327618544006F1BF0 /* WidgetKit.framework */; };
 		EF5FC3C627618544006F1BF0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF5FC3C527618544006F1BF0 /* SwiftUI.framework */; };
 		EF5FC3C927618544006F1BF0 /* LifetimeSavingsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5FC3C827618544006F1BF0 /* LifetimeSavingsWidget.swift */; };
 		EF5FC3CB27618549006F1BF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5FC3CA27618549006F1BF0 /* Assets.xcassets */; };
 		EF5FC3CF27618549006F1BF0 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EF5FC3C127618543006F1BF0 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EF65C1332B34DA2100EA298F /* ManagedObjectContextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC796D82B33628100FC1CBC /* ManagedObjectContextType.swift */; };
+		EF65C1362B35CAF700EA298F /* AddSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7772E2974BFE100198090 /* AddSavingsViewModelTests.swift */; };
+		EF65C1372B35D2A600EA298F /* RecentSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56C80E296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift */; };
 		EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7ADB8C2905E454004946C4 /* Double+Ext.swift */; };
 		EF8BCC4026EF9943007AED38 /* AddSavingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8BCC3F26EF9943007AED38 /* AddSavingsView.swift */; };
 		EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
@@ -28,6 +30,10 @@
 		EF9996D027692C9E00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9996CF27692C9E00254545 /* CoreDataStack.swift */; };
 		EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFF1BBE9248459D1003D5FF5 /* Stockpile.xcdatamodeld */; };
+		EF9C2B802B35D706005235AA /* CoreDataStack+SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C2B7F2B35D706005235AA /* CoreDataStack+SampleData.swift */; };
+		EF9C2B812B35D706005235AA /* CoreDataStack+SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C2B7F2B35D706005235AA /* CoreDataStack+SampleData.swift */; };
+		EF9C2B832B35D757005235AA /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C2B822B35D757005235AA /* StorageType.swift */; };
+		EF9C2B842B35D757005235AA /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C2B822B35D757005235AA /* StorageType.swift */; };
 		EF9EE6FB2A5A4B350071221A /* BaseStatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FA2A5A4B350071221A /* BaseStatisticsCard.swift */; };
 		EF9EE6FD2A5A4BA30071221A /* PercentageSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */; };
 		EF9EE6FF2A5A4BFA0071221A /* LifetimeSavingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */; };
@@ -42,9 +48,8 @@
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFB7772D2974BB2E00198090 /* AddSavingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7772C2974BB2E00198090 /* AddSavingsViewModel.swift */; };
-		EFB7772F2974BFE100198090 /* AddSavingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB7772E2974BFE100198090 /* AddSavingsViewModelTests.swift */; };
-		EFC796D92B33628100FC1CBC /* ManagedObjectContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC796D82B33628100FC1CBC /* ManagedObjectContextProtocol.swift */; };
-		EFC796DC2B33632000FC1CBC /* WidgetCenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC796DB2B33632000FC1CBC /* WidgetCenterProtocol.swift */; };
+		EFC796D92B33628100FC1CBC /* ManagedObjectContextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC796D82B33628100FC1CBC /* ManagedObjectContextType.swift */; };
+		EFC796DC2B33632000FC1CBC /* WidgetCenterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC796DB2B33632000FC1CBC /* WidgetCenterType.swift */; };
 		EFD838B826E2665C00163F9A /* ConsumptionUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */; };
 		EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838B926E2677E00163F9A /* EmptySavingsRow.swift */; };
 		EFD838BC26E2685500163F9A /* StockpileSavingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD838BB26E2685500163F9A /* StockpileSavingRow.swift */; };
@@ -124,6 +129,8 @@
 		EF9996CF27692C9E00254545 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		EF9996D2276931E300254545 /* Stockpile.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stockpile.entitlements; sourceTree = "<group>"; };
 		EF9996D32769322400254545 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
+		EF9C2B7F2B35D706005235AA /* CoreDataStack+SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStack+SampleData.swift"; sourceTree = "<group>"; };
+		EF9C2B822B35D757005235AA /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		EF9EE6FA2A5A4B350071221A /* BaseStatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStatisticsCard.swift; sourceTree = "<group>"; };
 		EF9EE6FC2A5A4BA30071221A /* PercentageSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageSavingsCard.swift; sourceTree = "<group>"; };
 		EF9EE6FE2A5A4BFA0071221A /* LifetimeSavingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeSavingsCard.swift; sourceTree = "<group>"; };
@@ -135,8 +142,8 @@
 		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFB7772C2974BB2E00198090 /* AddSavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingsViewModel.swift; sourceTree = "<group>"; };
 		EFB7772E2974BFE100198090 /* AddSavingsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSavingsViewModelTests.swift; sourceTree = "<group>"; };
-		EFC796D82B33628100FC1CBC /* ManagedObjectContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextProtocol.swift; sourceTree = "<group>"; };
-		EFC796DB2B33632000FC1CBC /* WidgetCenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCenterProtocol.swift; sourceTree = "<group>"; };
+		EFC796D82B33628100FC1CBC /* ManagedObjectContextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextType.swift; sourceTree = "<group>"; };
+		EFC796DB2B33632000FC1CBC /* WidgetCenterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCenterType.swift; sourceTree = "<group>"; };
 		EFD74E2F26DFEF4400F28EC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EFD74E3126DFEF7B00F28EC5 /* stockpile-savings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stockpile-savings.png"; sourceTree = "<group>"; };
 		EFD838B726E2665C00163F9A /* ConsumptionUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsumptionUnit.swift; sourceTree = "<group>"; };
@@ -228,6 +235,14 @@
 			path = StockpileTests;
 			sourceTree = "<group>";
 		};
+		EF9C2B852B35D98C005235AA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EFC796D82B33628100FC1CBC /* ManagedObjectContextType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		EF9EE6F92A5A4B1D0071221A /* Home Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,8 +259,11 @@
 			children = (
 				EFD838E32905B325009A7AC5 /* Constants.swift */,
 				EF9996CF27692C9E00254545 /* CoreDataStack.swift */,
+				EF9C2B7F2B35D706005235AA /* CoreDataStack+SampleData.swift */,
+				EF9C2B822B35D757005235AA /* StorageType.swift */,
 				EF7ADB8C2905E454004946C4 /* Double+Ext.swift */,
 				EFED9E5E297E04820085D90E /* String+Ext.swift */,
+				EF9C2B852B35D98C005235AA /* Protocol */,
 				EFAD7A19276A3AE3004502CD /* Model */,
 			);
 			path = Shared;
@@ -278,8 +296,7 @@
 		EFC796DA2B3362C800FC1CBC /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				EFC796D82B33628100FC1CBC /* ManagedObjectContextProtocol.swift */,
-				EFC796DB2B33632000FC1CBC /* WidgetCenterProtocol.swift */,
+				EFC796DB2B33632000FC1CBC /* WidgetCenterType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -513,16 +530,19 @@
 				EF5FC3C927618544006F1BF0 /* LifetimeSavingsWidget.swift in Sources */,
 				EF9996D127692E3A00254545 /* CoreDataStack.swift in Sources */,
 				EF56C813296A5BC100EAE3A3 /* Double+Ext.swift in Sources */,
+				EF9C2B812B35D706005235AA /* CoreDataStack+SampleData.swift in Sources */,
 				EF94DC39291097B900F8C713 /* ConsumptionUnit.swift in Sources */,
 				EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */,
 				EF2E420A2B30F183000BBEC3 /* LifetimeSavingsMediumLargeView.swift in Sources */,
 				EF2E421A2B31E36C000BBEC3 /* LifetimeSavingsMediumLargeViewModel.swift in Sources */,
 				EF9996D427693CC100254545 /* Stockpile.xcdatamodeld in Sources */,
+				EF65C1332B34DA2100EA298F /* ManagedObjectContextType.swift in Sources */,
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */,
 				EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */,
+				EF9C2B842B35D757005235AA /* StorageType.swift in Sources */,
 				EF2E420D2B31D6A2000BBEC3 /* LifetimeSavingsSmallViewModel.swift in Sources */,
 				EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EFD838E52905B43B009A7AC5 /* Constants.swift in Sources */,
@@ -533,9 +553,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF65C1372B35D2A600EA298F /* RecentSavingsViewModelTests.swift in Sources */,
+				EF65C1362B35CAF700EA298F /* AddSavingsViewModelTests.swift in Sources */,
 				EF94DC4129109B3D00F8C713 /* AddSavingsFormViewModelTests.swift in Sources */,
-				EF56C80F296A58BB00EAE3A3 /* RecentSavingsViewModelTests.swift in Sources */,
-				EFB7772F2974BFE100198090 /* AddSavingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,12 +567,13 @@
 				EF9EE6FD2A5A4BA30071221A /* PercentageSavingsCard.swift in Sources */,
 				EFED9E5D297DFD600085D90E /* StockpileSaving+FetchRequest.swift in Sources */,
 				EFF1BBE8248459D1003D5FF5 /* SceneDelegate.swift in Sources */,
+				EF9C2B832B35D757005235AA /* StorageType.swift in Sources */,
 				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFDA074028FAF52B00AE3C5A /* AddSavingsFormViewModel.swift in Sources */,
-				EFC796DC2B33632000FC1CBC /* WidgetCenterProtocol.swift in Sources */,
+				EFC796DC2B33632000FC1CBC /* WidgetCenterType.swift in Sources */,
 				EFAD3AFB2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */,
-				EFC796D92B33628100FC1CBC /* ManagedObjectContextProtocol.swift in Sources */,
+				EFC796D92B33628100FC1CBC /* ManagedObjectContextType.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,
 				EFD838BA26E2677E00163F9A /* EmptySavingsRow.swift in Sources */,
 				EF220DED29724D2E0092CA18 /* AddSavingsFormField.swift in Sources */,
@@ -570,6 +591,7 @@
 				EF8BCC4026EF9943007AED38 /* AddSavingsView.swift in Sources */,
 				EFAD3AF72A64BC2400E73082 /* StockpileSavingType.swift in Sources */,
 				EFAD3AF32A64BBBE00E73082 /* MockStockpileSaving.swift in Sources */,
+				EF9C2B802B35D706005235AA /* CoreDataStack+SampleData.swift in Sources */,
 				EFF1BBEB248459D1003D5FF5 /* Stockpile.xcdatamodeld in Sources */,
 				EF56C80D296A4ABA00EAE3A3 /* RecentSavingsViewModel.swift in Sources */,
 			);

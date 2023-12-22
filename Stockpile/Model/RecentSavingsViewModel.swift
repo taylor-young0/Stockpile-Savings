@@ -11,14 +11,17 @@ import Combine
 import WidgetKit
 
 class RecentSavingsViewModel: ObservableObject {
-    private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+    private let managedObjectContext: ManagedObjectContextType
+    private let widgetCenter: WidgetCenterType
     var errorText: String = ""
-    @Published var allStockpileSavings: [any StockpileSavingType]
+
+    @Published var allStockpileSavings: [StockpileSaving] = []
     @Published var showingSheet: Bool = false
     @Published var showingErrorAlert: Bool = false
 
-    init(savings: [any StockpileSavingType] = []) {
-        self.allStockpileSavings = savings
+    init(context: ManagedObjectContextType, widgetCenter: WidgetCenterType = WidgetCenter.shared) {
+        self.managedObjectContext = context
+        self.widgetCenter = widgetCenter
     }
 
     var lifetimeSavings: String {
@@ -60,19 +63,17 @@ class RecentSavingsViewModel: ObservableObject {
         return nil
     }
 
-    var recentStockpiles: [any StockpileSavingType] {
+    var recentStockpiles: [StockpileSaving] {
         return Array(allStockpileSavings.prefix(10))
     }
 
     private func fetchAllStockpiles() {
-        if allStockpileSavings.isEmpty || allStockpileSavings.first is StockpileSaving {
-            do {
-                let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
-                allStockpileSavings = fetchResults
-            } catch {
-                errorText = "An error occurred when trying to fetch all savings."
-                showingErrorAlert = true
-            }
+        do {
+            let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
+            allStockpileSavings = fetchResults
+        } catch {
+            errorText = "An error occurred when trying to fetch all savings."
+            showingErrorAlert = true
         }
     }
 
@@ -81,12 +82,13 @@ class RecentSavingsViewModel: ObservableObject {
     }
 
     func deleteStockpileSaving(at index: IndexSet.Element?) {
-        guard let index, index < recentStockpiles.count, let itemToDelete = recentStockpiles[index] as? StockpileSaving else {
+        guard let index, index < recentStockpiles.count else {
             errorText = "Could not find a savings to delete. Please try again."
             showingErrorAlert = true
             return
         }
 
+        let itemToDelete: StockpileSaving = recentStockpiles[index]
         self.managedObjectContext.delete(itemToDelete)
 
         do {
@@ -97,6 +99,6 @@ class RecentSavingsViewModel: ObservableObject {
             showingErrorAlert = true
         }
 
-        WidgetCenter.shared.reloadAllTimelines()
+        widgetCenter.reloadTimelines()
     }
 }

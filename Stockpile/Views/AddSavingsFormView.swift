@@ -14,9 +14,11 @@ struct AddSavingsFormView: View {
     @StateObject var viewModel: AddSavingsFormViewModel
     @FocusState var focusedField: AddSavingsFormField?
     
-    init(fromTemplate stockpile: (any StockpileSavingType)? = nil, showingSheet: Binding<Bool>) {
+    init(fromTemplate stockpile: StockpileSaving? = nil,
+         showingSheet: Binding<Bool>,
+         context: ManagedObjectContextType = StorageType.persistent.managedObjectContext) {
         _showingSheet = showingSheet
-        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(fromTemplate: stockpile))
+        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(fromTemplate: stockpile, context: context))
     }
 
     func dismissKeyboard() {
@@ -191,11 +193,11 @@ struct AddSavingsFormView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                AddSavingsFormView(showingSheet: .constant(true))
+                AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
             }
             
             NavigationView {
-                AddSavingsFormView(showingSheet: .constant(true))
+                AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
                     .environment(\.colorScheme, .dark)
             }
         }

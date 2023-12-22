@@ -12,8 +12,8 @@ struct AddSavingsView: View {
     @StateObject private var viewModel: AddSavingsViewModel
     @Binding private var showingSheet: Bool
 
-    init(savings: [any StockpileSavingType] = [], showingSheet: Binding<Bool>) {
-        self._viewModel = StateObject(wrappedValue: AddSavingsViewModel(savings: savings))
+    init(showingSheet: Binding<Bool>, context: ManagedObjectContextType = StorageType.persistent.managedObjectContext) {
+        self._viewModel = StateObject(wrappedValue: AddSavingsViewModel(context: context))
         self._showingSheet = showingSheet
     }
 
@@ -61,9 +61,9 @@ struct AddSavingsView: View {
 struct AddSavingsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AddSavingsView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+            AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.many).managedObjectContext)
 
-            AddSavingsView(savings: MockStockpileSaving.samples, showingSheet: .constant(true))
+            AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.many).managedObjectContext)
                 .preferredColorScheme(.dark)
         }
     }

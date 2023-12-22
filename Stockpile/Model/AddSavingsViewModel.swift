@@ -11,17 +11,17 @@ import Combine
 import CoreData
 
 class AddSavingsViewModel: ObservableObject {
-    @Published var allStockpileSavings: [any StockpileSavingType] = []
+    @Published private var allStockpileSavings: [StockpileSaving] = []
     @Published var showingErrorAlert = false
-    private let managedObjectContext: NSManagedObjectContext = CoreDataStack.shared.persistentContainer.viewContext
+    private let managedObjectContext: ManagedObjectContextType
 
-    init(savings: [any StockpileSavingType] = []) {
-        self.allStockpileSavings = savings
+    init(context: ManagedObjectContextType) {
+        self.managedObjectContext = context
     }
 
-    var uniqueSavings: [any StockpileSavingType] {
+    var uniqueSavings: [StockpileSaving] {
         var uniqueDescriptions: [String] = []
-        var uniqueSavings: [any StockpileSavingType] = []
+        var uniqueSavings: [StockpileSaving] = []
         for saving in allStockpileSavings {
             if !uniqueDescriptions.contains(saving.productDescription) {
                 uniqueSavings.append(saving)
@@ -32,13 +32,11 @@ class AddSavingsViewModel: ObservableObject {
     }
 
     private func fetchAllStockpiles() {
-        if allStockpileSavings.isEmpty || allStockpileSavings.first is StockpileSaving {
-            do {
-                let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
-                allStockpileSavings = fetchResults
-            } catch {
-                showingErrorAlert = true
-            }
+        do {
+            let fetchResults: [StockpileSaving] = try managedObjectContext.fetch(StockpileSaving.getAllSavings())
+            allStockpileSavings = fetchResults
+        } catch {
+            showingErrorAlert = true
         }
     }
 

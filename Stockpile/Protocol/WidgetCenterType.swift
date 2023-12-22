@@ -1,5 +1,5 @@
 //
-//  WidgetCenterProtocol.swift
+//  WidgetCenterType.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2023-12-20.
@@ -8,17 +8,17 @@
 
 import WidgetKit
 
-protocol WidgetCenterProtocol {
+protocol WidgetCenterType {
     func reloadTimelines()
 }
 
-extension WidgetCenter: WidgetCenterProtocol {
+extension WidgetCenter: WidgetCenterType {
     func reloadTimelines() {
         WidgetCenter.shared.reloadAllTimelines()
     }
 }
 
-class MockWidgetCenter: WidgetCenterProtocol {
+class MockWidgetCenter: WidgetCenterType {
     var hasReloadedTimelines = false
 
     func reloadTimelines() {

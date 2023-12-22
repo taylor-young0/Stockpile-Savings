@@ -10,11 +10,13 @@ import XCTest
 @testable import Stockpile
 
 final class AddSavingsViewModelTests: XCTestCase {
-    var viewModel: AddSavingsViewModel = AddSavingsViewModel()
+
+    var viewModel: AddSavingsViewModel!
 
     override func setUp() {
         super.setUp()
-        viewModel = AddSavingsViewModel()
+        viewModel = AddSavingsViewModel(context: StorageType.inmemory(.none).managedObjectContext)
+        viewModel.reloadData()
     }
 
     func test_errorAlertStartsHidden() {
@@ -26,9 +28,25 @@ final class AddSavingsViewModelTests: XCTestCase {
     }
 
     func test_uniqueSavings() {
-        let uniqueSavings: [MockStockpileSaving] = MockStockpileSaving.samples
-        viewModel = AddSavingsViewModel(savings: uniqueSavings + uniqueSavings)
+        viewModel = AddSavingsViewModel(context: StorageType.inmemory(.manyWithDuplicates).managedObjectContext)
+        viewModel.reloadData()
 
-        XCTAssertEqual(viewModel.uniqueSavings as? [MockStockpileSaving], uniqueSavings)
+        XCTAssertEqual(viewModel.uniqueSavings.count, 12)
+
+        let uniqueSavingsDescriptions: String = viewModel.uniqueSavings.reduce("") {
+            $0 + $1.productDescription
+        }
+
+        XCTAssertEqual(
+            uniqueSavingsDescriptions,
+            "🌭 Hot Dogs🥨 Pretzels🥞 Pancake Mix🧀 Cheese🥜 Peanut Butter🍯 Honey🍆 Eggplant🍩 Donut🍪 Cookies🥖 Baguette🥯 Bagels🍎 Apples"
+        )
+    }
+
+    func test_loadingErrorShowsErrorAlert() {
+        viewModel = AddSavingsViewModel(context: MockManagedObjectContext())
+        viewModel.reloadData()
+
+        XCTAssertTrue(viewModel.showingErrorAlert)
     }
 }

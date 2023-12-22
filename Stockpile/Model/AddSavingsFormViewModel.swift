@@ -12,8 +12,8 @@ import CoreData
 import WidgetKit
 
 class AddSavingsFormViewModel: ObservableObject {
-    private let managedObjectContext: ManagedObjectContextProtocol
-    private let widgetCenter: WidgetCenterProtocol
+    private let managedObjectContext: ManagedObjectContextType
+    private let widgetCenter: WidgetCenterType
 
     @Published var showingSheet: Bool = true
     @Published var showingError: Bool = false
@@ -44,8 +44,8 @@ class AddSavingsFormViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
 
     init(fromTemplate stockpile: (any StockpileSavingType)? = nil,
-         context: ManagedObjectContextProtocol = CoreDataStack.shared.persistentContainer.viewContext,
-         widgetCenter: WidgetCenterProtocol = WidgetCenter.shared) {
+         context: ManagedObjectContextType,
+         widgetCenter: WidgetCenterType = WidgetCenter.shared) {
         self.managedObjectContext = context
         self.widgetCenter = widgetCenter
         self.setupSubscribers()
@@ -55,7 +55,7 @@ class AddSavingsFormViewModel: ObservableObject {
             let consumption: String = stockpile.consumption.asLocalizedDecimal
             let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit) ?? .Day
             let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
-            
+
             self.productDescription = stockpile.productDescription
             self.consumptionInput = consumption
             self.consumptionUnit = consumptionUnit
@@ -168,7 +168,7 @@ class AddSavingsFormViewModel: ObservableObject {
         }
 
         if let context = managedObjectContext as? NSManagedObjectContext {
-            let stockpileSaving = StockpileSaving(context: context)
+            let stockpileSaving = NSEntityDescription.insertNewObject(forEntityName: "StockpileSaving", into: context) as! StockpileSaving
             stockpileSaving.productDescription = productDescription
             stockpileSaving.dateComputed = Date()
             stockpileSaving.consumption = consumption

@@ -10,15 +10,21 @@ import XCTest
 @testable import Stockpile
 
 final class RecentSavingsViewModelTests: XCTestCase {
-    var viewModel: RecentSavingsViewModel = RecentSavingsViewModel()
+
+    var viewModel: RecentSavingsViewModel!
+    var widgetCenter: MockWidgetCenter!
 
     override func setUp() {
         super.setUp()
-        viewModel = RecentSavingsViewModel()
+
+        widgetCenter = MockWidgetCenter()
+        viewModel = RecentSavingsViewModel(context: StorageType.inmemory(.none).managedObjectContext, widgetCenter: widgetCenter)
+        viewModel.reloadData()
     }
 
     func setUpWithSamples() {
-        viewModel = RecentSavingsViewModel(savings: MockStockpileSaving.samples)
+        viewModel = RecentSavingsViewModel(context: StorageType.inmemory(.many).managedObjectContext, widgetCenter: widgetCenter)
+        viewModel.reloadData()
     }
 
     func test_errorAlertStartsHidden() {
@@ -29,7 +35,7 @@ final class RecentSavingsViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.showingSheet)
     }
 
-    func test_missingIndexShowsError() {
+    func test_deletingMissingIndexShowsError() {
         guard !viewModel.showingErrorAlert else {
             XCTFail("Was expecting error alert to initially be hidden")
             return
@@ -38,9 +44,10 @@ final class RecentSavingsViewModelTests: XCTestCase {
         viewModel.deleteStockpileSaving(at: nil)
         XCTAssert(viewModel.showingErrorAlert)
         XCTAssertEqual(viewModel.errorText, "Could not find a savings to delete. Please try again.")
+        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
     }
 
-    func test_invalidIndexShowsError() {
+    func test_deletingInvalidIndexShowsError() {
         guard !viewModel.showingErrorAlert else {
             XCTFail("Was expecting error alert to initially be hidden")
             return
@@ -54,6 +61,24 @@ final class RecentSavingsViewModelTests: XCTestCase {
         viewModel.deleteStockpileSaving(at: 0)
         XCTAssert(viewModel.showingErrorAlert)
         XCTAssertEqual(viewModel.errorText, "Could not find a savings to delete. Please try again.")
+        XCTAssertFalse(widgetCenter.hasReloadedTimelines)
+    }
+
+    func test_deletionOfValidIndex() {
+        setUpWithSamples()
+
+        viewModel.deleteStockpileSaving(at: 2)
+        XCTAssertFalse(viewModel.showingErrorAlert)
+        XCTAssertTrue(widgetCenter.hasReloadedTimelines)
+
+        let recentSavingsDescriptions: String = viewModel.recentStockpiles.reduce("") {
+            $0 + $1.productDescription
+        }
+
+        XCTAssertEqual(
+            recentSavingsDescriptions,
+            "🌭 Hot Dogs🥨 Pretzels🧀 Cheese🥜 Peanut Butter🍯 Honey🍆 Eggplant🍩 Donut🍪 Cookies🥖 Baguette🥯 Bagels"
+        )
     }
 
     func test_lifetimeSavingsDefaultsToZero() {
@@ -62,7 +87,7 @@ final class RecentSavingsViewModelTests: XCTestCase {
 
     func test_lifetimeSavings() {
         setUpWithSamples()
-        XCTAssertEqual(viewModel.lifetimeSavings, "$71.50")
+        XCTAssertEqual(viewModel.lifetimeSavings, "$34.40")
     }
 
     func test_firstSavingsDateDefaultsToNil() {
@@ -82,7 +107,7 @@ final class RecentSavingsViewModelTests: XCTestCase {
 
     func test_averagePercentageSavings() {
         setUpWithSamples()
-        XCTAssertEqual(viewModel.averagePercentageSavings, 21)
+        XCTAssertEqual(viewModel.averagePercentageSavings, 20)
     }
 
     func test_percentageSavingsRangeDefaultsToNil() {
@@ -91,8 +116,9 @@ final class RecentSavingsViewModelTests: XCTestCase {
 
     func test_percentageSavingsRange() {
         setUpWithSamples()
-        XCTAssertEqual(viewModel.percentageSavingsRange?.0, 10)
-        XCTAssertEqual(viewModel.percentageSavingsRange?.1, 50)
+
+        XCTAssertEqual(viewModel.percentageSavingsRange?.0, 5)
+        XCTAssertEqual(viewModel.percentageSavingsRange?.1, 40)
     }
 
     func test_recentStockpilesDefaultsEmpty() {
@@ -101,6 +127,16 @@ final class RecentSavingsViewModelTests: XCTestCase {
 
     func test_recentStockpiles() {
         setUpWithSamples()
+
         XCTAssertEqual(viewModel.recentStockpiles.count, 10)
+
+        let recentSavingsDescriptions: String = viewModel.recentStockpiles.reduce("") {
+            $0 + $1.productDescription
+        }
+
+        XCTAssertEqual(
+            recentSavingsDescriptions,
+            "🌭 Hot Dogs🥨 Pretzels🥞 Pancake Mix🧀 Cheese🥜 Peanut Butter🍯 Honey🍆 Eggplant🍩 Donut🍪 Cookies🥖 Baguette"
+        )
     }
 }
