@@ -21,7 +21,7 @@ struct LifetimeSavingsSmallViewModel {
     }
 
     var numberOfItemsText: String {
-        "on \(entry.stockpiles.count) item\(entry.stockpiles.count == 1 ? "" : "s")"
+        "on \(entry.groupedStockpiles.count) item\(entry.groupedStockpiles.count == 1 ? "" : "s")"
     }
 
     func shouldShowNumberOfItemsText(for dynamicTypeSize: DynamicTypeSize) -> Bool {

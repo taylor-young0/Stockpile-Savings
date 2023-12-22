@@ -42,15 +42,12 @@ struct LifetimeSavingsSmallView: View {
 }
 
 struct LifetimeSavingsSmallWidgetView_Previews: PreviewProvider {
-    static let lifetimeSavings = 143.74
-    static let stockpiles = [
-        GroupedStockpileSaving(name: "🌭 6-pack Hot Dogs", savings: 100.0),
-        GroupedStockpileSaving(name: "🍿 Popcorn", savings: 35.74),
-        GroupedStockpileSaving(name: "🥜 Crunchy Peanut Butter", savings: 8.0)
-    ]
+    static let context: ManagedObjectContextType = StorageType.inmemory(.many).managedObjectContext
 
     static var previews: some View {
-        LifetimeSavingsSmallView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        let savings: [StockpileSaving] = try! context.fetch(StockpileSaving.fetchRequest()) as! [StockpileSaving]
+
+        return LifetimeSavingsSmallView(entry: LifetimeSavingsEntry(date: Date(), allStockpiles: savings))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

@@ -20,7 +20,7 @@ struct LifetimeSavingsMediumLargeViewModel {
     }
 
     var stockpiles: [GroupedStockpileSaving] {
-        entry.stockpiles
+        entry.groupedStockpiles
     }
 
     var lifetimeSavingsFormatted: String {
@@ -38,16 +38,16 @@ struct LifetimeSavingsMediumLargeViewModel {
     var numDisplayedSavings: Int {
         switch(family) {
         case .systemMedium:
-            return min(2, entry.stockpiles.count)
+            return min(2, entry.groupedStockpiles.count)
         case .systemLarge:
-            return min(7, entry.stockpiles.count)
+            return min(7, entry.groupedStockpiles.count)
         default:
             return 0
         }
     }
 
     private var numNonDisplayedSavings: Int {
-        entry.stockpiles.count - numDisplayedSavings
+        entry.groupedStockpiles.count - numDisplayedSavings
     }
 
     func currencyFormatted(_ amount: Double) -> String {

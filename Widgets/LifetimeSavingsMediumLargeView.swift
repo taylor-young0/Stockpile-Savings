@@ -64,19 +64,18 @@ struct LifetimeSavingsMediumLargeView: View {
     }
 }
 
-struct LifetimeSavingsMediumView_Previews: PreviewProvider {
-    static let lifetimeSavings = 143.74
-    static let stockpiles = [
-        GroupedStockpileSaving(name: "🌭 6-pack Hot Dogs", savings: 100.0),
-        GroupedStockpileSaving(name: "🍿 Popcorn", savings: 35.74),
-        GroupedStockpileSaving(name: "🥜 Crunchy Peanut Butter", savings: 8.0)
-    ]
-    
-    static var previews: some View {
-        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles), family: .systemMedium)
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+struct LifetimeSavingsMediumLargeView_Previews: PreviewProvider {
+    static let context: ManagedObjectContextType = StorageType.inmemory(.many).managedObjectContext
 
-        LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), lifetimeSavings: lifetimeSavings, stockpiles: stockpiles), family: .systemLarge)
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
+    static var previews: some View {
+        let savings: [StockpileSaving] = try! context.fetch(StockpileSaving.fetchRequest()) as! [StockpileSaving]
+
+        return Group {
+            LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), allStockpiles: savings), family: .systemMedium)
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+
+            LifetimeSavingsMediumLargeView(entry: LifetimeSavingsEntry(date: Date(), allStockpiles: savings), family: .systemLarge)
+                .previewContext(WidgetPreviewContext(family: .systemLarge))
+        }
     }
 }
