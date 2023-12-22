@@ -190,12 +190,20 @@ struct AddSavingsFormView: View {
 }
 
 struct AddSavingsFormView_Previews: PreviewProvider {
+    static let vm = RecentSavingsViewModel(context: StorageType.inmemory(.one).managedObjectContext)
+
     static var previews: some View {
-        Group {
+        vm.reloadData()
+
+        return Group {
             NavigationView {
                 AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
             }
-            
+
+            NavigationView {
+                AddSavingsFormView(fromTemplate: vm.recentStockpiles.first!, showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
+            }
+
             NavigationView {
                 AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
                     .environment(\.colorScheme, .dark)

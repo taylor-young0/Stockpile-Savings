@@ -99,15 +99,13 @@ struct RecentSavingsView: View {
 
 struct RecentSavingsView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
+        RecentSavingsView(context: StorageType.inmemory(.none).managedObjectContext)
 
-            RecentSavingsView()
+        RecentSavingsView(context: StorageType.inmemory(.one).managedObjectContext)
 
-            RecentSavingsView()
+        RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
 
-            RecentSavingsView()
-                .environment(\.colorScheme, .dark)
-        }
+        RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
+            .environment(\.colorScheme, .dark)
     }
 }

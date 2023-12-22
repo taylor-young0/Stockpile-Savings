@@ -42,8 +42,6 @@
 		EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */; };
 		EFAD3AF72A64BC2400E73082 /* StockpileSavingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */; };
 		EFAD3AF82A64BC2400E73082 /* StockpileSavingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */; };
-		EFAD3AFB2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */; };
-		EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */; };
 		EFAD7A1C276A3BE6004502CD /* GroupedStockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */; };
 		EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
 		EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAD7A24276A4310004502CD /* StockpileSaving.swift */; };
@@ -137,7 +135,6 @@
 		EF9EE7002A5A4CD00071221A /* StatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCard.swift; sourceTree = "<group>"; };
 		EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSavingType.swift; sourceTree = "<group>"; };
-		EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockStockpileSaving+Samples.swift"; sourceTree = "<group>"; };
 		EFAD7A1A276A3BC5004502CD /* GroupedStockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedStockpileSaving.swift; sourceTree = "<group>"; };
 		EFAD7A24276A4310004502CD /* StockpileSaving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockpileSaving.swift; sourceTree = "<group>"; };
 		EFB7772C2974BB2E00198090 /* AddSavingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSavingsViewModel.swift; sourceTree = "<group>"; };
@@ -276,7 +273,6 @@
 				EFAD7A24276A4310004502CD /* StockpileSaving.swift */,
 				EFED9E5C297DFD600085D90E /* StockpileSaving+FetchRequest.swift */,
 				EFAD3AF22A64BBBE00E73082 /* MockStockpileSaving.swift */,
-				EFAD3AFA2A64BF3800E73082 /* MockStockpileSaving+Samples.swift */,
 				EFAD3AF62A64BC2400E73082 /* StockpileSavingType.swift */,
 			);
 			path = Model;
@@ -539,7 +535,6 @@
 				EF65C1332B34DA2100EA298F /* ManagedObjectContextType.swift in Sources */,
 				EFAD3AF52A64BBCA00E73082 /* MockStockpileSaving.swift in Sources */,
 				EFAD7A26276A4310004502CD /* StockpileSaving.swift in Sources */,
-				EFAD3AFC2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EF2E42172B31DF62000BBEC3 /* LifetimeSavingsEntry.swift in Sources */,
 				EF2E42082B30EF55000BBEC3 /* LifetimeSavingsSmallView.swift in Sources */,
 				EF9C2B842B35D757005235AA /* StorageType.swift in Sources */,
@@ -571,7 +566,6 @@
 				EFAD7A25276A4310004502CD /* StockpileSaving.swift in Sources */,
 				EFDA074028FAF52B00AE3C5A /* AddSavingsFormViewModel.swift in Sources */,
 				EFC796DC2B33632000FC1CBC /* WidgetCenterType.swift in Sources */,
-				EFAD3AFB2A64BF3800E73082 /* MockStockpileSaving+Samples.swift in Sources */,
 				EF9EE7012A5A4CD00071221A /* StatisticsCard.swift in Sources */,
 				EFC796D92B33628100FC1CBC /* ManagedObjectContextType.swift in Sources */,
 				EF7ADB8D2905E454004946C4 /* Double+Ext.swift in Sources */,

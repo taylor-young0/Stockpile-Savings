@@ -45,16 +45,22 @@ struct StockpileSavingRow: View {
 }
 
 struct StockpileSavingRow_Previews: PreviewProvider {
+    static let vm = RecentSavingsViewModel(context: StorageType.inmemory(.one).managedObjectContext)
+
     static var previews: some View {
-        List {
-            StockpileSavingRow(stockpile: MockStockpileSaving.samples[0])
-        }
-        .listStyle(InsetGroupedListStyle())
+        vm.reloadData()
+
+        return Group {
+            List {
+                StockpileSavingRow(stockpile: vm.recentStockpiles.first!)
+            }
+            .listStyle(InsetGroupedListStyle())
             
-        List {
-            StockpileSavingRow(stockpile: MockStockpileSaving.samples[0])
+            List {
+                StockpileSavingRow(stockpile: vm.recentStockpiles.first!)
+            }
+            .preferredColorScheme(.dark)
+            .listStyle(InsetGroupedListStyle())
         }
-        .preferredColorScheme(.dark)
-        .listStyle(InsetGroupedListStyle())
     }
 }

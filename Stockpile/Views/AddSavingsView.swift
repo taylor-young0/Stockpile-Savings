@@ -60,11 +60,11 @@ struct AddSavingsView: View {
 
 struct AddSavingsView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.many).managedObjectContext)
+        AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.few).managedObjectContext)
 
-            AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.many).managedObjectContext)
-                .preferredColorScheme(.dark)
-        }
+        AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.manyWithDuplicates).managedObjectContext)
+
+        AddSavingsView(showingSheet: .constant(true), context: StorageType.inmemory(.few).managedObjectContext)
+            .preferredColorScheme(.dark)
     }
 }
