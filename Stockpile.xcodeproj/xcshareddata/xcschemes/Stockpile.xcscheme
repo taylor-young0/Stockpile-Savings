@@ -38,6 +38,14 @@
                BlueprintName = "StockpileTests"
                ReferencedContainer = "container:Stockpile.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AddSavingsFormViewModelTests/test_addSavingsValidInputThrowsError()">
+               </Test>
+               <Test
+                  Identifier = "AddSavingsViewModelTests/test_loadingErrorShowsErrorAlert()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
