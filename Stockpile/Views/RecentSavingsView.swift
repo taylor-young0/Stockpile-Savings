@@ -10,29 +10,42 @@ import SwiftUI
 import WidgetKit
 
 struct RecentSavingsView: View {
-    @StateObject private var viewModel: RecentSavingsViewModel = RecentSavingsViewModel()
+    @StateObject private var viewModel: RecentSavingsViewModel
     
-    init() {
+    init(context: ManagedObjectContextType = StorageType.persistent.managedObjectContext) {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Constants.stockpileUIColor]
+        _viewModel = StateObject(wrappedValue: RecentSavingsViewModel(context: context))
     }
         
     // MARK: - Body
-    
+
+    var statisticsCardsView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                LifetimeSavingsCard(lifetimeSavings: viewModel.lifetimeSavings, firstSavingsDate: viewModel.firstSavingsDate)
+                PercentageSavingsCard(averagePercentageSavings: viewModel.averagePercentageSavings, savingsRange: viewModel.percentageSavingsRange)
+            }
+            .padding(.horizontal, 20)
+        }
+        .listRowInsets(EdgeInsets())
+        .padding(.horizontal, -20)
+    }
+
     var body: some View {
         NavigationView {
             List {
                 Section {
-                    HStack {
-                        Text(viewModel.lifetimeSavingsText)
-                        Spacer()
-                        Text(viewModel.lifetimeSavings)
-                    }
+                    EmptyView()
+                } footer: {
+                    statisticsCardsView
+                        .textCase(.none)
+                        .padding(.top)
                 }
-                
-                Section(header: Text(viewModel.recentSavingsHeader)) {
+
+                Section(header: Text("Recent Savings")) {
                     if viewModel.recentStockpiles.count != 0 {
-                        ForEach(viewModel.recentStockpiles) { stockpile in
+                        ForEach(viewModel.recentStockpiles, id: \.id) { stockpile in
                             StockpileSavingRow(stockpile: stockpile)
                         }
                         .onDelete { indexSet in
@@ -52,13 +65,13 @@ struct RecentSavingsView: View {
                 }
             })
             .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle(Text(viewModel.navigationBarTitle))
+            .navigationBarTitle(Text("Stockpile"))
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
                         viewModel.showingSheet.toggle()
                     } label: {
-                        Image(systemName: viewModel.addStockpileSavingIconName)
+                        Image(systemName: "plus")
                             .font(.title3.bold())
                             .foregroundColor(Constants.stockpileColor)
                             .padding(Constants.defaultPadding)
@@ -69,10 +82,10 @@ struct RecentSavingsView: View {
                 isPresented: $viewModel.showingSheet,
                 content: {
                     if viewModel.recentStockpiles.count > 0 {
-                        AddNewStockpileView(showingSheet: $viewModel.showingSheet)
+                        AddSavingsView(showingSheet: $viewModel.showingSheet)
                     } else {
                         NavigationView {
-                            AddNewStockpileSavingView(showingSheet: $viewModel.showingSheet)
+                            AddSavingsFormView(showingSheet: $viewModel.showingSheet)
                         }
                     }
                 }
@@ -84,18 +97,15 @@ struct RecentSavingsView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct RecentSavingsView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            RecentSavingsView()
-                .previewDevice(.init(rawValue: "iPhone 11"))
-            
-            RecentSavingsView()
-                .environment(\.colorScheme, .dark)
-                .previewDevice(.init(rawValue: "iPhone 11"))
-            
-            EmptySavingsRow().previewLayout(.fixed(width: 375, height: 70))
-                .padding(.horizontal)
-        }
+        RecentSavingsView(context: StorageType.inmemory(.none).managedObjectContext)
+
+        RecentSavingsView(context: StorageType.inmemory(.one).managedObjectContext)
+
+        RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
+
+        RecentSavingsView(context: StorageType.inmemory(.many).managedObjectContext)
+            .environment(\.colorScheme, .dark)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileSavingField.swift
+//  AddSavingsFormField.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2023-01-13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AddNewStockpileSavingField: Hashable {
+enum AddSavingsFormField: Hashable {
     case description
     case consumption
     case regularPrice

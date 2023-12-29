@@ -16,7 +16,7 @@ struct StockpileSavingRow: View {
         self.viewModel = viewModel
     }
 
-    init(stockpile: StockpileSaving) {
+    init(stockpile: any StockpileSavingType) {
         self.viewModel = StockpileSavingRowViewModel(description: stockpile.productDescription, savings: stockpile.savings,
                                                      unitsPurchased: stockpile.unitsPurchased, percentageSavings: stockpile.percentageSavings)
     }
@@ -45,29 +45,22 @@ struct StockpileSavingRow: View {
 }
 
 struct StockpileSavingRow_Previews: PreviewProvider {
-    static let viewModel: StockpileSavingRowViewModel = StockpileSavingRowViewModel(description: "🧀 Organic Meadow cheese", savings: 10.0,
-                                                                                    unitsPurchased: 5, percentageSavings: 20.0)
+    static let vm = RecentSavingsViewModel(context: StorageType.inmemory(.one).managedObjectContext)
 
     static var previews: some View {
-        StockpileSavingRow(viewModel: viewModel)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-        
-        StockpileSavingRow(viewModel: viewModel)
+        vm.reloadData()
+
+        return Group {
+            List {
+                StockpileSavingRow(stockpile: vm.recentStockpiles.first!)
+            }
+            .listStyle(InsetGroupedListStyle())
+            
+            List {
+                StockpileSavingRow(stockpile: vm.recentStockpiles.first!)
+            }
             .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-            
-        List {
-            StockpileSavingRow(viewModel: viewModel)
+            .listStyle(InsetGroupedListStyle())
         }
-        .listStyle(InsetGroupedListStyle())
-            
-        List {
-            StockpileSavingRow(viewModel: viewModel)
-        }
-        .preferredColorScheme(.dark)
-        .listStyle(InsetGroupedListStyle())
     }
-    
 }

@@ -1,5 +1,5 @@
 //
-//  AddNewStockpileSavingView.swift
+//  AddSavingsFormView.swift
 //  Stockpile
 //
 //  Created by Taylor Young on 2020-05-31.
@@ -9,43 +9,16 @@
 import SwiftUI
 import WidgetKit
 
-struct AddNewStockpileSavingView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
+struct AddSavingsFormView: View {
     @Binding var showingSheet: Bool
-    @StateObject var viewModel: AddNewStockpileSavingViewModel = AddNewStockpileSavingViewModel()
-    @FocusState var focusedField: AddNewStockpileSavingField?
+    @StateObject var viewModel: AddSavingsFormViewModel
+    @FocusState var focusedField: AddSavingsFormField?
     
-    init(showingSheet: Binding<Bool>) {
+    init(fromTemplate stockpile: StockpileSaving? = nil,
+         showingSheet: Binding<Bool>,
+         context: ManagedObjectContextType = StorageType.persistent.managedObjectContext) {
         _showingSheet = showingSheet
-    }
-    
-    init(fromTemplate stockpile: StockpileSaving, showingSheet: Binding<Bool>) {
-        // Format for the user's locale, as some locales use commas as the decimal separator
-        let consumption: String = stockpile.consumption.asLocalizedDecimal
-        let consumptionUnit: ConsumptionUnit = ConsumptionUnit(rawValue: stockpile.consumptionUnit) ?? .Day
-        let regularPrice: String = stockpile.regularPrice.asLocalizedDecimal
-        
-        _showingSheet = showingSheet
-        _viewModel = StateObject(wrappedValue: AddNewStockpileSavingViewModel(productDescription: stockpile.productDescription,
-                                                                              consumption: consumption,
-                                                                              consumptionUnit: consumptionUnit,
-                                                                              regularPrice: regularPrice))
-    }
-
-    fileprivate func addNewSavings() {
-        let stockpileSaving = StockpileSaving(context: self.managedObjectContext)
-        stockpileSaving.productDescription = viewModel.productDescription
-        stockpileSaving.dateComputed = Date()
-        stockpileSaving.consumption = viewModel.consumption
-        stockpileSaving.consumptionUnit = viewModel.consumptionUnit.rawValue
-        stockpileSaving.productExpiryDate = viewModel.productExpiryDate
-        stockpileSaving.regularPrice = viewModel.regularPrice
-        stockpileSaving.salePrice = viewModel.salePrice
-        stockpileSaving.unitsPurchased = viewModel.unitsPurchased
-
-        try? self.managedObjectContext.save()
-        self.showingSheet.toggle()
-        WidgetCenter.shared.reloadAllTimelines()
+        _viewModel = StateObject(wrappedValue: AddSavingsFormViewModel(fromTemplate: stockpile, context: context))
     }
 
     func dismissKeyboard() {
@@ -60,19 +33,20 @@ struct AddNewStockpileSavingView: View {
             pricingInformation
             stockpileInformation
         }
-        .navigationBarTitle(Text("New Savings"), displayMode: .inline)
+        .navigationTitle(Text("New Savings"))
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Button("Cancel") {
-                    self.showingSheet.toggle()
+                    viewModel.showingSheet.toggle()
                 }
                 .padding(Constants.defaultPadding)
                 .foregroundColor(Constants.stockpileColor)
             }
             ToolbarItem(placement: .primaryAction) {
                 Button("Add") {
-                    self.addNewSavings()
+                    viewModel.addSavings()
                 }
                 .padding(Constants.defaultPadding)
                 .foregroundColor(viewModel.addButtonColour)
@@ -95,6 +69,10 @@ struct AddNewStockpileSavingView: View {
                 )
             }
         )
+        .tint(Constants.stockpileColor)
+        .onChange(of: viewModel.showingSheet) {
+            showingSheet = $0
+        }
     }
     
     // MARK: Product Information
@@ -124,17 +102,20 @@ struct AddNewStockpileSavingView: View {
                             .keyboardType(.decimalPad)
                             .focused($focusedField, equals: .consumption)
                         Text("/\(viewModel.consumptionUnit.rawValue)")
+                            .onTapGesture {
+                                focusedField = .consumption
+                            }
                     }
                 }
                 .onTapGesture(perform: dismissKeyboard)
-                
-                Picker("Consumption Units", selection: $viewModel.consumptionUnit) {
-                    ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
-                        Text(unit.rawValue).tag(unit)
-                    }
-                }
-                .pickerStyle(SegmentedPickerStyle())
             }
+
+            Picker("Consumption Units", selection: $viewModel.consumptionUnit) {
+                ForEach(ConsumptionUnit.allCases, id: \.self) { unit in
+                    Text(unit.rawValue).tag(unit)
+                }
+            }
+            .pickerStyle(.menu)
         }
     }
     
@@ -208,33 +189,25 @@ struct AddNewStockpileSavingView: View {
     }
 }
 
-struct AddNewStockpileSavingView_Previews: PreviewProvider {
+struct AddSavingsFormView_Previews: PreviewProvider {
+    static let vm = RecentSavingsViewModel(context: StorageType.inmemory(.one).managedObjectContext)
+
     static var previews: some View {
-        Group {
+        vm.reloadData()
+
+        return Group {
             NavigationView {
-                AddNewStockpileSavingView(showingSheet: .constant(true))
-                    .previewDevice(.init(rawValue: "iPhone 11"))
+                AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
             }
-            
+
             NavigationView {
-                AddNewStockpileSavingView(showingSheet: .constant(true))
-                    .previewDevice(.init(rawValue: "iPhone 11"))
+                AddSavingsFormView(fromTemplate: vm.recentStockpiles.first!, showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
+            }
+
+            NavigationView {
+                AddSavingsFormView(showingSheet: .constant(true), context: StorageType.inmemory(.none).managedObjectContext)
                     .environment(\.colorScheme, .dark)
             }
-            
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Text("Lifetime savings".uppercased())
-                        .fontWeight(.bold)
-                        .foregroundColor(Constants.stockpileColor)
-                    Text(50, format: .currency(code: Locale.current.currencyCode ?? "USD"))
-                        .font(.title.bold())
-                        .foregroundColor(Constants.stockpileColor)
-                }
-                
-                Spacer()
-            }
-            .redacted(reason: .placeholder)
         }
     }
 }

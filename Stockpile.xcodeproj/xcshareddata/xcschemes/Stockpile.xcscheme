@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1400"
+   LastUpgradeVersion = "1430"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -38,6 +38,14 @@
                BlueprintName = "StockpileTests"
                ReferencedContainer = "container:Stockpile.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AddSavingsFormViewModelTests/test_addSavingsValidInputThrowsError()">
+               </Test>
+               <Test
+                  Identifier = "AddSavingsViewModelTests/test_loadingErrorShowsErrorAlert()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

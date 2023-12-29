@@ -10,33 +10,17 @@ import SwiftUI
 
 struct EmptySavingsRow: View {
     var body: some View {
-        VStack {
-            HStack() {
-                Text("😢 No savings added yet!")
-                Spacer()
-            }
-            
-            HStack {
-                Text("Add savings by completing a new calculation by pressing the + icon in the top right")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Spacer()
-            }
+        VStack(alignment: .leading, spacing: 4) {
+            Text("😢 No savings added yet!")
+            Text("Add a new savings by pressing the + icon in the top right.")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
         }
     }
 }
 
 struct EmptySavingsRow_Previews: PreviewProvider {
     static var previews: some View {
-        EmptySavingsRow()
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-        
-        EmptySavingsRow()
-            .preferredColorScheme(.dark)
-            .previewLayout(.fixed(width: 375, height: 70))
-            .padding(.horizontal)
-            
         List {
             EmptySavingsRow()
         }

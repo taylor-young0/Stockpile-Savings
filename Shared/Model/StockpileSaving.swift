@@ -10,7 +10,9 @@ import Foundation
 import CoreData
 
 @objc(StockpileSaving)
-public class StockpileSaving: NSManagedObject, Identifiable {
+public class StockpileSaving: NSManagedObject, Identifiable, StockpileSavingType {
+    public let id: UUID = UUID()
+
     @NSManaged public var consumption: Double
     @NSManaged public var consumptionUnit: String
     @NSManaged public var dateComputed: Date
@@ -19,16 +21,4 @@ public class StockpileSaving: NSManagedObject, Identifiable {
     @NSManaged public var regularPrice: Double
     @NSManaged public var salePrice: Double
     @NSManaged public var unitsPurchased: Int
-
-    /// The total monetary savings in dollars for the StockpileSaving assuming the user buys
-    /// unitsPurchased amount.
-    var savings: Double {
-        let savingsPerUnit = regularPrice - salePrice
-        return savingsPerUnit * Double(unitsPurchased)
-    }
-    
-    /// The percentage savings per unit purchased given the salePrice and regularPrice
-    var percentageSavings: Double {
-        return (((regularPrice - salePrice) / regularPrice) * 100)
-    }
 }
